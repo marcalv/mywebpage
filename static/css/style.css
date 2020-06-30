@@ -1,3 +1,8 @@
 .notbold{
   font-weight:normal
 }​
+
+.nopadding {
+  padding: 0;
+  margin: 0;
+}
