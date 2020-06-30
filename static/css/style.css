@@ -6,3 +6,13 @@
   padding: 0;
   margin: 0;
 }
+
+.listicon {
+  
+  height: 7vh;
+}
+
+.listicon-sm {
+  
+  height: 6vh;
+}
