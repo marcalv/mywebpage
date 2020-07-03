@@ -2,11 +2,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8">
 
-
 <link rel="stylesheet" href="/static/css/stem.css">
 <link rel="stylesheet" href="/static/css/bootstrap337.min.css">
 <link rel="stylesheet" href="/static/css/fontawesome.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 
 <body>
     
@@ -23,23 +21,24 @@
       <div id="playlist"></div>
       <form class="form-inline">
         <div class="form-group">
-          <label for="master-gain">Master Volume</label>
+          <label for="master-gain">Volumen salida</label>
           <input type="range" min="0" max="100" value="100" class="master-gain form-control" id="master-gain">
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="automatic-scroll"> Automatic Scroll
+            <input type="checkbox" checked class="automatic-scroll"> Desplazamiento automático
           </label>
         </div>
       </form>
       <div class="sound-status"></div>
       <!-- <div class="loading-data"></div> -->
 
-      <script src="static/js/jquery.min.js"></script>
-      <script type="text/javascript" src="static/js/waveform-playlist.var.js"></script>
-      <script type="text/javascript" src="static/js/minimal.js"></script>
-      <script type="text/javascript" src="static/js/emitter.js"></script>
-   
+      <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/static/js/waveform-playlist.var.js"></script>
+      <script type="text/javascript" src="/static/js/minimal.js"></script>
+      <script type="text/javascript" src="/static/js/emitter.js"></script>
+      
+      <script>var options = {isAutomaticScroll: false}</script>
 
 
   </div>

@@ -3,7 +3,8 @@ var playlist = WaveformPlaylist.init({
     waveHeight: 100,
     container: document.getElementById("playlist"),
     timescale: true,
-    state: 'cursor',
+    state: 'cursor', 
+    isAutomaticScroll: true,
     colors: {
       waveOutlineColor: '#E0EFF1'
     },
@@ -17,28 +18,28 @@ var playlist = WaveformPlaylist.init({
   playlist.load([
     {
       "src": "/static/files/audio/stems/test/bastablues_stem_session_Bass BUS.mp3",
-      "name": "Vocals",
+      "name": "Bass",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
       "src": "/static/files/audio/stems/test/bastablues_stem_session_Drums BUS.mp3",
-      "name": "Vocals",
+      "name": "Drums",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
       "src": "/static/files/audio/stems/test/bastablues_stem_session_Guitar BUS.mp3",
-      "name": "Vocals",
+      "name": "Guitar",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
       "src": "/static/files/audio/stems/test/bastablues_stem_session_Reverb.mp3",
-      "name": "Vocals",
+      "name": "Reverb",
       "gain": 1,
       "muted": false,
       "soloed": false
