@@ -9,7 +9,7 @@ El dominio [marcalv.com](https://marcalv.com) está alquilado con [Namecheap](ht
 
 [Aquí tienes el repositorio con todo el código fuente](https://github.com/marcalv/mywebpage). En su mayoría es HTML y CSS escrito de forma manual, en algunas partes javascript cuando es necesario. Y si lo conoces, ya te habrás dado cuenta... [Bootstrap](https://getbootstrap.com/). Los iconos son de [Icons8](https://icons8.com/).
 
-Todos los archivos se sirven mediante [NGINX](https://www.nginx.com/), el cual se ejecuta en un maravilloso [contenedor docker](https://github.com/linuxserver/docker-letsencrypt) que hace de _reverse-proxy_ con otros servicios de acceso privado que también estan en la Raspberry ([Nextcloud](https://nextcloud.com/), [Pi-hole](https://pi-hole.net/), [freshRSS](https://freshrss.org/), [qBittorrent](https://github.com/linuxserver/docker-qbittorrent), [Jackett](https://github.com/Jackett/Jackett)...).
+Todos los archivos se sirven mediante [NGINX](https://www.nginx.com/), el cual se ejecuta en un maravilloso [contenedor docker](https://github.com/linuxserver/docker-letsencrypt) que hace de _reverse-proxy_ con otros servicios de acceso privado que también están en la Raspberry ([Nextcloud](https://nextcloud.com/), [Pi-hole](https://pi-hole.net/), [freshRSS](https://freshrss.org/), [qBittorrent](https://github.com/linuxserver/docker-qbittorrent), [Jackett](https://github.com/Jackett/Jackett)...).
 
 
 ### ¿Por qué?
