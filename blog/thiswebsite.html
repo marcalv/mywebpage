@@ -1,0 +1,52 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
+<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+
+<script type="text/javascript" src=" https://unpkg.com/showdown/dist/showdown.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<meta charset="UTF-8">
+
+<head>
+    <title>Sobre esta web - Marc Álvarez</title>
+</head>
+
+<body>
+    <div class="container mt-4">
+
+        <div class="mx-auto text-center my-4">
+            <h1 class="display-4"><img src="/static/icons/icon_web.png" class=" mr-3" alt="..."
+                    style=" width: 64px; height: 64px;">Sobre esta web</h1>
+        </div>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Sobre esta web</li>
+            </ol>
+        </nav>
+
+        <div class="container" id='mk'>
+                <!-- markdown go brrr -->
+        </div>
+        <br>
+
+
+    </div>
+    <script>
+
+        $(document).ready(function () {
+            $.get("/blog/thiswebsite.md", function (html_string) {
+                var converter = new showdown.Converter({ openLinksInNewWindow: 'true' }),
+                html = converter.makeHtml(html_string);
+                console.log(html)
+                $("#mk").html(html)
+            }, 'html'); 
+        });
+    </script>
+
+</body>
+
+</html>
