@@ -2,7 +2,7 @@
 
 Al entrar en la dirección marcalv.com estás conectándote directamente con la [Raspberry Pi 3 B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/) que tengo por casa. Todos los archivos necesarios para que la web funcione están en ella.
 
-El dominio [marcalv.com](https://marcalv.com) está alquilado con [Namecheap](https://www.namecheap.com) por 8 euros al año y ellos se encargan de redirigir el tráfico a la IP pública de mi casa. 
+El dominio [marcalv.com](https://marcalv.com) está alquilado con [Namecheap](https://www.namecheap.com) por 8 euros al año. Además, el servicio incluye la redirección del tráfico a la IP pública de mi casa. 
 &nbsp;
 
 ### ¿Cómo está hecha?
