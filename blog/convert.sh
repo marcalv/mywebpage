@@ -1,5 +1,10 @@
 #!/bin/bash
+
+# Set working dir
 cd "$(dirname "$0")"
+
+# FUNCTIONS
+# =====================
 
 # Replace string $1 with string $2 in file $3
 replace () {
@@ -16,70 +21,85 @@ getprop (){
 }
 
 
-rm *.html
 
-# reset index from template
-cp templates/index_base.html.template index.html
+# START
+# =====================
+# Cleanup previous html files
+rm *.html                                                  
+
+# Create new empty blog index
+cp templates/index_base.html.template index.html             
 
 
 
-
-FILES=md/*.md
-for f in $FILES
+# Loop .md files
+FILES=md/*.md                                                   
+for f in $FILES                                             
 do  
     echo "Processing $f"
-    filename=$(basename -- "$f")
-    id="${filename%.*}"
-    # take action on each file. $f store current file name
+
+    # Get .md filename with extension
+    filename=$(basename -- "$f")                            
+
+    # Get .md filename without numeration and extension
+    regex="[0-9]*([a-z]*)"
+    [[ `echo $filename` =~ $regex ]]
+    id=$(echo ${BASH_REMATCH[1]})                           
     
+
     # Convert md to html
     markdown $f > $id.md.html
 
     # a elements open in new tab
     replace "<a" "<a target=\"_blank\"" $id.md.html
 
-    # create HTML entry from base
-    # Entry main content
+    # Create new entry from base
     cp templates/entry_base.html.template $id.html
+
+    # Insert content
     replace "-md-" "`cat $id.md.html`" "$id.html"
 
-    # title replace
+    # Insert title
     title=$(getprop "name" "$f")
     replace "-title-" "$title" "$id.html"
 
-    # icon replace
+    # Insert icon
     icon=$(getprop "icon" "$f")
     replace "-icon-" "$icon" "$id.html"
 
-    # pubdate replace
+    # Insert publication date
     pubdate=$(getprop "pubdate" "$f")
     replace "-pubdate-" "$pubdate" "$id.html"
 
-    # moddate replace
+    # Insert last modification date
     moddate=$(getprop "moddate" "$f")
     replace "-moddate-" "$moddate" "$id.html"
 
+    # Cleanup converted md to html
     rm $id.md.html
 
-    # Index
+
+    # Create new item list for index blog page
     cp templates/index_entry_base.html.template entry_$id.html
 
-    # title replace
+    # Insert title
     title=$(getprop "name" "$f")
     replace "-title-" "$title" "entry_$id.html"
 
-    # icon replace
+    # Insert icon
     icon=$(getprop "icon" "$f")
     replace "-icon-" "$icon" "entry_$id.html"
 
-    # id replace
+    # Insert id (for url)
     replace "-id-" "$id" "entry_$id.html"
 
-    # Append entry
+    # Append entry to index
     replace "<!--entry-->" "`cat entry_$id.html`" "index.html"
 
+    # Cleanup list item html file
     rm entry_$id.html
 
 done
 
+echo 'Done'
 exit 0
