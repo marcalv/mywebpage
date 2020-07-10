@@ -1,3 +1,8 @@
+<!--name:Sobre esta web-->
+<!--pubdate:09/07/2020-->
+<!--moddate:10/07/2020-->
+<!--icon:web-->
+
 ### ¿Dónde está marcalv.com?
 
 Al entrar en la dirección marcalv.com estás conectándote directamente con la [Raspberry Pi 3 B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/) que tengo por casa. Todos los archivos necesarios para que la web funcione están en ella.
@@ -26,5 +31,3 @@ A continuación intento justificar la existencia de este sitio:
 
 * Por último y no menos importante: porque es divertido, aprendo y me resulta mucho más interesante que estar metido en Instagram.
 
-<br>
-<div class="text-muted">Última modificación: 10/07/2020</div>

@@ -3,9 +3,6 @@
 <link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
 <link rel='stylesheet' type='text/css' href='/static/css/style.css'>
 <link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
-
-<script type="text/javascript" src="/static/js/showdown-1.9.1.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <meta charset="UTF-8">
 
 <head>
@@ -29,23 +26,47 @@
         </nav>
 
         <div class="container" id='mk'>
-                <!-- markdown go brrr -->
+                <!--name:Sobre esta web-->
+
+
+<!--pubdate:09/07/2020-->
+
+
+<!--moddate:10/07/2020-->
+
+
+<!--icon:web-->
+
+
+<h3>¿Dónde está marcalv.com?</h3>
+
+<p>Al entrar en la dirección marcalv.com estás conectándote directamente con la <a target="_blank" href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/">Raspberry Pi 3 B+</a> que tengo por casa. Todos los archivos necesarios para que la web funcione están en ella.</p>
+
+<p>El dominio <a target="_blank" href="https://marcalv.com">marcalv.com</a> está alquilado con <a href="https://www.namecheap.com">Namecheap</a> por 8 euros al año. Además, el servicio incluye la redirección del tráfico a la IP pública de mi casa.
+&nbsp;</p>
+
+<h3>¿Cómo está hecha?</h3>
+
+<p><a target="_blank" href="https://github.com/marcalv/mywebpage">Aquí tienes el repositorio con todo el código fuente</a>. En su mayoría es HTML y CSS escrito de forma manual, en algunas partes javascript cuando es necesario. Y si lo conoces, ya te habrás dado cuenta&hellip; <a href="https://getbootstrap.com/">Bootstrap</a>. Los iconos son de <a href="https://icons8.com/">Icons8</a>.</p>
+
+<p>Todos los archivos se sirven mediante <a target="_blank" href="https://www.nginx.com/">NGINX</a>, el cual se ejecuta en un maravilloso <a href="https://github.com/linuxserver/docker-letsencrypt">contenedor docker</a> que hace de <em>reverse-proxy</em> con otros servicios de acceso privado que también están en la Raspberry (<a href="https://nextcloud.com/">Nextcloud</a>, <a href="https://pi-hole.net/">Pi-hole</a>, <a href="https://freshrss.org/">freshRSS</a>, <a href="https://github.com/linuxserver/docker-qbittorrent">qBittorrent</a>, <a href="https://github.com/Jackett/Jackett">Jackett</a>&hellip;).</p>
+
+<h3>¿Por qué?</h3>
+
+<p>A continuación intento justificar la existencia de este sitio:</p>
+
+<ul>
+<li><p>Agrupar todo lo que voy haciendo relacionado con la música y la programación en general. Publicarlo en mi propia web me da total control sobre el contenido, funcionamiento y estética.</p></li>
+<li><p>Es una forma de <em>obligarme</em> a documentar todos los proyectos, y más importante aún, <strong>acabarlos</strong>.</p></li>
+<li><p>Aquí puedes encontrar mis datos de contacto: descarga la última versión de mi CV o marca mi número de móvil con un solo click desde la <a target="_blank" href="/">página principal</a>.</p></li>
+<li><p>Es mi rincón personal en la web. ¿A caso eso no mola?</p></li>
+<li><p>Por último y no menos importante: porque es divertido, aprendo y me resulta mucho más interesante que estar metido en Instagram.</p></li>
+</ul>
         </div>
         <br>
-
-
+        <div class="text-muted">Publicado: 09/07/2020</div>
+        <div class="text-muted">Modificado: 10/07/2020</div>
+        <br>
     </div>
-    <script>
-        $(document).ready(function () {
-            $.get("/blog/thiswebsite.md", function (html_string) {
-                var converter = new showdown.Converter({ openLinksInNewWindow: 'true' }),
-                html = converter.makeHtml(html_string);
-                console.log(html)
-                $("#mk").html(html)
-            }, 'html'); 
-        });
-    </script>
-
 </body>
-
 </html>

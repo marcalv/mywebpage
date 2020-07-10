@@ -6,34 +6,32 @@
 <meta charset="UTF-8">
 
 <head>
-    <title>Blog - Marc Álvarez</title>
+    <title>-title- - Marc Álvarez</title>
 </head>
 
 <body>
     <div class="container mt-4">
 
         <div class="mx-auto text-center my-4">
-            <h1 class="display-4"><img src="/static/icons/icon_book.png" class=" mr-3" alt="..."
-                    style=" width: 64px; height: 64px;">Blog</h1>
+            <h1 class="display-4"><img src="/static/icons/icon_-icon-.png" class=" mr-3" alt="..."
+                    style=" width: 64px; height: 64px;">-title-</h1>
         </div>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">-title-</li>
             </ol>
         </nav>
 
-        <div class="list-group h5 mb-5 mx-4">
-            
-<a href="/blog/thiswebsite.html" target="" class="py-1 list-group-item list-group-item-action">
-    <img src="/static/icons/icon_web.png" class="listicon mr-3" alt="...">
-    Sobre esta web
-</a>
-<!--entry-->
-            
+        <div class="container" id='mk'>
+                -md-
         </div>
+        <br>
+        <div class="text-muted">Publicado: -pubdate-</div>
+        <div class="text-muted">Modificado: -moddate-</div>
+        <br>
     </div>
 </body>
-
 </html>

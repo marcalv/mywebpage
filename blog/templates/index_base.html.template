@@ -25,12 +25,7 @@
         </nav>
 
         <div class="list-group h5 mb-5 mx-4">
-            
-<a href="/blog/thiswebsite.html" target="" class="py-1 list-group-item list-group-item-action">
-    <img src="/static/icons/icon_web.png" class="listicon mr-3" alt="...">
-    Sobre esta web
-</a>
-<!--entry-->
+            <!--entry-->
             
         </div>
     </div>
