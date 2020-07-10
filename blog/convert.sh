@@ -28,7 +28,7 @@ getprop (){
 rm *.html                                                  
 
 # Create new empty blog index
-cp templates/index_base.html.template index.html             
+cp templates/index_base.html index.html             
 
 
 
@@ -54,7 +54,7 @@ do
     replace "<a" "<a target=\"_blank\"" $id.md.html
 
     # Create new entry from base
-    cp templates/entry_base.html.template $id.html
+    cp templates/entry_base.html $id.html
 
     # Insert content
     replace "-md-" "`cat $id.md.html`" "$id.html"
@@ -80,7 +80,7 @@ do
 
 
     # Create new item list for index blog page
-    cp templates/index_entry_base.html.template entry_$id.html
+    cp templates/index_entry_base.html entry_$id.html
 
     # Insert title
     title=$(getprop "name" "$f")
