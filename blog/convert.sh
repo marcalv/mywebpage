@@ -28,7 +28,10 @@ getprop (){
 rm *.html                                                  
 
 # Create new empty blog index
-cp templates/index_base.html index.html             
+cp templates/index_base.html index.html
+
+# Create new rss xml file
+cp templates/rss.xml rss.xml
 
 
 
@@ -49,6 +52,9 @@ do
 
     # Convert md to html
     markdown $f > $id.md.html
+
+    # Fix conversion (HTMl substitution)
+    replace "&hellip" "..." $id.md.html
 
     # a elements open in new tab
     replace "<a" "<a target=\"_blank\"" $id.md.html
@@ -75,8 +81,7 @@ do
     moddate=$(getprop "moddate" "$f")
     replace "-moddate-" "$moddate" "$id.html"
 
-    # Cleanup converted md to html
-    rm $id.md.html
+    
 
 
     # Create new item list for index blog page
@@ -98,6 +103,33 @@ do
 
     # Cleanup list item html file
     rm entry_$id.html
+
+
+    # RSS Generator
+
+    # Create new rss item from base
+    cp templates/rss_entry.xml $id.xml
+
+    # Insert content to rss item
+    replace "-md-" "`cat $id.md.html`" "$id.xml"
+
+    # Insert title to rss item
+    title=$(getprop "name" "$f")
+    replace "-title-" "$title" "$id.xml"
+
+    # Insert publication date to rss item
+    pubdate=$(getprop "pubdate" "$f")
+    replace "-pubdate-" "$pubdate" "$id.xml"
+
+    # Append entry to index
+    replace "<!--item-->" "`cat $id.xml`" "rss.xml"
+
+    # Cleanup entry
+    rm $id.xml
+
+    # Cleanup converted md to html
+    rm $id.md.html
+
 
 done
 

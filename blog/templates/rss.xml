@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+<title>Marc Álvarez Blog</title>
+<description>
+Este es mi blog.
+</description>
+<language>es-es</language>
+<link>https://marcalv.com/blog/rss.xml</link>
+<atom:link href="https://marcalv.com/blog/rss.xml" rel="self" type="application/rss+xml"/>
+<image>
+<title>Marc Álvarez Blog</title>
+<url>https://marcalv.com/static/icons/icon_user.png</url>
+<link>https://marcalv.com/blog/rss.xml</link>
+</image>
+<!--item-->
+
+</channel>
+
+</rss>

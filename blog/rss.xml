@@ -1,32 +1,27 @@
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
-<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
-<meta charset="UTF-8">
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 
-<head>
-    <title>Sobre esta web - Marc Álvarez</title>
-</head>
+<channel>
+<title>Marc Álvarez Blog</title>
+<description>
+Este es mi blog.
+</description>
+<language>es-es</language>
+<link>https://marcalv.com/blog/rss.xml</link>
+<atom:link href="https://marcalv.com/blog/rss.xml" rel="self" type="application/rss+xml"/>
+<image>
+<title>Marc Álvarez Blog</title>
+<url>https://marcalv.com/static/icons/icon_user.png</url>
+<link>https://marcalv.com/blog/rss.xml</link>
+</image>
 
-<body>
-    <div class="container mt-4">
-
-        <div class="mx-auto text-center my-4">
-            <h1 class="display-4"><img src="/static/icons/icon_web.png" class=" mr-3" alt="..."
-                    style=" width: 64px; height: 64px;">Sobre esta web</h1>
-        </div>
-
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Sobre esta web</li>
-            </ol>
-        </nav>
-
-        <div class="container" id='mk'>
-                <!--name:Sobre esta web-->
+<!--item-->
+<item>
+<title>Sobre esta web</title>
+<guid>https://marcalv.com/blog/-id-</guid>
+<pubDate>09/07/2020</pubDate>
+<description><![CDATA[
+<!--name:Sobre esta web-->
 
 
 <!--pubdate:09/07/2020-->
@@ -61,13 +56,10 @@
 <li><p>Es mi rincón personal en la web. ¿A caso eso no mola?</p></li>
 <li><p>Por último y no menos importante: porque es divertido, aprendo y me resulta mucho más interesante que estar metido en Instagram.</p></li>
 </ul>
-        </div>
-        <br>
-        <hr/>
-        <div class="text-muted">Publicado: 09/07/2020</div>
-        <div class="text-muted">Modificado: 10/07/2020</div>
-        <br>
-    </div>
-</body>
+]]>
+</description>
+</item>
 
-</html>
+</channel>
+
+</rss>
