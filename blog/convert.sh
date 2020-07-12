@@ -44,11 +44,8 @@ do
     # Get .md filename with extension
     filename=$(basename -- "$f")                            
 
-    # Get .md filename without numeration and extension
-    regex="[0-9]*([a-z]*)"
-    [[ `echo $filename` =~ $regex ]]
-    id=$(echo ${BASH_REMATCH[1]})                           
-    
+    # id is filename (without extension)                 
+    id="${filename%.*}"  
 
     # Convert md to html
     markdown $f > $id.md.html
@@ -107,7 +104,7 @@ do
     markdown -f cdata $f > $id.md.html
 
     # Create new rss item from base
-    cp templates/rss_entry.xml $id.xml
+    cp templates/rss_item.xml $id.xml
 
     # Insert content to rss item
     replace "-md-" "`cat $id.md.html`" "$id.xml"
@@ -115,6 +112,12 @@ do
     # Insert title to rss item
     title=$(getprop "name" "$f")
     replace "-title-" "$title" "$id.xml"
+
+    # Insert url to rss item
+    replace "-id-" "$id" "$id.xml"
+
+    # Insert guid to rss item
+    replace "-guid-" "$id" "$id.xml"
 
     # Insert publication date to rss item
     pubdate=$(getprop "pubdate" "$f")
