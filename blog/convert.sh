@@ -53,9 +53,6 @@ do
     # Convert md to html
     markdown $f > $id.md.html
 
-    # Fix conversion (HTMl substitution)
-    replace "&hellip" "..." $id.md.html
-
     # a elements open in new tab
     replace "<a" "<a target=\"_blank\"" $id.md.html
 
@@ -107,6 +104,8 @@ do
 
     # RSS Generator
 
+    markdown -f cdata $f > $id.md.html
+
     # Create new rss item from base
     cp templates/rss_entry.xml $id.xml
 
@@ -119,7 +118,8 @@ do
 
     # Insert publication date to rss item
     pubdate=$(getprop "pubdate" "$f")
-    replace "-pubdate-" "$pubdate" "$id.xml"
+    pubdate_rss=$(date -d $pubdate --rfc-2822)
+    replace "-pubdate-" "$pubdate_rss" "$id.xml"
 
     # Append entry to index
     replace "<!--item-->" "`cat $id.xml`" "rss.xml"
