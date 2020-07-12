@@ -28,7 +28,7 @@ getprop (){
 rm *.html                                                  
 
 # Create new empty blog index
-cp templates/index_base.html index.html
+cp templates/index.html index.html
 
 # Create new rss xml file
 cp templates/rss.xml rss.xml
@@ -54,7 +54,7 @@ do
     replace "<a" "<a target=\"_blank\"" $id.md.html
 
     # Create new entry from base
-    cp templates/entry_base.html $id.html
+    cp templates/entry.html $id.html
 
     # Insert content
     replace "-md-" "`cat $id.md.html`" "$id.html"
@@ -79,7 +79,7 @@ do
 
 
     # Create new item list for index blog page
-    cp templates/index_entry_base.html entry_$id.html
+    cp templates/index_entry.html entry_$id.html
 
     # Insert title
     title=$(getprop "name" "$f")
@@ -117,7 +117,7 @@ do
     replace "-id-" "$id" "$id.xml"
 
     # Insert guid to rss item
-    replace "-guid-" "$id" "$id.xml"
+    replace "-guid-" "$guid" "$id.xml"
 
     # Insert publication date to rss item
     pubdate=$(getprop "pubdate" "$f")

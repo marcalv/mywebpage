@@ -3,7 +3,7 @@
     <channel>
         <title>Marc Álvarez Blog</title>
         <description>Blog Personal</description>
-        <language>es-es</language>
+        <language>en</language>
         <link>https://marcalv.com/blog/rss.xml</link>
         <atom:link href="https://marcalv.com/blog/rss.xml" rel="self" type="application/rss+xml"/>
         <image>
