@@ -22,3 +22,16 @@
   height: 2vh;
 }
 
+.listicon-s {
+  
+  height: 4vh;
+}
+
+.list-group-item{
+  display: flex;
+  padding: 0px !important;
+}
+
+.sameline{
+  display: inline-block;
+}

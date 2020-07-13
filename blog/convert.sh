@@ -92,6 +92,9 @@ do
     # Insert id (for url)
     replace "-id-" "$id" "entry_$id.html"
 
+    # Insert pubdate (for url)
+    replace "-pubdate-" "$pubdate" "entry_$id.html"
+
     # Append entry to index
     replace "<!--entry-->" "`cat entry_$id.html`" "index.html"
 

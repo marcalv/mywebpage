@@ -12,10 +12,12 @@
 
 <body>
     <div class="container mt-4">
-
+        
         <div class="mx-auto text-center my-4">
-            <h1 class="display-4"><img src="/static/icons/icon_web.png" class=" mr-3" alt="..."
-                    style=" width: 64px; height: 64px;">About this website</h1>
+            <img src="/static/icons/icon_web.png" class=" mr-3" alt="..." style=" width: 64px; height: 64px;">
+            <div class="h1">
+                About this website
+            </div>
         </div>
 
         <nav aria-label="breadcrumb">
@@ -39,19 +41,19 @@
 <!--icon:web-->
 
 
-<h3>Where is marcalv.com?</h3>
+<h2>Where is marcalv.com?</h2>
 
 <p>When you enter the address marcalv.com you are connecting directly to my self-hosted home server: a simple <a target="_blank" href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/">Raspberry Pi 3 B+</a>. All the files needed to make the website work are stored on it.</p>
 
 <p>The domain <a target="_blank" href="https://marcalv.com">marcalv.com</a> is rented with <a href="https://www.namecheap.com">Namecheap</a> for 8 euros per year. Besides, this service includes the redirection of the traffic to my home&rsquo;s public IP (dynamic DNS).</p>
 
-<h3>How is it built?</h3>
+<h2>How is it built?</h2>
 
 <p><a target="_blank" href="https://github.com/marcalv/mywebpage">Here you have the repository with all the source code</a>.It&rsquo;s mostly HTML and CSS written line by line, and in some parts javascript (only if it&rsquo;s strictly necessary). And if you know it, you may have noticed&hellip; <a href="https://getbootstrap.com/">Bootstrap</a> Icons are from <a href="https://icons8.com/">Icons8</a>.</p>
 
 <p>All files are served through <a target="_blank" href="https://www.nginx.com/">NGINX</a>, which runs in a wonderful <a href="https://github.com/linuxserver/docker-letsencrypt">docker container</a> that is used as a reverse proxy with other private access services that are also runinng on the Raspberry: (<a href="https://nextcloud.com/">Nextcloud</a>, <a href="https://pi-hole.net/">Pi-hole</a>, <a href="https://freshrss.org/">freshRSS</a>, <a href="https://github.com/linuxserver/docker-qbittorrent">qBittorrent</a>, <a href="https://github.com/Jackett/Jackett">Jackett</a>&hellip;).</p>
 
-<h3>Why?</h3>
+<h2>Why?</h2>
 
 <p>Here below I try to justify the existence of this site:</p>
 
