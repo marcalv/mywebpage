@@ -15,7 +15,7 @@ replace () {
 
 # Get $1 prop from $2 file
 getprop (){
-    regex="<!--$1:([A-Za-z0-9 \/\?¿]*)-->"
+    regex="<!--$1:([^-]*)-->"
     [[ `cat $2` =~ $regex ]]
     echo ${BASH_REMATCH[1]}
 }
@@ -48,7 +48,7 @@ do
     id="${filename%.*}"  
 
     # Convert md to html
-    markdown $f > $id.md.html
+    markdown -f fencedcode $f > $id.md.html
 
     # a elements open in new tab
     replace "<a" "<a target=\"_blank\"" $id.md.html
@@ -101,7 +101,7 @@ do
 
     # RSS Generator
 
-    markdown -f cdata $f > $id.md.html
+    markdown -f cdata,fencedcode $f > $id.md.html
 
     # Create new rss item from base
     cp templates/rss_item.xml $id.xml
@@ -117,7 +117,7 @@ do
     replace "-id-" "$id" "$id.xml"
 
     # Insert guid to rss item
-    replace "-guid-" "$guid" "$id.xml"
+    replace "-guid-" "$id" "$id.xml"
 
     # Insert publication date to rss item
     pubdate=$(getprop "pubdate" "$f")

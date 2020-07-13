@@ -13,20 +13,79 @@
         </image>
         <!--item-->
 <item>
+<title>Blog automation: write Markdown, get HTML</title>
+<link>https://marcalv.com/blog/001blogautomation</link>
+<guid>001blogautomation</guid>
+<author>Marc Álvarez</author>
+<pubDate>Mon, 13 Jul 2020 00:00:00 +0200</pubDate>
+<source>https://marcalv.com/blog/rss.xml</source>
+<description>
+&lt;!--name:Blog automation: write Markdown, get HTML--&gt;
+
+
+&lt;!--pubdate:2020/07/13--&gt;
+
+
+&lt;!--moddate:2020/07/13--&gt;
+
+
+&lt;!--icon:book--&gt;
+
+
+&lt;h2&gt;Writing in HTML isn&amp;rsquo;t that cool&lt;/h2&gt;
+
+&lt;p&gt;I have written my whole web in HTML line by line, or in other words, I hace not used any framework. Writing a blog like this in this language is not very convenient. That is why I have created a little &lt;a href=&quot;https://en.wikipedia.org/wiki/Bash_(Unix_shell&quot;&gt;bash&lt;/a&gt;) script that converts Markdown files (one per blog entry) to HTML and integrates them on the web automagically.&lt;/p&gt;
+
+&lt;p&gt;For those who don&amp;rsquo;t know what markdown is, it&amp;rsquo;s a language for writing documents with format (different level headers, bold, italic, tables, graphs&amp;hellip;) in a very simple way. Any simple plain text processor is enough to begin writing a Markdown file.&lt;/p&gt;
+
+&lt;h4&gt;Markdown demonstration&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Below&lt;/strong&gt; you can see how this paragraph is written in Markdown format. &lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&quot;&gt;Here&lt;/a&gt; you have more information on what you can do with it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#### Markdown demonstration
+**Below** you can see how this paragraph is written in Markdown format. [Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) you have more information on what you can do with it.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;How the automation works&lt;/h2&gt;
+
+&lt;p&gt;The script must be executed every time an HTML template has been modified, or a new Markdown file (new entry) is created. Currently the script is placed at &lt;code&gt;blog/convert.sh&lt;/code&gt;, HTML templates in &lt;code&gt;blog/templates&lt;/code&gt; and &lt;code&gt;.md&lt;/code&gt; (Markdown) files in &lt;code&gt;blog/md&lt;/code&gt;. When the script is executed, the following files are generated:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;blog/index.html&lt;/code&gt;:  blog index page, containing a link to every entry.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;blog/entry_id.html&lt;/code&gt;: entry page containing an HTML version of the file &lt;code&gt;blog/md/entry_id.html&lt;/code&gt;. This occurs for every &lt;code&gt;.md&lt;/code&gt; file inside &lt;code&gt;blog/md&lt;/code&gt; folder.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;As you may have noticed, every blog entry has associated an icon that is shown at the index and in the entry itself. This information as well as date of publication and modification and title of the entry are declared at the beginning of the &lt;code&gt;.md&lt;/code&gt; file following this structure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!--name:Sobre esta web--&amp;gt;
+&amp;lt;!--pubdate:09/07/2020--&amp;gt;
+&amp;lt;!--moddate:10/07/2020--&amp;gt;
+&amp;lt;!--icon:web--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this functionality, I do not have to deal with any HTML code at all in order to post a new entry. Everything is done in the &lt;code&gt;.md&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h2&gt;Source code&lt;/h2&gt;
+
+&lt;p&gt;Just like my whole website, you can find the source code of this &lt;a href=&quot;https://github.com/marcalv/mywebpage/blob/master/blog/convert.sh&quot;&gt;script&lt;/a&gt; and the folder containing all my &lt;a href=&quot;https://github.com/marcalv/mywebpage/tree/master/blog/md&quot;&gt;blog entries&lt;/a&gt; in &lt;code&gt;.md&lt;/code&gt; format in my  &lt;a href=&quot;Github%20repository&quot;&gt;Github repository&lt;/a&gt;.&lt;/p&gt;
+</description>
+</item>
+<item>
 <title>About this website</title>
 <link>https://marcalv.com/blog/000thiswebsite</link>
-<guid></guid>
-<author>Marc Álvarez </author>
-<pubDate>Mon, 07 Sep 2020 00:00:00 +0200</pubDate>
+<guid>000thiswebsite</guid>
+<author>Marc Álvarez</author>
+<pubDate>Thu, 09 Jul 2020 00:00:00 +0200</pubDate>
 <source>https://marcalv.com/blog/rss.xml</source>
 <description>
 &lt;!--name:About this website--&gt;
 
 
-&lt;!--pubdate:09/07/2020--&gt;
+&lt;!--pubdate:2020/07/09--&gt;
 
 
-&lt;!--moddate:10/07/2020--&gt;
+&lt;!--moddate:2020/07/10--&gt;
 
 
 &lt;!--icon:web--&gt;
