@@ -13,6 +13,55 @@
         </image>
         <!--item-->
 <item>
+<title>Adding an RSS feed to this blog</title>
+<link>https://marcalv.com/blog/002blogrss</link>
+<guid>002blogrss</guid>
+<author>Marc Álvarez</author>
+<pubDate>Wed, 05 Aug 2020 00:00:00 +0200</pubDate>
+<source>https://marcalv.com/blog/rss.xml</source>
+<description>
+&lt;!--name:Adding an RSS feed to this blog--&gt;
+
+
+&lt;!--pubdate:2020/08/05--&gt;
+
+
+&lt;!--moddate:2020/08/05--&gt;
+
+
+&lt;!--icon:rss--&gt;
+
+
+&lt;h2&gt;What is RSS and why I use it&lt;/h2&gt;
+
+&lt;p&gt;Since I decided to leave Instagram and other social media sites, I started searching for other ways to keep me informed. This is how I have discovered &lt;a href=&quot;https://en.wikipedia.org/wiki/RSS&quot;&gt;RSS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;An RSS is basically a web feed that allows users to get updates from a specific website (in case it offers one). For example, one can find this RSS feeds in newspaper websites like &lt;a href=&quot;https://servicios.elpais.com/rss/&quot;&gt;El País&lt;/a&gt;. This RSS feed are added to an RSS aggregator, which basically aggregates multiple feeds in one location for easy viewing.&lt;/p&gt;
+
+&lt;p&gt;In my home server, as I explain &lt;a href=&quot;https://marcalv.com/blog/000thiswebsite&quot;&gt;here&lt;/a&gt;, I have a FreshRSS instance running. It&amp;rsquo;s a self-hostable feed aggregator that syncs with my phone and laptop. Among others, I have the following feeds added that may result you interesting or inspiring:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Linux distributions news: As a linux user, I like to keep updated with the latest news of the distribution that I use (currently &lt;a href=&quot;https://endeavouros.com/feed/&quot;&gt;EndeavourOS&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Technology related blogs:  &lt;a href=&quot;https://www.muylinux.com/feed/&quot;&gt;MuyLinux&lt;/a&gt;, &lt;a href=&quot;https://codingfactsblog.wordpress.com/feed/&quot;&gt;CodingFacts&lt;/a&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Local news: &lt;a href=&quot;https://api.ccma.cat/noticies?_format=rss&amp;amp;origen=frontal&amp;amp;frontal=n324-portada-noticia&amp;amp;version=2.0&quot;&gt;324.cat&lt;/a&gt;, &lt;a href=&quot;https://www.abc.es/rss/feeds/abcPortada.xml&quot;&gt;ABC&lt;/a&gt;, &lt;a href=&quot;https://www.ara.cat/rss/latest/&quot;&gt;Ara.cat&lt;/a&gt;, &lt;a href=&quot;https://www.thespainreport.es/es/rss&quot;&gt;The Spain Report&lt;/a&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;YouTube: I&amp;rsquo;m subscribed to divulgation channels like &lt;a href=&quot;https://invidio.us/feed/channel/UC6nSFpj9HTCZ5t-N3Rm3-HA&quot;&gt;Vsauce&lt;/a&gt;, &lt;a href=&quot;https://invidio.us/feed/channel/UCJ0-OtVpF0wOKEqT2Z1HEtA&quot;&gt;ElectroBOOM&lt;/a&gt; or &lt;a href=&quot;https://invidio.us/feed/channel/UCnkp4xDOwqqJD7sSM3xdUiQ&quot;&gt;Adam Neely&lt;/a&gt; through &lt;a href=&quot;https://invidio.us&quot;&gt;Invidio.us&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Twitter: I&amp;rsquo;m a huge fan of Extremoduro and I like to keep updated with their latest news. Sadly, their website does not offer an rss feed so I&amp;rsquo;m using &lt;a href=&quot;https://nitter.net&quot;&gt;Nitter&lt;/a&gt; to get an &lt;a href=&quot;https://nitter.net/Oficina_Extremo/rss&quot;&gt;rss feed&lt;/a&gt; from their twitter timeline.&lt;/li&gt;
+&lt;li&gt;Instagram: my local gym posts all news on Instagram, so I&amp;rsquo;m using &lt;a href=&quot;https://github.com/RSS-Bridge/rss-bridge&quot;&gt;BridgeRSS&lt;/a&gt;. This service generates an RSS feed for a given user. I have my own instance hosted on Heroku. It is as easy as creating an Heroku account and using a &lt;a href=&quot;https://github.com/RSS-Bridge/rss-bridge#deploy&quot;&gt;single button click&lt;/a&gt; to deploy your own instance.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;Overall, I believe this is a much efficient and less distracting way of keeping up to date than rather visiting all this services one by one. This is what I want and this is what I get. No more, no less.&lt;/p&gt;
+
+&lt;h2&gt;Adding RSS to this blog&lt;/h2&gt;
+
+&lt;p&gt;Add this functionality has been really easy since it is just and extension of the &lt;a href=&quot;https://marcalv.com/blog/001blogautomation&quot;&gt;blog automation script&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;An RSS feed is an XML file that contains different fields, in this case: the blog entry itself, title and date mainly. Just like I generate an HTML index with the markdown files, now I create an &lt;code&gt;.xml&lt;/code&gt; file containing all the previous information. When a new entry is created, the script regenerates the XML file that now will contain one new item. Your feed aggregator will detect it and notify you.&lt;/p&gt;
+
+&lt;p&gt;This XML file can be found &lt;a href=&quot;https://marcalv.com/blog/rss.xml&quot;&gt;here&lt;/a&gt;. That link is also the url that you can add to your feed aggregator. If you want to take a look at the script that generates the feed and all the HTML files, it&amp;rsquo;s &lt;a href=&quot;https://github.com/marcalv/mywebpage/blob/master/blog/convert.sh&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+</item>
+<item>
 <title>Blog automation: write Markdown, get HTML</title>
 <link>https://marcalv.com/blog/001blogautomation</link>
 <guid>001blogautomation</guid>
