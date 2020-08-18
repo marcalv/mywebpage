@@ -1,10 +1,17 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/popper.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
 <link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
 <link rel='stylesheet' type='text/css' href='/games/tictacboom/css/style.css'>
+
 <link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+
+
+
 <meta charset="UTF-8">
 
 <head>
@@ -22,11 +29,145 @@
 
         <div class="container">
             <p id="hint"></p>
-            <!-- <button type="button" id="settingsbtn" class="btn btn-primary">Settings</button> -->
+            
+            <button type="button" id="settingsbtn" class="btn btn-primary" data-toggle="modal" data-target="#settings">
+                Ajustes</button>
             <button type="button" id="cancelbtn" class="btn btn-danger" onclick="cancel_timer()">Cancel</button>
         </div>
 
+
+        <!-- Modal -->
+        <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajustes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Tiempo máximo</span>
+                        </div>
+                        <input id="maxtime" oninput="save_settings()" type="number" class="form-control">
+                    </div>
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Tiempo mínimo</span>
+                        </div>
+                        <input id="mintime" oninput="save_settings()" type="number" class="form-control">
+                    </div>
+            
+            
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Dificultad</label>
+                        </div>
+                        <select id="level" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
+                          <option value="0">Fácil</option>
+                          <option value="1">Intermedio</option>
+                          <option value="2">Dificil</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Sonido</label>
+                        </div>
+                        <select id="sound" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
+                            <option value="0">Desactivado</option>
+                            <option value="1">Activado</option>
+                        </select>
+                    </div>
+                    <br>
+                      <button type="button" onclick="reset_settings()" class="btn btn-warning">Resetear configuración</button>
+                    
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        
+
+
 <script>
+
+const DEFAULT_MAX_TIME = 3
+const DEFAULT_MIN_TIME = 1
+const DEFAULT_LEVEL = 0
+const DEFAULT_SOUND_ENABLE = 1
+
+
+
+function sound(cmd){
+    switch(cmd) {
+        case 'enable':
+            sound_enable = true
+            break
+        case 'disable':
+            sound_enable = false
+            break
+        default:
+            console.log(cmd)
+            console.log(sound_enable)
+            if (sound_enable == 1) {
+                switch(cmd) {
+                    case 'play_start':
+                        startaudio.play();
+                        break
+                    case 'stop_start':
+                        startaudio.pause();
+                        startaudio.currentTime = 0;
+                        break
+                    case 'play_alarm':
+                        alarmaudio.play();
+                        break
+                    case 'stop_alarm':
+                        alarmaudio.pause();
+                        alarmaudio.currentTime = 0;
+                        break
+                }
+
+            }
+    }
+}
+
+
+
+
+function reset_settings(){
+    maxtime = DEFAULT_MAX_TIME
+    mintime = DEFAULT_MIN_TIME
+    level = DEFAULT_LEVEL
+    sound_enable = DEFAULT_SOUND_ENABLE
+    render_settings()
+}
+
+
+function save_settings(){
+    maxtime = $('#maxtime').val()
+    mintime = $('#mintime').val()
+    level = $('#level').val()
+    sound_enable = $('#sound').val()
+
+}
+
+function render_settings(){
+    $('#maxtime').val(maxtime)
+    $('#mintime').val(mintime)
+    $('#level').val(level)
+    $('#sound').val(sound_enable)
+
+}
+
+
 
 jQuery.fn.visible = function() {
     return this.css('visibility', 'visible');
@@ -36,6 +177,7 @@ jQuery.fn.invisible = function() {
     return this.css('visibility', 'hidden');
 };
 
+
 function set_state(newstate){
     switch(newstate) {
         case 'initial':
@@ -44,27 +186,28 @@ function set_state(newstate){
         case 'start':
             set_position()
             hide_letter()
-            $('#hint').text('Tap to get new letters.')
+            $('#hint').text('Toca para iniciar una nueva ronda.')
             set_background('normal')
-            alarmaudio.pause();
-            alarmaudio.currentTime = 0;
+            $('#cancelbtn').invisible()
+            sound('stop_start')
+            sound('stop_alarm')
+            
             break;
         case 'thinking':
-            startaudio.play()
+            sound('play_start')
             $('#letter').visible()
             set_letter()
             $('#nextbtn').invisible()
-            timer = setTimeout(next_state, 1000, 'timer')
-            $('#hint').text('Time to think!')
+            timer = setTimeout(next_state, get_time(), 'timer')
+            $('#hint').text('¡A pensar!')
             $('#cancelbtn').visible()
             break;
         case 'timedout':
-            startaudio.pause();
-            startaudio.currentTime = 0;
-            $('#hint').text('Time is over! Tap to reset timer.')
+            sound('stop_start')
+            $('#hint').text('¡BOOM! Tiempo agotado, toca para continuar.')
             $('#cancelbtn').invisible()
             set_background('alarm')
-            alarmaudio.play();
+            sound('play_alarm')
             break;
         default:
             // code block
@@ -74,8 +217,6 @@ function set_state(newstate){
 
 
 function next_state(switch_key){
-    console.log('next_state')
-    console.log(switch_key)
     switch(state) {
         case 'initial':
             set_state('start')
@@ -85,7 +226,6 @@ function next_state(switch_key){
             break;
         case 'thinking':
             if (switch_key == 'timer'){
-                console.log('TIMEOUT!')
                 set_state('timedout')
             }
             break;
@@ -96,17 +236,6 @@ function next_state(switch_key){
         // code block
     }
 }
-
-
-
-var startaudio = new Audio('audio/start.mp3');
-var alarmaudio = new Audio('audio/alarm.mp3');
-var timer
-var mintime = 5
-var maxtime = 60
-var state = ''
-
-set_state('initial')
 
 
 function set_background(mode){
@@ -145,13 +274,31 @@ function hide_letter(){
 }
 
 function get_time(){
-    return Math.floor(Math.random() * (maxtime - mintime + 1) + mintime);
+    return (Math.floor(Math.random() * (maxtime - mintime + 1) + mintime))*1000;
 }
 
 
 
+var mintime
+var maxtime
+var level
+var sound_enable
+
+var startaudio = new Audio('audio/start.mp3');
+var alarmaudio = new Audio('audio/alarm.mp3');
+var timer
+var state = ''
+
+set_state('initial')
+reset_settings()
 
 </script>
+
+
+     
+
+          
+
 </body>
 
 
