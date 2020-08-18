@@ -18,168 +18,208 @@
 </head>
 
 <body id="body">
-            <div  class="container" onclick="next_state()">
-                <div class="container">
-                    <h1  id='position' class="display-1" style="padding-top: 5vh;"> </h1>
-                </div>
-                <div class="   vertical-center          ">
-                    <h1 id='letter' class="display-1">-</h1>
-                </div>
-                
-            </div>
-    
-            <footer class="footer mt-auto">
-                <div class="container">
-                    <button type="button" id="cancelbtn" class="mb-4 btn btn-danger my-2 btn-block" onclick="set_state('start')">Cancelar</button>
-                    
-                    <p id="hint"></p>
-                    
-    
-                    
-                    <div class="btn-group btn-block mb-4" role="group" aria-label="Basic example">
-                        <button type="button btn-block" onclick="set_state('start')" id="settingsbtn" class="btn btn-primary" data-toggle="modal" data-target="#settings">
-                            Ajustes del juego</button>
-                        <div class="dropdown">
-                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Más
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" onclick="set_state('start')" id="manualbtn" class="btn btn-primary" data-toggle="modal" data-target="#manual">
-                                Instrucciones</a>
-                                <a class="dropdown-item" onclick="set_state('start')" id="manualbtn" class="btn btn-primary" data-toggle="modal" data-target="#about">
-                                    Acerca de</a>
-                              <a class="dropdown-item" href="/">Salir</a>
-                            </div>
-                          </div>
+    <div class="container" onclick="next_state()">
+        <div class="container">
+            <h1 id='position' class="display-1" style="padding-top: 5vh;"> </h1>
+        </div>
+        <div class="   vertical-center          ">
+            <h1 id='letter' class="display-1">-</h1>
+        </div>
+
+    </div>
+
+    <footer class="footer mt-auto">
+        <div class="container">
+            <button type="button" id="cancelbtn" class="mb-4 btn btn-danger my-2 btn-block"
+                onclick="set_state('start')">Cancelar</button>
+
+            <p id="hint"></p>
+
+
+
+            <div class="btn-group btn-block mb-4" role="group" aria-label="Basic example">
+                <button type="button btn-block" onclick="set_state('start')" id="settingsbtn" class="btn btn-primary"
+                    data-toggle="modal" data-target="#settings">
+                    Ajustes del juego</button>
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Más
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="set_state('start')" id="manualbtn" class="btn btn-primary"
+                            data-toggle="modal" data-target="#manual">
+                            Instrucciones</a>
+                        <a class="dropdown-item" onclick="set_state('start')" id="manualbtn" class="btn btn-primary"
+                            data-toggle="modal" data-target="#about">
+                            Acerca de</a>
+                        <a class="dropdown-item" href="/">Salir</a>
                     </div>
                 </div>
-              </footer>
+            </div>
+        </div>
+    </footer>
 
-        
 
 
-        <!-- Modal Ajustes del juego-->
-        <div class="modal fade" id="settings" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+
+    <!-- Modal Ajustes del juego-->
+    <div class="modal fade" id="settings" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajustes</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Ajustes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Dificultad</label>
-                    </div>
-                    <select id="level"  class="custom-select" id="inputGroupSelect01">
-                    <option value="0">Fácil</option>
-                    <option value="1">Intermedio</option>
-                    <option value="2">Dificil</option>
-                    </select>
-                </div>
 
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Tiempo máximo (s)</span>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Dificultad</label>
+                        </div>
+                        <select id="level" class="custom-select" id="inputGroupSelect01">
+                            <option value="0">Fácil</option>
+                            <option value="1">Intermedio</option>
+                            <option value="2">Dificil</option>
+                        </select>
                     </div>
-                    <input id="maxtime"  type="number" class="form-control">
-                </div>
-        
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Tiempo mínimo (s)</span>
-                    </div>
-                    <input id="mintime"  type="number" class="form-control">
-                </div>
-                    
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Sonido</label>
-                    </div>
-                    <select id="soundenable"  class="custom-select" id="inputGroupSelect01">
-                        <option value="0">Desactivado</option>
-                        <option value="1">Activado</option>
-                    </select>
-                </div>
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Soundpack</label>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Tiempo máximo (s)</span>
+                        </div>
+                        <input id="maxtime" type="number" class="form-control">
                     </div>
-                    <select id="soundpack"  class="custom-select" id="inputGroupSelect01">
-                        <option value="0">Bomba</option>
-                        <option value="1">Campana</option>
-                        <option value="2">APM</option>
-                        <option value="3">RealBomb</option>
-                    </select>
-                </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Tiempo mínimo (s)</span>
+                        </div>
+                        <input id="mintime" type="number" class="form-control">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Sonido</label>
+                        </div>
+                        <select id="soundenable" class="custom-select" id="inputGroupSelect01">
+                            <option value="0">Desactivado</option>
+                            <option value="1">Activado</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Soundpack</label>
+                        </div>
+                        <select id="soundpack" class="custom-select" id="inputGroupSelect01">
+                            <option value="0">Bomba</option>
+                            <option value="1">Campana</option>
+                            <option value="2">APM</option>
+                            <option value="3">RealBomb</option>
+                        </select>
+                    </div>
 
                     <br>
-                      <button type="button" onclick="reset_settings()" class="btn btn-warning">Resetear configuración</button>
-                    
+                    <button type="button" onclick="reset_settings()" class="btn btn-warning">Resetear
+                        configuración</button>
+
                 </div>
                 <div class="modal-footer">
 
-                <div class="btn-group btn-block" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary "  data-dismiss="modal">Descartar</button>
-                    <button type="button" class="btn btn-success " onclick="save_settings()" data-dismiss="modal">Guardar</button>
-                </div>
+                    <div class="btn-group btn-block" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary " data-dismiss="modal">Descartar</button>
+                        <button type="button" class="btn btn-success " onclick="save_settings()"
+                            data-dismiss="modal">Guardar</button>
+                    </div>
 
                 </div>
-            </div>
             </div>
         </div>
+    </div>
 
-        <!-- Modal Instrucciones-->
-        <div class="modal fade" id="manual" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+    <!-- Modal Instrucciones-->
+    <div class="modal fade" id="manual" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Instrucciones</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Instrucciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    <p>Under construction...</p>
-                    
+                    <h1>Objetivo del juego</h1>
+                    <p>
+                        Encuentra una palabra que incluya el sonido que indica la aplicación y pasa la bomba al
+                        siguiente jugador para que "explote" en sus manos.
+                    </p>
+
+                    <h1>Desarrollo de la partida</h1>
+                    <p>Inicia la partida el jugador A, que posee la bomba (cualquier objeto).</p>
+                    <p> Al iniciar la ronda, aparecerá en la parte superior de la pantalla "tic", "tac", o "boom".
+                        Esto determina la posición del sonido en las palabras que los jugadores deberan pronunciar.
+                    <ul>
+                        <li>tic: al inicio de la palabra</li>
+                        <li>tac: en un punto intermedio de la palabra</li>
+                        <li>boom: al final de la palabra</li>
+                    </ul>
+                    </p>
+
+                    <p>
+                        En la parte central de la pantalla aparecerá el sonido que deberán incluir las palabras que se
+                        pronuncien en la ronda.
+                    </p>
+
+                    <p>
+                        Si el jugador A es capaz de encontrar una palabra con las anteriores condiciones,
+                        pasará la bomba al jugador B. Si el jugador B encuentra una palabra diferente a las anteriores
+                        cumpliendo las condiciones, pasará la bomba al jugador C y así sucesivamente. El jugador se 
+                        quedará la bomba mientras no consiga pronunciar niguna palabra correcta.
+                    <p>
+                        Cuando el temporizador llegue a su fin, el jugador que tenga la bomba en sus manos obtendrá un
+                        punto de penalización.
+                        El jugador con menos puntos de penalización ganará el juego.
+                    </p>
+
+
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-success btn-block btn-lg" data-dismiss="modal" >Cerrar</button>
+                    <button type="button" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
 
-        <!-- Modal Acerca de-->
-        <div class="modal fade" id="about" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+    <!-- Modal Acerca de-->
+    <div class="modal fade" id="about" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Acerca de</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Acerca de</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    <p>Under construction...</p>
-                    
+                    <p>Juego implementado por <a href="/">Marc Álvarez Bernal</a>.</p>
+
+                    <p>Si tienes alguna duda o sugerencia, <a href="/">contáctame</a>.</p>
+
+                    <p>Puedes encontrar el código fuente de este juego y toda la web
+                         <a href="https://github.com/marcalv/mywebpage">aquí.</a> </p>
+
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-success btn-block btn-lg" data-dismiss="modal" >Cerrar</button>
+                    <button type="button" class="btn btn-secondary btn-block btn-lg" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
-            </div>
         </div>
-
-        
-
-        
+    </div>
 
 </body>
 
