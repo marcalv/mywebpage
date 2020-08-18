@@ -16,20 +16,20 @@ function sound(cmd){
             sound_enable = false
             break
         case '0':
-            startaudio =  Audio('audio/bell/start.mp3');
-            alarmaudio =  Audio('audio/bomb/alarm.mp3');
+            startaudio =  new Audio('audio/bell/start.mp3');
+            alarmaudio =  new Audio('audio/bomb/alarm.mp3');
             break
         case '1':
-            startaudio =  Audio('audio/bell/start.mp3');
-            alarmaudio =  Audio('audio/bell/alarm.mp3');
+            startaudio =  new Audio('audio/bell/start.mp3');
+            alarmaudio =  new Audio('audio/bell/alarm.mp3');
             break
         case '2':
-            startaudio =  Audio('audio/apm/start.mp3');
-            alarmaudio =  Audio('audio/apm/alarm.mp3');
+            startaudio =  new Audio('audio/apm/start.mp3');
+            alarmaudio =  new Audio('audio/apm/alarm.mp3');
             break
         case '3':
-            startaudio =  Audio('audio/bell/start.mp3');
-            alarmaudio =  Audio('audio/realbomb/alarm.mp3');
+            startaudio =  new Audio('audio/bell/start.mp3');
+            alarmaudio =  new Audio('audio/realbomb/alarm.mp3');
             break
 
         default:
