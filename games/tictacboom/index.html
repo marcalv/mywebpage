@@ -19,9 +19,6 @@
 </head>
 
 <body id="body">
-    
-       
-            
             <div  class="container" onclick="next_state()">
                 <div class="container">
                     <h1  id='position' class="display-1" style="padding-top: 5vh;"> </h1>
@@ -32,12 +29,25 @@
                 
             </div>
     
-            <div class="container bottom my-4">
+            <div class="container bottom">
+                <button type="button" id="cancelbtn" class="btn btn-danger my-2 btn-block" onclick="set_state('start')">Cancelar</button>
                 <p id="hint"></p>
                 
-                <button type="button" onclick="set_state('start')" id="settingsbtn" class="btn btn-primary" data-toggle="modal" data-target="#settings">
-                    Ajustes</button>
-                <button type="button" id="cancelbtn" class="btn btn-danger" onclick="set_state('start')">Cancelar</button>
+
+                
+                <div class="btn-group btn-block mb-4" role="group" aria-label="Basic example">
+                    <button type="button btn-block" onclick="set_state('start')" id="settingsbtn" class="btn btn-primary" data-toggle="modal" data-target="#settings">
+                        Ajustes</button>
+                    <!-- <button type="button" id="settingsbtn" class="btn btn-info" data-toggle="modal" data-target="#settings">
+                            Ayuda</button>
+                  
+                  <button type="button" onclick="set_state('start')" id="settingsbtn" class="btn btn-success" data-toggle="modal" data-target="#settings">
+                    Acerca de</button> -->
+                </div>
+            
+                
+
+
             </div>
        
 
@@ -117,7 +127,7 @@
                     
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" >Cerrar</button>
+                <button type="button" class="btn btn-success btn-block btn-lg" data-dismiss="modal" >Cerrar</button>
                 </div>
             </div>
             </div>

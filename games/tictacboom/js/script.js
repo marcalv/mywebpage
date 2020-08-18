@@ -1,8 +1,8 @@
 
 
 const DEFAULT_MAX_TIME = 5
-const DEFAULT_MIN_TIME = 5
-const DEFAULT_LEVEL = 0
+const DEFAULT_MIN_TIME = 2
+const DEFAULT_LEVEL = '0'
 const DEFAULT_SOUND_ENABLE = 1
 const DEFAULT_SOUND_PACK = '0'
 
@@ -179,7 +179,7 @@ function set_background(mode){
 
 
 function set_position(){
-    let positions = ['inicio', 'centro', 'final']
+    let positions = ['tic', 'tac', 'boom']
     const position = positions[Math.floor(Math.random() * positions.length)];
     $('#position').text(position)
 }
@@ -225,17 +225,17 @@ function generate_letterlist(){
         shuffle(letterlist)
 
         switch(level) {
-            case 0:
+            case '0':
                 $.each(letterlist, function( index, value ) {
                     letterlist[index] = value.substring(0,2)
                 });
                 break
-            case 1:
+            case '1':
                 $.each(letterlist, function( index, value ) {
                     letterlist[index] = value.substring(0,3)
                 });
                 break
-            case 2:
+            case '2':
                 $.each(letterlist, function( index, value ) {
                     letterlist[index] = value.substring(0,4)
                 });
