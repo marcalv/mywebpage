@@ -4,7 +4,7 @@ const DEFAULT_MAX_TIME = 5
 const DEFAULT_MIN_TIME = 5
 const DEFAULT_LEVEL = 0
 const DEFAULT_SOUND_ENABLE = 1
-const DEFAULT_SOUND_PACK = 0
+const DEFAULT_SOUND_PACK = '0'
 
 
 function sound(cmd){
@@ -15,10 +15,21 @@ function sound(cmd){
         case 'disable':
             sound_enable = false
             break
-        case 1:
-        case 0:
-            startaudio = new Audio('audio/default/start.mp3');
-            alarmaudio = new Audio('audio/default/alarm.mp3');
+        case '0':
+            startaudio =  Audio('audio/bell/start.mp3');
+            alarmaudio =  Audio('audio/bomb/alarm.mp3');
+            break
+        case '1':
+            startaudio =  Audio('audio/bell/start.mp3');
+            alarmaudio =  Audio('audio/bell/alarm.mp3');
+            break
+        case '2':
+            startaudio =  Audio('audio/apm/start.mp3');
+            alarmaudio =  Audio('audio/apm/alarm.mp3');
+            break
+        case '3':
+            startaudio =  Audio('audio/bell/start.mp3');
+            alarmaudio =  Audio('audio/realbomb/alarm.mp3');
             break
 
         default:
@@ -65,7 +76,8 @@ function save_settings(){
     level = $('#level').val()
     sound_enable = $('#soundenable').val()
     sound_pack = $('#soundpack').val()
-    generate_letterlist()
+    sound(sound_pack)
+    generate_letterlist() 
 
 }
 
@@ -93,7 +105,6 @@ function set_state(newstate){
     switch(newstate) {
         case 'initial':
             $('#cancelbtn').invisible()
-            
             newstate = 'start'
         case 'start':
             set_position()
@@ -120,6 +131,7 @@ function set_state(newstate){
             $('#cancelbtn').invisible()
             set_background('alarm')
             sound('play_alarm')
+            clearTimeout(timer);
             break;
         default:
             // code block
@@ -163,10 +175,7 @@ function set_background(mode){
     }
 }
 
-function cancel_timer(){
-    
-    set_state('start')
-}
+
 
 
 function set_position(){
@@ -185,7 +194,8 @@ function hide_letter(){
 }
 
 function get_time(){
-    return (Math.floor(Math.random() * (maxtime - mintime + 1) + mintime))*1000;
+    inttime =  (Math.floor(Math.random() * (maxtime - mintime + 1) + mintime))*1000;
+    return 2500
 }
 
 function shuffle(array) {
@@ -253,6 +263,7 @@ var alarmaudio
 var timer
 var state
 var letterlist
+
 
 reset_settings()
 

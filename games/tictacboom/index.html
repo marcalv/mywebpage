@@ -22,9 +22,9 @@
     
        
             
-            <div onclick="next_state()" class="container">
+            <div  class="container" onclick="next_state()">
                 <div class="container">
-                    <h1 id='position' class="display-1" style="padding-top: 5vh;"> </h1>
+                    <h1  id='position' class="display-1" style="padding-top: 5vh;"> </h1>
                 </div>
                 <div class="vertical-center">
                     <h1 id='letter' class="display-1">-</h1>
@@ -88,7 +88,7 @@
                     
             
 
-                <label >Sonido</label>
+                <label >Efectos sonoros</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Sonido</label>
@@ -104,8 +104,10 @@
                         <label class="input-group-text" for="inputGroupSelect01">Soundpack</label>
                     </div>
                     <select id="soundpack" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
-                        <option value="0">Por defecto</option>
-                        <option value="1">Especial</option>
+                        <option value="0">Bomba</option>
+                        <option value="1">Campana</option>
+                        <option value="2">APM</option>
+                        <option value="3">RealBomb</option>
                     </select>
                 </div>
 
@@ -115,7 +117,7 @@
                     
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" >Cerrar</button>
                 </div>
             </div>
             </div>
