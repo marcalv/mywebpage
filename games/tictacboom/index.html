@@ -5,6 +5,7 @@
 <script type="text/javascript" src="/static/js/popper.js"></script>
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 
+
 <link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
 <link rel='stylesheet' type='text/css' href='/games/tictacboom/css/style.css'>
 
@@ -19,20 +20,28 @@
 
 <body id="body">
     
-
-
-        <div class="container" onclick="next_state()">
-            <h1 id='position' class="display-1"> </h1>
-            <h1 id='letter' class="display-1">-</h1>
-        </div>
-
-        <div class="container">
-            <p id="hint"></p>
+       
             
-            <button type="button" id="settingsbtn" class="btn btn-primary" data-toggle="modal" data-target="#settings">
-                Ajustes</button>
-            <button type="button" id="cancelbtn" class="btn btn-danger" onclick="cancel_timer()">Cancelar</button>
-        </div>
+            <div onclick="next_state()" class="container">
+                <div class="container">
+                    <h1 id='position' class="display-1" style="padding-top: 5vh;"> </h1>
+                </div>
+                <div class="vertical-center">
+                    <h1 id='letter' class="display-1">-</h1>
+                </div>
+                
+            </div>
+    
+            <div class="container bottom my-4">
+                <p id="hint"></p>
+                
+                <button type="button" onclick="set_state('start')" id="settingsbtn" class="btn btn-primary" data-toggle="modal" data-target="#settings">
+                    Ajustes</button>
+                <button type="button" id="cancelbtn" class="btn btn-danger" onclick="set_state('start')">Cancelar</button>
+            </div>
+       
+
+        
 
 
         <!-- Modal -->
@@ -47,51 +56,58 @@
                 </div>
                 <div class="modal-body">
                     
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1">Tiempo máximo</span>
-                        </div>
-                        <input id="maxtime" oninput="save_settings()" type="number" class="form-control">
-                    </div>
-            
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1">Tiempo mínimo</span>
-                        </div>
-                        <input id="mintime" oninput="save_settings()" type="number" class="form-control">
-                    </div>
-            
-            
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Dificultad</label>
-                        </div>
-                        <select id="level" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
-                          <option value="0">Fácil</option>
-                          <option value="1">Intermedio</option>
-                          <option value="2">Dificil</option>
-                        </select>
-                    </div>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Sonido</label>
-                        </div>
-                        <select id="soundenable" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
-                            <option value="0">Desactivado</option>
-                            <option value="1">Activado</option>
-                        </select>
+                <label >Juego</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Dificultad</label>
                     </div>
+                    <select id="level" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
+                    <option value="0">Fácil</option>
+                    <option value="1">Intermedio</option>
+                    <option value="2">Dificil</option>
+                    </select>
+                </div>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Soundpack</label>
-                        </div>
-                        <select id="soundpack" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
-                            <option value="0">Por defecto</option>
-                            <option value="1">Especial</option>
-                        </select>
+
+                <label >Temporizador</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Tiempo máximo</span>
                     </div>
+                    <input id="maxtime" oninput="save_settings()" type="number" class="form-control">
+                </div>
+        
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Tiempo mínimo</span>
+                    </div>
+                    <input id="mintime" oninput="save_settings()" type="number" class="form-control">
+                </div>
+                    
+                    
+            
+
+                <label >Sonido</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Sonido</label>
+                    </div>
+                    <select id="soundenable" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
+                        <option value="0">Desactivado</option>
+                        <option value="1">Activado</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Soundpack</label>
+                    </div>
+                    <select id="soundpack" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
+                        <option value="0">Por defecto</option>
+                        <option value="1">Especial</option>
+                    </select>
+                </div>
 
 
                     <br>

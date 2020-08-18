@@ -1,7 +1,7 @@
 
 
-const DEFAULT_MAX_TIME = 3
-const DEFAULT_MIN_TIME = 1
+const DEFAULT_MAX_TIME = 5
+const DEFAULT_MIN_TIME = 5
 const DEFAULT_LEVEL = 0
 const DEFAULT_SOUND_ENABLE = 1
 const DEFAULT_SOUND_PACK = 0
@@ -103,6 +103,7 @@ function set_state(newstate){
             $('#cancelbtn').invisible()
             sound('stop_start')
             sound('stop_alarm')
+            clearTimeout(timer);
             break;
         case 'thinking':
             sound('play_start')
@@ -163,7 +164,7 @@ function set_background(mode){
 }
 
 function cancel_timer(){
-    clearTimeout(timer);
+    
     set_state('start')
 }
 
@@ -233,7 +234,7 @@ function generate_letterlist(){
             // code block
     }
 
-        console.log(letterlist)
+        
 
     }, 'text');
 
@@ -253,7 +254,8 @@ var timer
 var state
 var letterlist
 
-
 reset_settings()
 
 set_state('initial')
+
+

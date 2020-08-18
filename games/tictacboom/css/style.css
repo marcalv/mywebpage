@@ -1,12 +1,15 @@
 #position{
-    font-size: 10vh;
+    font-size: 10vw;
     text-align: center;
 }
 
 #letter{
-    font-size: 50vh;
+    position: relative;
+    font-size: 47vw;
     text-align: center;
 }
+
+
 
 .blink-bg{
     color: #fff;
@@ -21,4 +24,23 @@
 html, body {
     margin: 0;
     height: 100%;
+}
+
+.height-full {
+    height: 100vh;
+  }
+
+.bottom { 
+    position:absolute;                  
+    bottom:0;                                               
+} 
+
+.vertical-center {
+    display: flex;
+    justify-content: center;
+    /* align-self: center;    <---- REMOVE */
+    align-items: center;   /* <---- NEW    */
+    /* background: silver;*/
+    width: 100%;
+    height: 70%; 
 }
