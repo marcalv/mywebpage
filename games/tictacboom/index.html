@@ -1,0 +1,159 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/games/tictacboom/css/style.css'>
+<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<meta charset="UTF-8">
+
+<head>
+    <title>TicTacBoom - Marc Álvarez</title>
+</head>
+
+<body id="body">
+    
+
+
+        <div class="container" onclick="next_state()">
+            <h1 id='position' class="display-1"> </h1>
+            <h1 id='letter' class="display-1">-</h1>
+        </div>
+
+        <div class="container">
+            <p id="hint"></p>
+            <!-- <button type="button" id="settingsbtn" class="btn btn-primary">Settings</button> -->
+            <button type="button" id="cancelbtn" class="btn btn-danger" onclick="cancel_timer()">Cancel</button>
+        </div>
+
+<script>
+
+jQuery.fn.visible = function() {
+    return this.css('visibility', 'visible');
+};
+
+jQuery.fn.invisible = function() {
+    return this.css('visibility', 'hidden');
+};
+
+function set_state(newstate){
+    switch(newstate) {
+        case 'initial':
+            $('#cancelbtn').invisible()
+            newstate = 'start'
+        case 'start':
+            set_position()
+            hide_letter()
+            $('#hint').text('Tap to get new letters.')
+            set_background('normal')
+            alarmaudio.pause();
+            alarmaudio.currentTime = 0;
+            break;
+        case 'thinking':
+            startaudio.play()
+            $('#letter').visible()
+            set_letter()
+            $('#nextbtn').invisible()
+            timer = setTimeout(next_state, 1000, 'timer')
+            $('#hint').text('Time to think!')
+            $('#cancelbtn').visible()
+            break;
+        case 'timedout':
+            startaudio.pause();
+            startaudio.currentTime = 0;
+            $('#hint').text('Time is over! Tap to reset timer.')
+            $('#cancelbtn').invisible()
+            set_background('alarm')
+            alarmaudio.play();
+            break;
+        default:
+            // code block
+    } 
+    state = newstate
+}
+
+
+function next_state(switch_key){
+    console.log('next_state')
+    console.log(switch_key)
+    switch(state) {
+        case 'initial':
+            set_state('start')
+            break
+        case 'start':
+            set_state('thinking')
+            break;
+        case 'thinking':
+            if (switch_key == 'timer'){
+                console.log('TIMEOUT!')
+                set_state('timedout')
+            }
+            break;
+        case 'timedout':
+            set_state('start')
+            break;
+        default:
+        // code block
+    }
+}
+
+
+
+var startaudio = new Audio('audio/start.mp3');
+var alarmaudio = new Audio('audio/alarm.mp3');
+var timer
+var mintime = 5
+var maxtime = 60
+var state = ''
+
+set_state('initial')
+
+
+function set_background(mode){
+    switch(mode) {
+        case 'alarm':
+            $('#body').addClass('blink-bg')
+            break
+        case 'normal':
+            $('#body').removeClass('blink-bg')
+            break
+        default:
+        // code block
+    }
+}
+
+function cancel_timer(){
+    clearTimeout(timer);
+    set_state('start')
+}
+
+
+function set_position(){
+    let positions = ['inicio', 'centro', 'final']
+    const position = positions[Math.floor(Math.random() * positions.length)];
+    $('#position').text(position)
+}
+
+function set_letter(){
+    let letters = ['de', 'fr', 'ca','ci','en','zu']
+    const letter = letters[Math.floor(Math.random() * letters.length)];
+    $('#letter').text(letter)
+}
+
+function hide_letter(){
+    $('#letter').text('-')
+}
+
+function get_time(){
+    return Math.floor(Math.random() * (maxtime - mintime + 1) + mintime);
+}
+
+
+
+
+</script>
+</body>
+
+
+
+</html>
