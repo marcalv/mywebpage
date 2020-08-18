@@ -11,7 +11,6 @@
 <link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
 
 
-
 <meta charset="UTF-8">
 
 <head>
@@ -32,7 +31,7 @@
             
             <button type="button" id="settingsbtn" class="btn btn-primary" data-toggle="modal" data-target="#settings">
                 Ajustes</button>
-            <button type="button" id="cancelbtn" class="btn btn-danger" onclick="cancel_timer()">Cancel</button>
+            <button type="button" id="cancelbtn" class="btn btn-danger" onclick="cancel_timer()">Cancelar</button>
         </div>
 
 
@@ -78,11 +77,23 @@
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01">Sonido</label>
                         </div>
-                        <select id="sound" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
+                        <select id="soundenable" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
                             <option value="0">Desactivado</option>
                             <option value="1">Activado</option>
                         </select>
                     </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Soundpack</label>
+                        </div>
+                        <select id="soundpack" onchange="save_settings()" class="custom-select" id="inputGroupSelect01">
+                            <option value="0">Por defecto</option>
+                            <option value="1">Especial</option>
+                        </select>
+                    </div>
+
+
                     <br>
                       <button type="button" onclick="reset_settings()" class="btn btn-warning">Resetear configuración</button>
                     
@@ -94,213 +105,8 @@
             </div>
         </div>
 
-        
-
-
-<script>
-
-const DEFAULT_MAX_TIME = 3
-const DEFAULT_MIN_TIME = 1
-const DEFAULT_LEVEL = 0
-const DEFAULT_SOUND_ENABLE = 1
-
-
-
-function sound(cmd){
-    switch(cmd) {
-        case 'enable':
-            sound_enable = true
-            break
-        case 'disable':
-            sound_enable = false
-            break
-        default:
-            console.log(cmd)
-            console.log(sound_enable)
-            if (sound_enable == 1) {
-                switch(cmd) {
-                    case 'play_start':
-                        startaudio.play();
-                        break
-                    case 'stop_start':
-                        startaudio.pause();
-                        startaudio.currentTime = 0;
-                        break
-                    case 'play_alarm':
-                        alarmaudio.play();
-                        break
-                    case 'stop_alarm':
-                        alarmaudio.pause();
-                        alarmaudio.currentTime = 0;
-                        break
-                }
-
-            }
-    }
-}
-
-
-
-
-function reset_settings(){
-    maxtime = DEFAULT_MAX_TIME
-    mintime = DEFAULT_MIN_TIME
-    level = DEFAULT_LEVEL
-    sound_enable = DEFAULT_SOUND_ENABLE
-    render_settings()
-}
-
-
-function save_settings(){
-    maxtime = $('#maxtime').val()
-    mintime = $('#mintime').val()
-    level = $('#level').val()
-    sound_enable = $('#sound').val()
-
-}
-
-function render_settings(){
-    $('#maxtime').val(maxtime)
-    $('#mintime').val(mintime)
-    $('#level').val(level)
-    $('#sound').val(sound_enable)
-
-}
-
-
-
-jQuery.fn.visible = function() {
-    return this.css('visibility', 'visible');
-};
-
-jQuery.fn.invisible = function() {
-    return this.css('visibility', 'hidden');
-};
-
-
-function set_state(newstate){
-    switch(newstate) {
-        case 'initial':
-            $('#cancelbtn').invisible()
-            newstate = 'start'
-        case 'start':
-            set_position()
-            hide_letter()
-            $('#hint').text('Toca para iniciar una nueva ronda.')
-            set_background('normal')
-            $('#cancelbtn').invisible()
-            sound('stop_start')
-            sound('stop_alarm')
-            
-            break;
-        case 'thinking':
-            sound('play_start')
-            $('#letter').visible()
-            set_letter()
-            $('#nextbtn').invisible()
-            timer = setTimeout(next_state, get_time(), 'timer')
-            $('#hint').text('¡A pensar!')
-            $('#cancelbtn').visible()
-            break;
-        case 'timedout':
-            sound('stop_start')
-            $('#hint').text('¡BOOM! Tiempo agotado, toca para continuar.')
-            $('#cancelbtn').invisible()
-            set_background('alarm')
-            sound('play_alarm')
-            break;
-        default:
-            // code block
-    } 
-    state = newstate
-}
-
-
-function next_state(switch_key){
-    switch(state) {
-        case 'initial':
-            set_state('start')
-            break
-        case 'start':
-            set_state('thinking')
-            break;
-        case 'thinking':
-            if (switch_key == 'timer'){
-                set_state('timedout')
-            }
-            break;
-        case 'timedout':
-            set_state('start')
-            break;
-        default:
-        // code block
-    }
-}
-
-
-function set_background(mode){
-    switch(mode) {
-        case 'alarm':
-            $('#body').addClass('blink-bg')
-            break
-        case 'normal':
-            $('#body').removeClass('blink-bg')
-            break
-        default:
-        // code block
-    }
-}
-
-function cancel_timer(){
-    clearTimeout(timer);
-    set_state('start')
-}
-
-
-function set_position(){
-    let positions = ['inicio', 'centro', 'final']
-    const position = positions[Math.floor(Math.random() * positions.length)];
-    $('#position').text(position)
-}
-
-function set_letter(){
-    let letters = ['de', 'fr', 'ca','ci','en','zu']
-    const letter = letters[Math.floor(Math.random() * letters.length)];
-    $('#letter').text(letter)
-}
-
-function hide_letter(){
-    $('#letter').text('-')
-}
-
-function get_time(){
-    return (Math.floor(Math.random() * (maxtime - mintime + 1) + mintime))*1000;
-}
-
-
-
-var mintime
-var maxtime
-var level
-var sound_enable
-
-var startaudio = new Audio('audio/start.mp3');
-var alarmaudio = new Audio('audio/alarm.mp3');
-var timer
-var state = ''
-
-set_state('initial')
-reset_settings()
-
-</script>
-
-
-     
-
-          
-
 </body>
 
-
+<script type="text/javascript" src="js/script.js"></script>
 
 </html>
