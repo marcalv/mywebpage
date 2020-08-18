@@ -126,7 +126,7 @@ function set_state(newstate){
             set_letter()
             $('#nextbtn').invisible()
             timer = setTimeout(next_state, get_time(), 'timer')
-            $('#hint').text('¡A pensar!')
+            $('#hint').text('La bomba puede estallar en cualquier momento... ¡A pensar!')
             $('#cancelbtn').visible()
             break;
         case 'timedout':
