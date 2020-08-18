@@ -1,11 +1,11 @@
 #position{
-    font-size: 10vw;
+    font-size: 20vw;
     text-align: center;
 }
 
 #letter{
     position: relative;
-    font-size: 47vw;
+    font-size: 50vw;
     text-align: center;
 }
 
@@ -42,7 +42,7 @@ html, body {
     align-items: center;   /* <---- NEW    */
     /* background: silver;*/
     width: 100%;
-    height: 60%; 
+    height: 50%; 
 }
 
 .footer {
