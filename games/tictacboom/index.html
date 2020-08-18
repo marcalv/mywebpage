@@ -1,9 +1,8 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<script type="text/javascript" src="/static/js/jquery.min.js"></script>
-<script type="text/javascript" src="/static/js/popper.js"></script>
-<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 
 
 <link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
@@ -39,12 +38,19 @@
                     
                     <div class="btn-group btn-block mb-4" role="group" aria-label="Basic example">
                         <button type="button btn-block" onclick="set_state('start')" id="settingsbtn" class="btn btn-primary" data-toggle="modal" data-target="#settings">
-                            Ajustes</button>
-                        <!-- <button type="button" id="settingsbtn" class="btn btn-info" data-toggle="modal" data-target="#settings">
-                                Ayuda</button>
-                      
-                      <button type="button" onclick="set_state('start')" id="settingsbtn" class="btn btn-success" data-toggle="modal" data-target="#settings">
-                        Acerca de</button> -->
+                            Ajustes del juego</button>
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Más
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" onclick="set_state('start')" id="manualbtn" class="btn btn-primary" data-toggle="modal" data-target="#manual">
+                                Instrucciones</a>
+                                <a class="dropdown-item" onclick="set_state('start')" id="manualbtn" class="btn btn-primary" data-toggle="modal" data-target="#about">
+                                    Acerca de</a>
+                              <a class="dropdown-item" href="/">Salir</a>
+                            </div>
+                          </div>
                     </div>
                 </div>
               </footer>
@@ -52,15 +58,12 @@
         
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsLabel" aria-hidden="true">
+        <!-- Modal Ajustes del juego-->
+        <div class="modal fade" id="settings" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Ajustes</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
                 </div>
                 <div class="modal-body">
                     
@@ -79,22 +82,18 @@
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Tiempo máximo</span>
+                        <span class="input-group-text" id="basic-addon1">Tiempo máximo (s)</span>
                     </div>
                     <input id="maxtime" oninput="save_settings()" type="number" class="form-control">
                 </div>
         
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Tiempo mínimo</span>
+                        <span class="input-group-text" id="basic-addon1">Tiempo mínimo (s)</span>
                     </div>
                     <input id="mintime" oninput="save_settings()" type="number" class="form-control">
                 </div>
                     
-                    
-            
-
-
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Sonido</label>
@@ -117,9 +116,29 @@
                     </select>
                 </div>
 
-
                     <br>
                       <button type="button" onclick="reset_settings()" class="btn btn-warning">Resetear configuración</button>
+                    
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-block btn-lg" data-dismiss="modal" >Guardar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Modal Instrucciones-->
+        <div class="modal fade" id="manual" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Instrucciones</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <p>Under construction...</p>
                     
                 </div>
                 <div class="modal-footer">
@@ -128,6 +147,31 @@
             </div>
             </div>
         </div>
+
+        <!-- Modal Acerca de-->
+        <div class="modal fade" id="about" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Acerca de</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <p>Under construction...</p>
+                    
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-block btn-lg" data-dismiss="modal" >Cerrar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        
+
+        
 
 </body>
 
