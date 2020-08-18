@@ -71,6 +71,7 @@ function reset_settings(){
 
 
 function save_settings(){
+    console.log('saved settings')
     maxtime = parseInt($('#maxtime').val())
     mintime = parseInt($('#mintime').val())
     level = $('#level').val()
@@ -116,6 +117,7 @@ function set_state(newstate){
             $('#cancelbtn').invisible()
             sound('stop_start')
             sound('stop_alarm')
+            render_settings()
             clearTimeout(timer);
             break;
         case 'thinking':
