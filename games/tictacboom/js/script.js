@@ -3,7 +3,7 @@
 const DEFAULT_MAX_TIME = 5
 const DEFAULT_MIN_TIME = 2
 const DEFAULT_LEVEL = '0'
-const DEFAULT_SOUND_ENABLE = 1
+const DEFAULT_SOUND_ENABLE = '1'
 const DEFAULT_SOUND_PACK = '0'
 
 
@@ -33,7 +33,7 @@ function sound(cmd){
             break
 
         default:
-            if (sound_enable == 1) {
+            if (sound_enable == '1') {
                 switch(cmd) {
                     case 'play_start':
                         startaudio.play();
@@ -71,13 +71,15 @@ function reset_settings(){
 
 
 function save_settings(){
-    maxtime = $('#maxtime').val()
-    mintime = $('#mintime').val()
+    maxtime = parseInt($('#maxtime').val())
+    mintime = parseInt($('#mintime').val())
     level = $('#level').val()
     sound_enable = $('#soundenable').val()
     sound_pack = $('#soundpack').val()
     sound(sound_pack)
     generate_letterlist() 
+    console.log(maxtime)
+    console.log(mintime)
 
 }
 
@@ -195,7 +197,8 @@ function hide_letter(){
 
 function get_time(){
     inttime =  (Math.floor(Math.random() * (maxtime - mintime + 1) + mintime))*1000;
-    return 2500
+    console.log(inttime)
+    return inttime
 }
 
 function shuffle(array) {
