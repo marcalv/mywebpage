@@ -32,7 +32,7 @@
 &lt;!--icon:raspberry_--&gt;
 
 
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Tuc5nh77Jy4&quot;&gt;&lt;img src=&quot;https://img.youtube.com/vi/Tuc5nh77Jy4/0.jpg&quot; alt=&quot;IMAGE ALT TEXT HERE&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=qapw2nI-xyE&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.png&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;4.1 Contenedor Qbittorent&lt;/h2&gt;
 
@@ -120,7 +120,7 @@ sudo docker-compose restart jackett &amp;amp;&amp;amp; sudo docker logs -f jacke
 &lt;!--icon:raspberry_--&gt;
 
 
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Tuc5nh77Jy4&quot;&gt;&lt;img src=&quot;https://img.youtube.com/vi/Tuc5nh77Jy4/0.jpg&quot; alt=&quot;IMAGE ALT TEXT HERE&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=tsbltEpkSiI&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.png&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;3.1 Contenedor Nextcloud&lt;/h2&gt;
 
@@ -195,7 +195,7 @@ sudo docker-compose restart nextcloud &amp;amp;&amp;amp; sudo docker logs -f nex
 &lt;!--icon:raspberry_--&gt;
 
 
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Tuc5nh77Jy4&quot;&gt;&lt;img src=&quot;https://img.youtube.com/vi/Tuc5nh77Jy4/0.jpg&quot; alt=&quot;IMAGE ALT TEXT HERE&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=c4J7Ya6reUY&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.png&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;2.1 Abrir puertos&lt;/h2&gt;
 
@@ -466,7 +466,7 @@ docker-compose down swag #Parar y eliminar contenedor
 &lt;!--icon:raspberry_--&gt;
 
 
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Tuc5nh77Jy4&quot;&gt;&lt;img src=&quot;https://img.youtube.com/vi/Tuc5nh77Jy4/0.jpg&quot; alt=&quot;IMAGE ALT TEXT HERE&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OAY0VTnHiMw&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.png&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;1.1 Instalar Raspberry Pi OS Lite (Healess)&lt;/h2&gt;
 
@@ -561,7 +561,7 @@ A continuación conecta el USB y vuelve a ejecutar el comando &lt;code&gt;sudo b
 &lt;!--icon:raspberry_--&gt;
 
 
-&lt;p&gt;&lt;a href=&quot;https://youtu.be/LUEv2ELG5yg&quot;&gt;&lt;img src=&quot;https://youtu.be/LUEv2ELG5yg&quot; alt=&quot;IMAGE ALT TEXT HERE&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LUEv2ELG5yg&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.png&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4&gt;Enlaces de interés&lt;/h4&gt;
 

@@ -3,7 +3,7 @@
 <!--moddate:2020/09/26_-->
 <!--icon:raspberry_-->
 
-[![IMAGE ALT TEXT HERE](https://youtu.be/LUEv2ELG5yg)](https://youtu.be/LUEv2ELG5yg)
+[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=LUEv2ELG5yg)
 
 #### Enlaces de interés
 * [Linuxserver.io](linuxserver)

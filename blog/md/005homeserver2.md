@@ -4,10 +4,7 @@
 <!--icon:raspberry_-->
 
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Tuc5nh77Jy4/0.jpg)](https://www.youtube.com/watch?v=Tuc5nh77Jy4)
-
-
-
+[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=c4J7Ya6reUY)
 
 
 ## 2.1 Abrir puertos
