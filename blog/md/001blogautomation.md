@@ -1,7 +1,7 @@
-<!--name:Blog automation: write Markdown, get HTML-->
-<!--pubdate:2020/07/13-->
-<!--moddate:2020/07/13-->
-<!--icon:book-->
+<!--name:Blog automation: write Markdown, get HTML_-->
+<!--pubdate:2020/07/13_-->
+<!--moddate:2020/07/13_-->
+<!--icon:book_-->
 
 ## Writing in HTML isn't that cool
 

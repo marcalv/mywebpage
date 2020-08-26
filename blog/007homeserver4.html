@@ -1,0 +1,119 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/static/css/style_blog.css'>
+<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<meta charset="UTF-8">
+
+<head>
+    <title>Servidor en casa - Parte 4: Instalando Qbittorrent, Jackett y Wireguard - Marc Álvarez</title>
+</head>
+
+<body>
+    <div class="container mt-4">
+        
+        <div class="mx-auto text-center my-4">
+            <img src="/static/icons/icon_raspberry.png" class="mr-3 notcentered" alt="..." style=" width: 64px; height: 64px;">
+            <div class="h1">
+                Servidor en casa - Parte 4: Instalando Qbittorrent, Jackett y Wireguard
+            </div>
+        </div>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Servidor en casa - Parte 4: Instalando Qbittorrent, Jackett y Wireguard</li>
+            </ol>
+        </nav>
+
+        <div class="container" id='mk'>
+                <!--name:Servidor en casa - Parte 4: Instalando Qbittorrent, Jackett y Wireguard_-->
+
+
+<!--pubdate:2020/09/26_-->
+
+
+<!--moddate:2020/09/26_-->
+
+
+<!--icon:raspberry_-->
+
+
+<p><a target="_blank" href="https://www.youtube.com/watch?v=Tuc5nh77Jy4"><img src="https://img.youtube.com/vi/Tuc5nh77Jy4/0.jpg" alt="IMAGE ALT TEXT HERE" /></a></p>
+
+<h2>4.1 Contenedor Qbittorent</h2>
+
+<p>Más información del contenedor: <a target="_blank" href="https://github.com/linuxserver/docker-qbitorrent">github.com/linuxserver/docker-qbitorrent</a></p>
+
+<p>Añade a <code>docker-compose.yml</code> las lineas del servicio que puedes encontrar en la parte 2 de la guía, o en la documentación del contenedor (link anterior). Levanta el contenedor con:</p>
+
+<pre><code>sudo docker-compose up -d qbittorrent &amp;&amp; sudo docker logs -f qbittorrent
+</code></pre>
+
+<h3>Crear reverse-proxy</h3>
+
+<pre><code>cp /home/pi/compose/data/swag/config/nginx/proxy-confs/qbittorrent.subfolder.conf.sample /home/pi/compose/data/swag/config/nginx/proxy-confs/qbittorrent.subfolder.conf
+</code></pre>
+
+<p>Reinicia SWAG con</p>
+
+<pre><code>sudo docker-compose restart swag &amp;&amp; sudo docker logs -f swag
+</code></pre>
+
+<p>Accede al servicio con <code>TU_DOMINIO.duckdns.org/jackett</code></p>
+
+<h2>4.2 Levantar el contenedor Jackett</h2>
+
+<p>Más información del contenedor: <a target="_blank" href="https://github.com/linuxserver/docker-jackett">github.com/linuxserver/docker-jackett</a></p>
+
+<p>Añade a <code>docker-compose.yml</code> las lineas del servicio que puedes encontrar en la parte 2 de la guía, o en la documentación del contenedor (link anterior).
+Levanta el contenedor con</p>
+
+<pre><code>sudo docker-compose up -d jackett &amp;&amp; sudo docker logs -f jackett
+</code></pre>
+
+<h3>Crear reverse-proxy</h3>
+
+<pre><code>cp /home/pi/compose/data/swag/config/nginx/proxy-confs/jackett.subfolder.conf.sample /home/pi/compose/data/swag/config/nginx/proxy-confs/jackett.subfolder.conf
+</code></pre>
+
+<p>Accede a <code>http://IP_RASPBERRY_LOCAL:9117</code>, en path override escribe <code>/jackett</code> y configura una contraseña de administrador.</p>
+
+<p>Reinicia SWAG y jackett con:</p>
+
+<pre><code>sudo docker-compose restart swag &amp;&amp; sudo docker logs -f swag
+sudo docker-compose restart jackett &amp;&amp; sudo docker logs -f jackett
+</code></pre>
+
+<p>Accede al servicio con <code>TU_DOMINIO.duckdns.org/jackett</code></p>
+
+<h2>4.3 Web estática</h2>
+
+<p>Puedes colocar los archivos de tu web estática en <code>/home/pi/compose/data/swag/config/www/</code> y acceder mediante <code>tudominio.duckdns.org</code></p>
+
+<h2>4.4 Wireguard</h2>
+
+<p>Más información del contenedor: <a target="_blank" href="https://github.com/linuxserver/docker-wireguard">github.com/linuxserver/docker-wireguard</a></p>
+
+<p>Añade a <code>docker-compose.yml</code> las lineas del servicio que puedes encontrar en la parte 2 de la guía, o en la documentación del contenedor (link anterior).</p>
+
+<p>Levanta el contenedor con</p>
+
+<pre><code>sudo docker-compose up -d wireguard &amp;&amp; sudo docker logs -f wireguard
+</code></pre>
+
+<p>Redirige el puerto <code>51820</code> en el router a la IP de tu Raspberry. No requiere reverse-proxy. Los credenciales para conectarse a la VPN se van a la carpeta de configuración (volumen externo del contenedor).</p>
+
+<p>Toda la información está en el repositorio del proyecto.</p>
+        </div>
+        <br>
+        <hr/>
+        <div class="text-muted">Published: 2020/09/26</div>
+        <div class="text-muted">Modified: 2020/09/26</div>
+        <br>
+    </div>
+</body>
+
+</html>

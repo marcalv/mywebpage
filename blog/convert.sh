@@ -15,7 +15,7 @@ replace () {
 
 # Get $1 prop from $2 file
 getprop (){
-    regex="<!--$1:([^-]*)-->"
+    regex="<!--$1:([^_]*)"
     [[ `cat $2` =~ $regex ]]
     echo ${BASH_REMATCH[1]}
 }

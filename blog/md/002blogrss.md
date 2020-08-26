@@ -1,7 +1,7 @@
-<!--name:Adding an RSS feed to this blog-->
-<!--pubdate:2020/08/05-->
-<!--moddate:2020/08/05-->
-<!--icon:rss-->
+<!--name:Adding an RSS feed to this blog_-->
+<!--pubdate:2020/08/05_-->
+<!--moddate:2020/08/05_-->
+<!--icon:rss_-->
 
 ## What is RSS and why I use it
 
