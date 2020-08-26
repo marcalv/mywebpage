@@ -6,6 +6,7 @@
 [![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=LUEv2ELG5yg)
 
 #### Enlaces de interés
+* [Que es un Docker](https://opensource.com/resources/what-docker)
 * [Linuxserver.io](linuxserver)
 * [Lista de contenedores en Linuxserver](https://fleet.linuxserver.io/)
 * [Linuxserver en Github](https://github.com/linuxserver/)
