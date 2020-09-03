@@ -147,6 +147,30 @@ services:
     ports:
       - 9117:9117
     restart: unless-stopped
+
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - SERVERURL=TU_SUBDOMINIO.duckdns.org
+      - SERVERPORT=51820 #optional
+      - PEERS=2 #optional
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=10.13.13.0 #optional
+    volumes:
+      - /home/pi/compose/data/wireguard/config:/config
+      - /lib/modules:/lib/modules   # no modificar
+    ports:
+      - 51820:51820/udp     # Redireccionar puerto en router
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
  
 ```
 

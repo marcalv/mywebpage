@@ -77,4 +77,6 @@ sudo docker-compose up -d wireguard && sudo docker logs -f wireguard
 
 Redirige el puerto `51820` en el router a la IP de tu Raspberry. No requiere reverse-proxy. Los credenciales para conectarse a la VPN se van a la carpeta de configuración (volumen externo del contenedor). 
 
+Para conectarte a la VPN, necesitaras los archivos `peerX.conf` o los códigos QR que en este caso se encontrarán en `/home/pi/compose/data/wireguard/config` si usas la configuración de la parte 2 de la guía.
+
 Toda la información está en el repositorio del proyecto. 
