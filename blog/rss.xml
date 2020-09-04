@@ -32,7 +32,10 @@
 &lt;!--icon:raspberry_--&gt;
 
 
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=qapw2nI-xyE&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.png&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=qapw2nI-xyE)--&gt;
+
 
 &lt;h2&gt;5.1 Acceso SSH mediante llaves de encriptado&lt;/h2&gt;
 
