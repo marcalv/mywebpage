@@ -13,6 +13,77 @@
         </image>
         <!--item-->
 <item>
+<title>Servidor en casa - Parte 5: Acceso remoto mediante llaves de encriptado</title>
+<link>https://marcalv.com/blog/008homeserver5</link>
+<guid>008homeserver5</guid>
+<author>Marc Álvarez</author>
+<pubDate>Sun, 04 Oct 2020 00:00:00 +0200</pubDate>
+<source>https://marcalv.com/blog/rss.xml</source>
+<description>
+&lt;!--name:Servidor en casa - Parte 5: Acceso remoto mediante llaves de encriptado_--&gt;
+
+
+&lt;!--pubdate:2020/10/04_--&gt;
+
+
+&lt;!--moddate:2020/10/04_--&gt;
+
+
+&lt;!--icon:raspberry_--&gt;
+
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=qapw2nI-xyE&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.png&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;5.1 Acceso SSH mediante llaves de encriptado&lt;/h2&gt;
+
+&lt;p&gt;A continuación configuraremos el acceso por SSH como usuario root a la Raspberry mediante de llaves de encriptado. A nivel de seguridad sería equivalente a usar una contraseña lo suficientemente larga.&lt;/p&gt;
+
+&lt;p&gt;Sin embargo, obtendremos otros beneficios, como poder acceder por SSH desde los dispositivos autorizados sin escribir la contraseña al inicio de cada conexión. Esto será útil para poder automatizar el proceso de backup sin tener que lidiar con contraseñas. Otra ventaja es la posibilidad de administrar el acceso de cada uno de los dispositivos por separado.&lt;/p&gt;
+
+&lt;h2&gt;5.2 Permitir el login root temporalmente&lt;/h2&gt;
+
+&lt;p&gt;Entra por SSH a la Raspberry como el usuario pi, es decir, como siempre hasta ahora.&lt;/p&gt;
+
+&lt;p&gt;Crea la contraseña del usuario root con &lt;code&gt;sudo passwd root&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Edita el archivo &lt;code&gt;ssdh_config&lt;/code&gt; con el comando &lt;code&gt;sudo nano /etc/ssh/sshd_config&lt;/code&gt; y descomentar la linea &lt;code&gt;PermitRootLogin yes&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Reinicia el servicio sshd con &lt;code&gt;sudo service sshd restart&lt;/code&gt; para poner en marcha la nueva configuración.&lt;/p&gt;
+
+&lt;p&gt;Cierra la conexión y abre una nueva, pero ahora con el usuario root, con &lt;code&gt;ssh root@IP_RASPBERRY_LOCAL&lt;/code&gt;. Deberias poder conectarte correctamente una vez introduzcas la contraseña del usuario root que hemos configurado previamente.&lt;/p&gt;
+
+&lt;h2&gt;5.3 Crear y enviar las llaves de encriptado&lt;/h2&gt;
+
+&lt;p&gt;A continuación crearemos las llaves de encriptado en el dispositivo desde el cual nos conectamos por SSH a la Raspberry. Se creará una llave privada y una llave pública que será la que enviemos a la Raspberry y de esta forma nos autorice a conectarnos.&lt;/p&gt;
+
+&lt;p&gt;Crea las llaves con &lt;code&gt;ssh-keygen -t rsa&lt;/code&gt;. Por defecto se guardaran dentro de la carpeta &lt;code&gt;.ssh&lt;/code&gt; situada en el directorio &lt;code&gt;home&lt;/code&gt; de tu sistema.&lt;/p&gt;
+
+&lt;p&gt;Envíalas a la Raspberry con &lt;code&gt;ssh-copy-id root@IP_RASPBERRY_LOCAL&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Como puedes ver, para poder enviar la llave pública para acceder como usuario root, es indispensable habilitar el propio acceso root, que es lo que hemos hecho en el paso 5.3.&lt;/p&gt;
+
+&lt;p&gt;Confirma que puedes acceder como root con el comando &lt;code&gt;ssh root@IP_RASPBERRY_LOCAL&lt;/code&gt; sin que ninguna contraseña sea solicitada. Sin embargo, aún sería posible acceder como root desde otro dispositivo sin contraseña.&lt;/p&gt;
+
+&lt;h2&gt;5.4 Bloquear el acceso con contraseña&lt;/h2&gt;
+
+&lt;p&gt;Dada la política actual de acceso que hemos configurado en el apartado 5.2 con la línea &lt;code&gt;PermitRootLogin yes&lt;/code&gt;, otros dispositivos siguen pudiendo acceder mediante contraseña. Para evitar esto cambiaremos la directriz de la configuración a &lt;code&gt;PermitRootLogin without-password&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Al igual que en el punto 5.2, modifica el archivo &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt; y sustituye la línea &lt;code&gt;PermitRootLogin yes&lt;/code&gt; por &lt;code&gt;PermitRootLogin without-password&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Reiniciar el servicio sshd con &lt;code&gt;sudo service sshd restart&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;¡ATENCIÓN! Mi consejo es que no cerréis la ventana actual&lt;/strong&gt;. Comprobad en otra terminal que podéis acceder con &lt;code&gt;ssh root@IP_RASPBERRY_LOCAL&lt;/code&gt; correctamente y sin contraseña.&lt;/p&gt;
+
+&lt;p&gt;Si la directriz se configura como &lt;code&gt;PermitRootLogin without-password&lt;/code&gt; y las llaves no se han copiado correctamente, nos quedaríamos sin acceso remoto. Este problema sería equivalente a perder la contraseña de acceso. Lee el siguiente punto para entender donde se guardan las llaves en la Raspberry y asegurarte de que se ha copiado.&lt;/p&gt;
+
+&lt;h2&gt;5.5 Administrar acceso&lt;/h2&gt;
+
+&lt;p&gt;Con este método se pueden configurar diferentes dispositivos para accedan remótamente sin contraseña. Para poder eliminar este acceso, en la Raspberry edita el siguiente fichero con: &lt;code&gt;sudo nano /root/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Cada línea de este archivo es una llave de cada dispositivo. Al final de cada línea podrás ver con más fácilidad de que dispositivo se trata. Para eliminar el acceso, simplemente borra la línea asociada al dispositivo.&lt;/p&gt;
+</description>
+</item>
+<item>
 <title>Servidor en casa - Parte 4: Instalando Qbittorrent, Jackett y Wireguard</title>
 <link>https://marcalv.com/blog/007homeserver4</link>
 <guid>007homeserver4</guid>
