@@ -24,6 +24,7 @@ body {
 /* HOMEPAGE */
 
 .hometitle{
+    margin-top: 2em;
     margin-bottom: 0;
     font-size: 2em;
     text-align: center;
@@ -66,32 +67,42 @@ h1.hometitle:before {
 .homesubtitle{
     color:  var(--text);
     text-align: center;
-    margin-top: 0;
+    margin-top: 0em;
+    margin-bottom: 7em;
     }
 
 
 .homecategory{
     text-align: center;
     margin-top: 3em;
-    margin-bottom: 0em;
+    margin-bottom: 0.2em;
 }
 
 .linkgroup {
     font-size: larger;
     text-align: center;
+
 }
 
 .linkgroup a{
     margin-right: 0.5em;
     margin-left: 0.5em;  
-    margin-bottom: 0.2em; 
     text-decoration: none;
+    display: inline-block;
+    
+}
+
+.linkgroup img{
+    display: inline-block; 
 }
 
 .linkgroup p{ 
     display: inline-block; 
     text-decoration: none;
     color: #ffca28;
+    margin-top: 0.5em;
+    margin-bottom: 0em;
+    
 }
 
 .linkgroup p:hover , .linkgroup p:active{
