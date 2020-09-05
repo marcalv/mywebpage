@@ -1,0 +1,227 @@
+/* GENERAL */
+
+:root {
+    --background: #212121;
+    --text: #eeeeee;
+    --a:  #29b6f6;
+}
+
+body {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    font-family: 'Liberation Mono';
+    background: var(--background);
+    color:  var(--text);
+}
+
+/* HOMEPAGE */
+
+.hometitle{
+    margin-bottom: 0;
+    font-size: 3em;
+    text-align: center;
+}
+
+
+h1.hometitle:after {
+    content: '_';
+    opacity: 0;
+    display: inline-block;
+    animation: underscore_blink 0.7s linear infinite alternate;
+}
+
+h1.hometitle:after {
+    content: '_';
+    opacity: 0;
+    display: inline-block;
+    animation: underscore_blink 0.7s linear infinite alternate;
+}
+
+h1.hometitle:before {
+    content: "\00a0";
+}
+  
+@keyframes underscore_blink {
+    50% {
+        opacity: 0;
+    }
+    51%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+    1% {
+        opacity: 0;
+        }
+    }
+
+.homesubtitle{
+    color:  var(--text);
+    text-align: center;
+    margin-top: 0;
+    }
+
+
+.homecategory{
+    text-align: center;
+    margin-top: 3em;
+    margin-bottom: 0em;
+}
+
+.linkgroup {
+    font-size: larger;
+    text-align: center;
+}
+
+.linkgroup a{
+    margin-right: 0.5em;
+    margin-left: 0.5em;  
+    margin-bottom: 0.2em; 
+    text-decoration: none;
+}
+
+.linkgroup p{ 
+    display: inline-block; 
+    text-decoration: none;
+    color: #ffca28;
+}
+
+.linkgroup p:hover , .linkgroup p:active{
+    color: black !important;
+    background-color: #ffca28;
+}
+
+
+/* GENERAL PAGES */
+
+.pagetitle{
+    margin-bottom: 0;
+    font-size: 2em;
+    text-align: center;
+    color: var(--text);
+}
+
+h2{
+    text-align: center;
+    margin-top: 3em;
+}
+
+/* ICON MANAGEMENT */
+
+.icon  {
+    height: 1em;
+    width: auto;
+    vertical-align:middle;
+}
+
+.iconlarge{
+    height: 2em !important;
+}
+
+
+/* BREACRUMBS */
+
+ul.breadcrumb {
+    padding: 0.7em;
+    list-style: none;
+    padding-bottom: 0.5em;
+    border-bottom: solid 1px;
+}
+  
+ul.breadcrumb li {
+    display: inline;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 0.5em;
+    content: "\003E\00a0";
+}
+
+
+ul.breadcrumb li a{
+    color: #ce93d8;
+    text-decoration: none;
+}
+
+
+ul.breadcrumb li a:hover , ul.breadcrumb li a:active {
+    background-color: #ba68c8;
+    color: var(--background);
+} 
+
+
+div.content{
+    margin: 1em;
+}
+
+
+/* MENU PAGES */
+
+.menucontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+ul.menuindex{
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block; 
+    margin: auto;
+    border: me;
+}
+
+ul.menuindex li{
+    margin-top: 1em;
+}
+
+
+ul.menuindex h2{
+    display: inline;
+    color: #ffca28;
+}
+
+ul.menuindex h2:hover , ul.menuindex h2:active{
+    color: var(--background);
+    background-color: #ffca28;
+}
+
+ul.menuindex div.image{
+    display: inline;
+}
+
+ul.menuindex a{
+    text-decoration: none;
+}
+
+ul.menuindex img{
+    vertical-align:middle;
+    height: 2.5em;
+    width: auto;
+}
+
+
+
+/* DOWNLAOD BUTTON */
+.downloadbtn{
+    float: right;
+}
+
+
+.downloadbtn a{
+    text-decoration: none;
+    font-size: 1.2em;
+    color:  var(--text);
+    text-align: right;
+    color: #ffca28;
+}
+
+.downloadbtn a:hover , .downloadbtn a:active{
+    color: black !important;
+    background-color: #ffca28;
+}

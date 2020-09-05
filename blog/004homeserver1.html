@@ -1,35 +1,31 @@
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style_blog.css'>
-<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<!DOCTYPE html>
+<html lang="es">
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/static/blog/css/style.css'>
 
 <head>
     <title>Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi - Marc Álvarez</title>
 </head>
 
 <body>
-    <div class="container mt-4">
-        
-        <div class="mx-auto text-center my-4">
-            <img src="/static/icons/icon_raspberry.png" class="mr-3 notcentered" alt="..." style=" width: 64px; height: 64px;">
-            <div class="h1">
-                Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi
-            </div>
-        </div>
+    <h1>
+        <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+        Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi
+    </h1>
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi</li>
-            </ol>
-        </nav>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li>Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi</li>
+    </ul>
 
-        <div class="container" id='mk'>
-                <!--name:Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi_-->
+    <div class="content">
+        <!--name:Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi_-->
 
 
 <!--pubdate:2020/09/26_-->
@@ -114,13 +110,16 @@ A continuación conecta el USB y vuelve a ejecutar el comando <code>sudo blkid</
 <p>Ejecuta el comando <code>sudo mkdir /mnt/usb</code>. Con esto conseguimos que a cada arranque el USB se monte en la ruta <code>/mnt/usb</code>.</p>
 
 <p>Reiniciamos con <code>sudo reboot</code> y comprobamos que el USB se ha montado correctamente. Para ello puedes usar el comando <code>cat /proc/mounts</code>. En una de las lineas que devuelve debe aparecer el USB montado en la ruta anterior.</p>
-        </div>
         <br>
         <hr/>
-        <div class="text-muted">Published: 2020/09/26</div>
-        <div class="text-muted">Modified: 2020/09/26</div>
+        <div class="dates">
+            <p>Published: 2020/09/26</p>
+            <p>Modified: 2020/09/26</p>
+        </div>
+        
         <br>
     </div>
+
 </body>
 
 </html>
