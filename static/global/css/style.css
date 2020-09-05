@@ -1,5 +1,10 @@
 /* GENERAL */
 
+@font-face {
+    font-family: "My Custom Font";
+    src: url(/static/global/fonts/LiberationMono-Regular.ttf) format("truetype");
+}
+
 :root {
     --background: #212121;
     --text: #eeeeee;
