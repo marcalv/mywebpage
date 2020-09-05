@@ -1,7 +1,7 @@
 /* GENERAL */
 
 @font-face {
-    font-family: "My Custom Font";
+    font-family: "Liberation Mono";
     src: url(/static/global/fonts/LiberationMono-Regular.ttf) format("truetype");
 }
 
