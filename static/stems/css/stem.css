@@ -1,14 +1,19 @@
 .playlist { margin: 2em 0; }
 
+/*grid*/
 .playlist .playlist-time-scale { height: 30px; }
 
-.playlist .playlist-tracks { background: white; }   /*#FONDO DE TODO¿?*/
 
-.playlist .channel { background: grey; }
+ /*#FONDO DE TODO¿?*/
+.playlist .playlist-tracks { background: gray; }  
 
-.playlist .channel-progress { background: white; }
+/*Forma de onda sin tocar*/
+.playlist .channel { background: #bdbdbd; }
 
-.playlist .cursor { background: black; }
+.playlist .channel-progress { background: orange; }
+
+/*Cursor tocando*/
+.playlist .cursor { background: #76ff03; }
 
 .playlist .wp-fade { background-color: rgba(0, 0, 0, 0.1); }
 
@@ -20,24 +25,28 @@
 
 .playlist .state-shift { cursor: ew-resize; }
 
+/*Cursor seleccion*/
  .selection.point { background: red !important;}
 
 .playlist .selection.segment { background: rgba(0, 0, 0, 0.1); }
 
 .playlist .channel-wrapper.silent .channel { opacity: 0.3; }
 
-.playlist .controls { background: white; text-align: center; }
+  /* Cajas izq */
+.playlist .controls { background: #343434; text-align: center; }    
 
+/*Titulos pistas*/
 .playlist .controls header { overflow: hidden; color: white; background-color: blueviolet; margin-bottom: 1em; height: 20px; }
 
-.playlist .controls label { margin: 1em auto; width: 100%; display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transform: translate(0, 0); }
+.playlist .controls label { margin: 1em auto; width: 100%; display: inline-block; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transform: translate(0, 0); }
 
-.playlist .controls label:before { content: "\f027"; color: black; font-size: 18px; padding-right: 5px; -moz-osx-font-smoothing: grayscale; }
+.playlist .controls label:before { content: "-"; color: white; font-size: 18px; padding-right: 5px; -moz-osx-font-smoothing: grayscale; }
 
-.playlist .controls label:after { content: "\f028"; color: black; font-size: 18px; padding-left: 5px; }
+.playlist .controls label:after { content: "+"; color: white; font-size: 18px; padding-left: 5px; }
 
 .playlist .controls input[type=range] { -webkit-appearance: none; -moz-appearance: none; appearance: none; display: inline-block; width: 75%; }
 
+/* slider volumen pista*/
 .playlist .controls input[type=range]::-webkit-slider-runnable-track { height: 8px; background: #ddd; border: none; border-radius: 3px; padding: 1px; }
 
 .playlist .controls input[type=range]::-moz-range-track { height: 8px; background: #ddd; border: none; border-radius: 3px; padding: 1px; }
@@ -88,7 +97,7 @@
 
 .playlist .vocals { background-color: #c0dce0; }
 
-.playlist .vocals header { background-color: white; }
+.playlist .vocals header { background-color: green; }
 
 .track-drop { border: 2px dashed blue; height: 100px; width: 200px; margin: 1em 0; }
 
@@ -99,3 +108,18 @@
 footer { margin-top: 2em; }
 
 /*# sourceMappingURL=main.css.map */
+
+.btn-mute, .btn-solo{
+    outline: solid white 1px;
+    padding: 0.1em;
+}
+
+.btn-mute.active{
+    outline: solid red 1px;
+    color: red;
+}
+
+.btn-solo.active{
+    outline: solid orange 1px;
+    color: orange;
+}

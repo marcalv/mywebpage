@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#212121" />
+
+<link rel="icon" type="image/png" href="/static/global/icons/icon_user.png" />
+
+<link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/static/stems/css/stem.css'>
+
+<head>
+    <title>Marc Álvarez - Music</title>
+</head>
+
+<body>
+    <h1 class="pagetitle">
+        <img class="icon" src="/static/global/icons/icons_wave.png">
+        Test Stems
+    </h1>
+
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/music">Music</a></li>
+        <li>Test Stems</li>
+    </ul>
+
+    <div class="content">
+      <div class="">
+        <div id="top-bar" class="playlist-top-bar">
+          <div class="playlist-toolbar">
+            <div class="btn-group">
+              <button class="btn-pause btn btn-warning">PAUSE</button>
+              <button class="btn-play btn btn-success">PLAY</button>
+              <button class="btn-stop btn btn-danger">STOP</button>
+            </div>
+          </div>
+        </div>
+  
+        <div id="playlist"></div>
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="master-gain">Master Volume</label>
+            <input type="range" min="0" max="100" value="100" class="master-gain form-control" id="master-gain">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked class="automatic-scroll"> Automatic Scroll 
+            </label>
+          </div>
+        </form>
+  
+        <div class="sound-status"></div>
+        <div class="loading-data"></div>
+  
+        <script
+          src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/static/stems/js/waveform-playlist.var.js"></script>
+        <script type="text/javascript" src="/music/stems/test/test.js"></script>
+        <script type="text/javascript" src="/static/stems/js/emitter.js"></script>1
+        
+        <script>var options = {isAutomaticScroll: false}</script>
+        
+    </div>
+
+    <canvas style="width: 500px; height:500px;"></canvas>
+
+</body>
+
+</html>
+
+
+
+
+
+
+

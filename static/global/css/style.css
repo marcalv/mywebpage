@@ -166,19 +166,19 @@ ul.breadcrumb li+li:before {
 
 
 ul.breadcrumb li a{
-    color: #ce93d8;
+    color: #d4e157;
     text-decoration: none;
 }
 
 
 ul.breadcrumb li a:hover , ul.breadcrumb li a:active {
-    background-color: #ba68c8;
+    background-color: #d4e157;
     color: var(--background);
 } 
 
 
 div.content{
-    margin: 1em;
+   
 }
 
 
@@ -314,3 +314,9 @@ ul.blogindex{
     width: auto;
     vertical-align:middle;
   }
+
+
+  .scrollable-element {
+    scrollbar-color: dark;
+}
+  

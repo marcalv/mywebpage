@@ -6,7 +6,7 @@ var playlist = WaveformPlaylist.init({
     state: 'cursor', 
     isAutomaticScroll: true,
     colors: {
-      waveOutlineColor: '#E0EFF1'
+      waveOutlineColor: '#343434'
     },
     controls: {
       show: true, //whether or not to include the track controls
