@@ -313,7 +313,16 @@ ul.menuindex img{
     float: right;
 }
 
+
+/* BLOG */
+.blogcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 ul.blogindex{
+    margin-top: 0;
     list-style: none;
     padding: 0;
   }
@@ -353,7 +362,8 @@ ul.blogindex{
   
   .rss{
     text-align: center;
-    margin: 2em;
+    margin-bottom: 1.5em;
+    margin-top: 3.5em;
   }
   
   .rss p{
