@@ -11,7 +11,7 @@
 <link rel='stylesheet' type='text/css' href='/static/stems/css/stem.css'>
 
 <head>
-    <title>Marc Álvarez - Music</title>
+    <title>Test Stems - Marc Álvarez</title>
 </head>
 
 <body>
@@ -31,42 +31,45 @@
         <div id="top-bar" class="playlist-top-bar">
           <div class="playlist-toolbar">
             <div class="btn-group controlbar">
-              <div class="btn-pause ">PAUSE</div>
-              <div class="btn-play ">PLAY</div>
-              <div class="btn-stop">STOP</div>
+              <div class="btn-pause btn btn-yellow">PAUSE</div>
+              <div class="btn-play btn btn-green">PLAY</div>
+              <div class="btn-stop btn btn-red">STOP</div>
             </div>
           </div>
         </div>
   
         <div id="playlist"></div>
-        <form class="form-inline">
-          <div class="form-group">
-            <label for="master-gain">Master Volume</label>
-            <input type="range" min="0" max="100" value="100" class="master-gain form-control" id="master-gain">
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" checked class="automatic-scroll"> Automatic Scroll 
-            </label>
-          </div>
-        </form>
-  
-        <div class="sound-status"></div>
-        <div class="loading-data"></div>
-  
-        <script
-          src="https://code.jquery.com/jquery-3.5.1.js"
-          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-          crossorigin="anonymous"></script>
-        <script type="text/javascript" src="/static/stems/js/waveform-playlist.var.js"></script>
-        <script type="text/javascript" src="/music/stems/test/test.js"></script>
-        <script type="text/javascript" src="/static/stems/js/emitter.js"></script>1
+      
+        <div class="mastervolume">
+          <label for="master-gain">Master Volume</label>
+          <input type="range" min="0" max="100" value="100" class="master-gain" id="master-gain">
+        </div>
+        <div class="automaticscroll">
+          <label  for="automatic-scroll">Automatic Scroll</label>
+          <input type="checkbox" checked class="automatic-scroll">
+        </div>
         
-        <script>var options = {isAutomaticScroll: false}</script>
+        <button id="logtoggle" class="btn btn-yellow">Ver registro</button>
+        
+        <div class="sound-status hide"></div>
+        <div class="loading-data hide"></div>
+  
+        <script type="text/javascript" src="/static/global/js/jquery-3.5.1.js"></script>
+        <script type="text/javascript" src="/static/stems/js/waveform-playlist.var.js"></script>
+        <script type="text/javascript" src="playlist.js"></script>
+        <script type="text/javascript" src="/static/stems/js/emitter.js"></script>
+        
+        <script>
+          $('#logtoggle').on('click', function(e) {
+            $('.sound-status').toggleClass("unhide hide");
+            $('.loading-data').toggleClass("unhide hide");
+            e.preventDefault();
+          });
+
+        </script>
         
     </div>
 
-    <canvas style="width: 500px; height:500px;"></canvas>
 
 </body>
 

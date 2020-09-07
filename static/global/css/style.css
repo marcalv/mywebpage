@@ -11,11 +11,27 @@
 
 :root {
     --background: #212121;
+    --lightbackground: #2e2e2e;
     --text: #eeeeee;
-    --a:  #29b6f6;
+    --yellow: #ffca28;
+    --green: #d4e157;
+    --red : #f44336;
+    --purple : #ec407a;
+    --lightpurple : #f06292;
+    --darkgreen : #43a047;
+    --rss : #ffcc80;
+    --gray: gray;
+    --black: black;
+    --darkgray: #444444;
+    --lightgray: #bdbdbd;
+    --orange: orange;
+    --fosfgreen: #76ff03;
+    --violet: #673ab7;
+    --blue: #90caf9;
 }
 
 body {
+    scrollbar-color: var(--gray) var(--darkgray);
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -23,6 +39,100 @@ body {
     font-family: 'Liberation Mono';
     background: var(--background);
     color:  var(--text);
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+    background: var(--darkgray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray);
+}
+
+
+
+/* Framework*/
+
+.link-yellow{
+    color: var(--yellow);
+}
+
+.link-yellow:hover , .link-yellow:active{
+    color: var(--black);
+    background-color: var(--yellow);
+}
+
+.btn{
+    text-decoration: none;
+    background: none;
+    border: solid 1px;
+    padding-right: 0.2em;
+    padding-left: 0.2em;  
+    user-select: none;
+}
+
+.btn-block{
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.btn-yellow{
+    color: var(--yellow);
+}
+
+.btn-yellow:hover , .btn-yellow:active{
+    color: var(--black);
+    background-color: var(--yellow);
+}
+
+.btn-green{
+    color: var(--green);
+}
+
+.btn-green:hover , .btn-green:active{
+    color: var(--black) ;
+    background-color: var(--green);
+}
+
+.btn-red{
+    color: var(--red);
+}
+
+.btn-red:hover , .btn-red:active{
+    color: var(--black) ;
+    background-color: var(--red);
+}
+
+.btn-purple{
+    color: var(--purple);
+}
+
+.btn-purple:hover , .btn-purple:active{
+    color: var(--black);
+    background-color: var(--purple);
+}
+
+.icon  {
+    height: 1em;
+    width: auto;
+    vertical-align:middle;
+}
+
+.iconlarge{
+    height: 2em !important;
+}
+
+.hide{
+    display: none;
+}
+
+.unhide{
+    display: block;
 }
 
 /* HOMEPAGE */
@@ -84,9 +194,7 @@ h1.hometitle:before {
 }
 
 .linkgroup {
-    font-size: larger;
     text-align: center;
-
 }
 
 .linkgroup a{
@@ -94,32 +202,29 @@ h1.hometitle:before {
     margin-left: 0.5em;  
     text-decoration: none;
     display: inline-block;
-    
 }
 
 .linkgroup img{
-    display: inline-block; 
-    height: 1.5em;
+    height: 1.8em;
     width: auto;
     vertical-align:middle;
 }
 
 .linkgroup p{ 
     display: inline-block; 
-    text-decoration: none;
-    color: #ffca28;
     margin-top: 0.5em;
     margin-bottom: 0em;
-    font-size: 1.1em;
+    font-size: 1.4em;
 }
 
-.linkgroup p:hover , .linkgroup p:active{
-    color: black !important;
-    background-color: #ffca28;
-}
 
 
 /* GENERAL PAGES */
+
+h2{
+    text-align: center;
+    margin-top: 2em;
+}
 
 .pagetitle{
     margin-bottom: 0;
@@ -127,24 +232,6 @@ h1.hometitle:before {
     text-align: center;
     color: var(--text);
 }
-
-h2{
-    text-align: center;
-    margin-top: 3em;
-}
-
-/* ICON MANAGEMENT */
-
-.icon  {
-    height: 1em;
-    width: auto;
-    vertical-align:middle;
-}
-
-.iconlarge{
-    height: 2em !important;
-}
-
 
 /* BREACRUMBS */
 
@@ -166,20 +253,15 @@ ul.breadcrumb li+li:before {
 
 
 ul.breadcrumb li a{
-    color: #d4e157;
+    color: var(--green);
     text-decoration: none;
 }
 
 
 ul.breadcrumb li a:hover , ul.breadcrumb li a:active {
-    background-color: #d4e157;
+    background-color: var(--green);
     color: var(--background);
 } 
-
-
-div.content{
-   
-}
 
 
 /* MENU PAGES */
@@ -207,13 +289,7 @@ ul.menuindex li{
 
 ul.menuindex p{
     display: inline;
-    color: #ffca28;
     font-size: 1.1em;
-}
-
-ul.menuindex p:hover , ul.menuindex p:active{
-    color: var(--background);
-    background-color: #ffca28;
 }
 
 ul.menuindex div.image{
@@ -232,25 +308,10 @@ ul.menuindex img{
 
 
 
-/* DOWNLAOD BUTTON */
-.downloadbtn{
+/* Step Mixes */
+.stepmixbtn{
     float: right;
 }
-
-
-.downloadbtn a{
-    text-decoration: none;
-    font-size: 1.2em;
-    color:  var(--text);
-    text-align: right;
-    color: #ffca28;
-}
-
-.downloadbtn a:hover , .downloadbtn a:active{
-    color: black !important;
-    background-color: #ffca28;
-}
-
 
 ul.blogindex{
     list-style: none;
@@ -267,12 +328,12 @@ ul.blogindex{
   
   ul.blogindex div.date{
     display: inline;
-    color: #ce93d8;
+    color: var(--lightpurple);
   }
   
   ul.blogindex div.title{
     display: inline;
-    color: #90caf9;
+    color: var(--blue);
   }
   
   ul.blogindex img{
@@ -297,7 +358,7 @@ ul.blogindex{
   
   .rss p{
     display: inline;
-    color: #ffcc80;
+    color: var(--rss);
   }
   
   .rss a{
@@ -305,7 +366,7 @@ ul.blogindex{
   }
   
   .rss p:hover, .rss p:active{
-    background-color: #ffcc80;
+    background-color: var(--rss);
     color: var(--background);
   }
   
@@ -320,3 +381,49 @@ ul.blogindex{
     scrollbar-color: dark;
 }
   
+/* STEMS */
+
+.btn-stop{
+    margin-right: 2em;
+}
+
+.btn-mute, .btn-solo{
+    outline: solid c 1px;
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+    color: var(--text);
+    user-select: none;
+}
+
+.btn-mute.active{
+    background: var(--red);
+    color: white;
+}
+
+.btn-solo.active{
+    background: var(--darkgreen);
+    color: white;
+}
+
+.playlist{
+    margin-top: 1em;
+}
+
+.controlbar{
+    margin-top: 0.5em;
+    display: inline-block;
+    text-align: center;
+}
+
+.controlbar div{
+    display: inline;
+}
+
+.loading-data{
+    margin-top: 1em;
+    overflow-wrap: break-word;
+}
+
+.automaticscroll{
+    margin-bottom: 1em;
+}
