@@ -484,6 +484,7 @@ ul.blogindex{
 .controlbar button{
     display: inline-block;
     margin-top: 0.2em;
+    font-size: 0.95em;
 }
 
 .seekbar, .zoombar, .playpausebar{
