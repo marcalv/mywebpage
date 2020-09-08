@@ -156,6 +156,11 @@ body {
 
 }
 
+
+br.big{
+    margin: 1em;
+}
+
 /* HOMEPAGE */
 
 .hometitle{
