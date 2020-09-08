@@ -129,6 +129,15 @@ body {
     background-color: var(--purple);
 }
 
+.btn-blue{
+    color: var(--blue);
+}
+
+.btn-blue:hover , .btn-blue:active{
+    color: var(--blue);
+    background-color: var(--blue);
+}
+
 .icon  {
     height: 1em;
     width: auto;
@@ -472,7 +481,7 @@ ul.blogindex{
     text-align: center;
 }
 
-.controlbar div{
+.controlbar button{
     display: inline-block;
     margin-top: 0.2em;
 }
