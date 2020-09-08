@@ -32,7 +32,9 @@
     --plyr-color-main: var(--yellow);
     --plyr-audio-controls-background: transparent;
     --plyr-audio-control-color: var(--text);
-    --plyr-audio-control-color-hover: var(--background)
+    --plyr-audio-control-color-hover: var(--background);
+    --plyr-progress-loading-background: var(--yellow);
+
 }
 
 body {
@@ -146,9 +148,6 @@ body {
     width: 100%;
 }
 
-:root {
-
-}
 
 .plyr__controls{
     padding: 0 !important;
@@ -259,6 +258,10 @@ h2{
         margin-left: 3em;
         margin-right: 3em;
     }
+}
+
+.content{
+    margin-bottom: 3em;
 }
 
 /* BREACRUMBS */
