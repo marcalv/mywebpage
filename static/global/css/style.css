@@ -486,15 +486,13 @@ ul.blogindex{
     margin-top: 0.2em;
 }
 
-.seekbar{
-    margin-top: ;
+.seekbar, .zoombar, .playpausebar{
+    margin-top: 0.2em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
     display: inline-block;
 }
 
-.zoombar{
-    margin-top: ;
-    display: inline-block;
-}
 
 .loading-data{
     margin-top: 1em;
