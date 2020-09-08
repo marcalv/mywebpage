@@ -28,6 +28,11 @@
     --fosfgreen: #76ff03;
     --violet: #673ab7;
     --blue: #90caf9;
+
+    --plyr-color-main: var(--yellow);
+    --plyr-audio-controls-background: transparent;
+    --plyr-audio-control-color: var(--text);
+    --plyr-audio-control-color-hover: var(--background)
 }
 
 body {
@@ -52,6 +57,8 @@ body {
 ::-webkit-scrollbar-thumb {
     background: var(--gray);
 }
+
+
 
 
 
@@ -133,6 +140,19 @@ body {
 
 .unhide{
     display: block;
+}
+
+.js-player{
+    width: 100%;
+}
+
+:root {
+
+}
+
+.plyr__controls{
+    padding: 0 !important;
+    outline: solid var(--yellow) 1px;
 }
 
 /* HOMEPAGE */
@@ -233,6 +253,14 @@ h2{
     color: var(--text);
 }
 
+
+@media (min-width: 36em) {
+    .content{
+        margin-left: 3em;
+        margin-right: 3em;
+    }
+}
+
 /* BREACRUMBS */
 
 ul.breadcrumb {
@@ -311,6 +339,7 @@ ul.menuindex img{
 /* Step Mixes */
 .stepmixbtn{
     float: right;
+    margin-top: 0.3em;;
 }
 
 

@@ -8,11 +8,15 @@
 <link rel="icon" type="image/png" href="/static/global/icons/icon_user.png" />
 <link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
 
+<link rel="stylesheet" href="/static/global/css/plyr-3.6.2.css" />
+<script src="/static/global/js/plyr-3.6.2.js"></script>
+
 <head>
     <title>Step Mixes - Marc Álvarez</title>
 </head>
 
 <body>
+
     <h1 class="pagetitle">
         <img class="icon" src="/static/global/icons/icon_dj.png">
         Step Mixes
@@ -24,9 +28,9 @@
         <li>Step Mixes</li>
     </ul>
 
-    
+    <div class="content">
         <h2>StepMix Special Corona - 28'</h2>
-        <audio controls="controls" preload="metadata" style="width:100%"
+        <audio class="js-player stepmixes" controls="controls" preload="metadata"
             src="/static/files/audio/stepmixes/StepMix_Corona.mp3">
             Your browser does not support the HTML5 Audio element.
         </audio>
@@ -34,34 +38,40 @@
             <img class="icon" src="/static/global/icons/icon_download.png">
             Descargar
         </a>
-
-
-        <h2>StepMix Octubre 2017 - 58'</h2>
-        <audio controls="controls" preload="metadata" style="width:100%"
+    
+        <br>
+    
+        <h2 >StepMix Octubre 2017 - 58'</h2>
+        <audio class="js-player stepmixes" controls="controls" preload="metadata" 
             src="/static/files/audio/stepmixes/StepMix_Octubre_2017.mp3">
             Your browser does not support the HTML5 Audio element.
         </audio>
-        <a class="btn btn-yellow stepmixbtn" href="/static/files/audio/stepmixes/StepMix_Octubre_2017.mp3"
-        download>
+        <a class="btn btn-yellow stepmixbtn" href="/static/files/audio/stepmixes/StepMix_Octubre_2017.mp3" download>
             <img class="largeicon icon" src="/static/global/icons/icon_download.png">
             Descargar
         </a>
-
-
+    
+        <br>
+    
         <h2>StepMix Febrero 2017 - 55'</h2>
-        <audio controls="controls" preload="metadata" style="width:100%"
+        <audio class="js-player stepmixes" controls="controls" preload="metadata"
             src="/static/files/audio/stepmixes/StepMix_Febrero_2017.mp3">
             Your browser does not support the HTML5 Audio element.
         </audio>
-        <a class="btn btn-yellow stepmixbtn" href="/static/files/audio/stepmixes/StepMix_Febrero_2017.mp3"
-            download>
+        <a class="btn btn-yellow stepmixbtn" href="/static/files/audio/stepmixes/StepMix_Febrero_2017.mp3" download>
             <img class="largeicon icon" src="/static/global/icons/icon_download.png">
-                Descargar
+            Descargar
         </a>
-       
-        
     </div>
-    </div>
+    <script>
+        const players = Plyr.setup('.js-player',{
+            title: 'Example Title',
+            enabled: true,
+            controls : ['play','progress','current-time','mute','volume','airplay'],
+            loadSprite : true,
+            iconUrl : '/static/global/svg/plyr-3.6.2.svg'
+        });
+    </script>
 </body>
 
 </html>
