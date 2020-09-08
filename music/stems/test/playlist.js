@@ -1,5 +1,9 @@
+/* DURACIÓN TOTAL PARA EVITAR SEEK FUERA DE RANO */
+var totalduration = 52
+
 var playlist = WaveformPlaylist.init({
-    samplesPerPixel: 1000,
+    /* ZOOM POR DEFECTO */
+    samplesPerPixel: 2000,
     waveHeight: 100,
     container: document.getElementById("playlist"),
     timescale: true,
@@ -9,10 +13,11 @@ var playlist = WaveformPlaylist.init({
       waveOutlineColor: '#343434'
     },
     controls: {
-      show: true, //whether or not to include the track controls
-      width: 200 //width of controls in pixels
+      show: true, 
+      width: 200
     },
-    zoomLevels: [500, 1000, 3000, 5000]
+    /* LISTA DE ZOOMS */
+    zoomLevels: [100, 500, 1000, 2000,3000, 5000, 10000,30000]
   });
   
   playlist.load([

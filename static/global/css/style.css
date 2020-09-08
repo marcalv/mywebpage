@@ -49,6 +49,8 @@ body {
     color:  var(--text);
 }
 
+
+
 /* SCROLLBAR */
 
 ::-webkit-scrollbar {
@@ -440,9 +442,7 @@ ul.blogindex{
   
 /* STEMS */
 
-.btn-stop{
-    margin-right: 2em;
-}
+
 
 .btn-mute, .btn-solo{
     outline: solid c 1px;
@@ -473,7 +473,18 @@ ul.blogindex{
 }
 
 .controlbar div{
-    display: inline;
+    display: inline-block;
+    margin-top: 0.2em;
+}
+
+.seekbar{
+    margin-top: ;
+    display: inline-block;
+}
+
+.zoombar{
+    margin-top: ;
+    display: inline-block;
 }
 
 .loading-data{
@@ -483,4 +494,12 @@ ul.blogindex{
 
 .automaticscroll{
     margin-bottom: 1em;
+}
+
+body.stem{
+    max-width: unset;
+}
+
+.content.stem{
+    margin:0;
 }

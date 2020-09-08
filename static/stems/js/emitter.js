@@ -230,6 +230,7 @@ $container.on("click", ".btn-seektotime", function () {
   ee.emit("select", time, time);
 });
 
+
 $container.on("change", ".select-seek-style", function (node) {
   playlist.setSeekStyle(node.target.value);
 });
@@ -384,4 +385,41 @@ ee.on('finished', function () {
       playoutPromises = playlist.play(startTime, endTime);
     });
   }
+});
+
+/* CUSTOM SEEK */
+
+function emittime(time){
+  if ((time > 0) & (time < totalduration)){
+    ee.emit("select", time, time);
+  }
+  if (time < 0){
+    ee.emit('rewind')
+    ee.emit('play')
+  }
+
+}
+
+$container.on("click", ".btn-plus5", function () {
+  time = audioPos + 5
+  emittime(time)
+});
+
+$container.on("click", ".btn-minus5", function () {
+  time = audioPos - 5
+  emittime(time)
+});
+
+$container.on("click", ".btn-plus30", function () {
+  time = audioPos + 30
+  emittime(time)
+});
+
+$container.on("click", ".btn-minus30", function () {
+  time = audioPos - 30
+  emittime(time)
+});
+
+$container.on("click", ".btn-last", function () {
+  
 });
