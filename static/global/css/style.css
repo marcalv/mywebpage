@@ -152,7 +152,8 @@ body {
 
 .plyr__controls{
     padding: 0 !important;
-    outline: solid var(--yellow) 1px;
+    border-bottom: solid var(--yellow) 1px;
+
 }
 
 /* HOMEPAGE */
@@ -343,7 +344,15 @@ ul.menuindex img{
 /* Step Mixes */
 .stepmixbtn{
     float: right;
-    margin-top: 0.3em;;
+    margin-top: 0.3em;
+    border-bottom: solid var(--yellow) 1px;
+    text-decoration: none;
+    color: var(--yellow);
+}
+
+.stepmixbtn:hover , .stepmixbtn:active{
+    color: var(--black);
+    background-color: var(--yellow);
 }
 
 
