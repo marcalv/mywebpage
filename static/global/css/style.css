@@ -134,7 +134,7 @@ body {
 }
 
 .btn-blue:hover , .btn-blue:active{
-    color: var(--blue);
+    color: var(--background);
     background-color: var(--blue);
 }
 
