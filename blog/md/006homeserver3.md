@@ -37,7 +37,7 @@ nano /home/pi/compose/data/swag/config/nginx/proxy-confs/nextcloud.subfolder.con
 Edita el archivo `config.php` con el comando
 
 ```
-nano /mnt/usb/nextcloud/config/www/nextcloud/config/config.php
+nano /home/pi/compose/data/config/www/nextcloud/config/config.php
 ```
 
 y añade antes del `);` lo siguiente:

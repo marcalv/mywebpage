@@ -225,7 +225,7 @@ sudo docker-compose restart jackett &amp;amp;&amp;amp; sudo docker logs -f jacke
 
 &lt;p&gt;Edita el archivo &lt;code&gt;config.php&lt;/code&gt; con el comando&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nano /mnt/usb/nextcloud/config/www/nextcloud/config/config.php
+&lt;pre&gt;&lt;code&gt;nano /home/pi/compose/data/config/www/nextcloud/config/config.php
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;y añade antes del &lt;code&gt;);&lt;/code&gt; lo siguiente:&lt;/p&gt;
