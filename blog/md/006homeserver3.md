@@ -64,3 +64,13 @@ sudo docker-compose restart nextcloud && sudo docker logs -f nextcloud
 ```
 
 Accede a [https://TU_DOMINIO.duckdns.org/nextcloud/](https://TU_DOMINIO.duckdns.org/nextcloud/) para comprobar que funciona, tanto dentro como fuera de la red local.
+
+
+### Bonus: Desactivar chunks para subir archivos grandes a máxima velocidad
+Con los siguientes comandas iniciarás la consola dentro del contenedor y configuraras php para que deshabilite el corte por chunks al subir y bajar archivos de nextcloud.
+
+```
+docker exec -it nextcloud /bin/bash
+cd /config/www/nextcloud
+sudo -u abc php occ config:app:set files max_chunk_size --value 0
+```
