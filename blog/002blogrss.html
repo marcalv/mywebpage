@@ -1,35 +1,32 @@
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style_blog.css'>
-<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<!DOCTYPE html>
+<html lang="es">
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#212121" />
+
+<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/static/blog/css/style.css'>
 
 <head>
     <title>Adding an RSS feed to this blog - Marc Álvarez</title>
 </head>
 
 <body>
-    <div class="container mt-4">
-        
-        <div class="mx-auto text-center my-4">
-            <img src="/static/icons/icon_rss.png" class="mr-3 notcentered" alt="..." style=" width: 64px; height: 64px;">
-            <div class="h1">
-                Adding an RSS feed to this blog
-            </div>
-        </div>
+    <h1>
+        <img class="icon notcentered" src="/static/global/icons/icon_rss.png">
+        Adding an RSS feed to this blog
+    </h1>
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Adding an RSS feed to this blog</li>
-            </ol>
-        </nav>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li>Adding an RSS feed to this blog</li>
+    </ul>
 
-        <div class="container" id='mk'>
-                <!--name:Adding an RSS feed to this blog_-->
+    <div class="content">
+        <!--name:Adding an RSS feed to this blog_-->
 
 
 <!--pubdate:2020/08/05_-->
@@ -68,13 +65,14 @@
 <p>An RSS feed is an XML file that contains different fields, in this case: the blog entry itself, title and date mainly. Just like I generate an HTML index with the markdown files, now I create an <code>.xml</code> file containing all the previous information. When a new entry is created, the script regenerates the XML file that now will contain one new item. Your feed aggregator will detect it and notify you.</p>
 
 <p>This XML file can be found <a target="_blank" href="https://marcalv.com/blog/rss.xml">here</a>. That link is also the url that you can add to your feed aggregator. If you want to take a look at the script that generates the feed and all the HTML files, it&rsquo;s <a href="https://github.com/marcalv/mywebpage/blob/master/blog/convert.sh">here</a>.</p>
-        </div>
         <br>
         <hr/>
-        <div class="text-muted">Published: 2020/08/05</div>
-        <div class="text-muted">Modified: 2020/08/05</div>
-        <br>
+        <div class="dates">
+            <p>Published: 2020/08/05</p>
+            <p>Modified: 2020/08/05</p>
+        </div>
     </div>
+
 </body>
 
 </html>

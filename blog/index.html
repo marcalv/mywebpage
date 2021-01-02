@@ -1,115 +1,117 @@
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
-<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<!DOCTYPE html>
+<html lang="es">
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#212121" />
+
+<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/static/blog/css/style.css'>
 
 <head>
     <title>Blog - Marc Álvarez</title>
 </head>
 
 <body>
-    <div class="container mt-4">
+    <h1 class="pagetitle">
+        <img class="icon notcentered" src="/static/global/icons/icon_book.png">
+        Blog
+    </h1>
 
-        <div class="mx-auto text-center my-4">
-            <h1 class="display-4"><img src="/static/icons/icon_book.png" class=" mr-3" alt="..."
-                    style=" width: 64px; height: 64px;">Blog</h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li>Blog</li>
+    </ul>
+
+    <div class="rss">
+        <a href="/blog/rss.xml">
+            <img class="icon notcentered" src="/static/global/icons/icon_rss.png">
+            <p>Get my RSS feed now!</p>
+        </a>
+    </div>
+
+    <div class="content">
+        <div class="blogcontainer">
+            <ul class="blogindex">
+                
+      
+      
+      
+      
+      
+      
+      
+      
+      <!--entry-->
+      <li>
+        <a href="/blog/008homeserver5.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+            <div class="date">2020/10/04</div>
+            <div class="title">Servidor en casa - Parte 5: Acceso remoto mediante llaves de encriptado</div>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/007homeserver4.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+            <div class="date">2020/09/26</div>
+            <div class="title">Servidor en casa - Parte 4: Instalando Qbittorrent, Jackett y Wireguard</div>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/006homeserver3.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+            <div class="date">2020/09/26</div>
+            <div class="title">Servidor en casa - Parte 3: Instalando Nextcloud</div>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/005homeserver2.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+            <div class="date">2020/09/26</div>
+            <div class="title">Servidor en casa - Parte 2: Conexión a la red</div>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/004homeserver1.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+            <div class="date">2020/09/26</div>
+            <div class="title">Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi</div>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/003homeserver0.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+            <div class="date">2020/09/26</div>
+            <div class="title">Servidor en casa - Parte 0: Introducción</div>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/002blogrss.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_rss.png">
+            <div class="date">2020/08/05</div>
+            <div class="title">Adding an RSS feed to this blog</div>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/001blogautomation.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_book.png">
+            <div class="date">2020/07/13</div>
+            <div class="title">Blog automation: write Markdown, get HTML</div>
+        </a>
+      </li>
+      <li>
+        <a href="/blog/000thiswebsite.html">
+            <img class="icon notcentered" src="/static/global/icons/icon_web.png">
+            <div class="date">2020/07/09</div>
+            <div class="title">About this website</div>
+        </a>
+      </li>
+            </ul>
         </div>
-
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blog</li>
-            </ol>
-        </nav>
-
-        <ul class="list-group mb-4 mx-4">
-            <a class="media list-group-item list-group-item-action" href="/blog/rss.xml">
-                <img class="align-self-center listicon-s mr-3" src="/static/icons/icon_rss.png" alt="...">
-                <div class="media-body align-self-center">
-                    <h6 class="my-0 text-center">Get my RSS feed now!</h6>
-                </div>
-            </a>
-        </ul>
-
-        <ul class="list-group mb-5 mx-4">
-            
-
-
-
-
-
-
-
-
-<!--entry-->
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/008homeserver5.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_raspberry.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">Servidor en casa - Parte 5: Acceso remoto mediante llaves de encriptado</div>
-      <div class="p">2020/10/04</div>
+        
     </div>
-  </a>
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/007homeserver4.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_raspberry.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">Servidor en casa - Parte 4: Instalando Qbittorrent, Jackett y Wireguard</div>
-      <div class="p">2020/09/26</div>
-    </div>
-  </a>
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/006homeserver3.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_raspberry.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">Servidor en casa - Parte 3: Instalando Nextcloud</div>
-      <div class="p">2020/09/26</div>
-    </div>
-  </a>
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/005homeserver2.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_raspberry.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">Servidor en casa - Parte 2: Conexión a la red</div>
-      <div class="p">2020/09/26</div>
-    </div>
-  </a>
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/004homeserver1.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_raspberry.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi</div>
-      <div class="p">2020/09/26</div>
-    </div>
-  </a>
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/003homeserver0.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_raspberry.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">Servidor en casa - Parte 0: Introducción</div>
-      <div class="p">2020/09/26</div>
-    </div>
-  </a>
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/002blogrss.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_rss.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">Adding an RSS feed to this blog</div>
-      <div class="p">2020/08/05</div>
-    </div>
-  </a>
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/001blogautomation.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_book.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">Blog automation: write Markdown, get HTML</div>
-      <div class="p">2020/07/13</div>
-    </div>
-  </a>
-  <a class="media list-group-item list-group-item-action text-center" href="/blog/000thiswebsite.html">
-    <img class="align-self-center listicon" src="/static/icons/icon_web.png" alt="...">
-    <div class="media-body align-self-center m-1">
-      <div class="my-0 h6 ">About this website</div>
-      <div class="p">2020/07/09</div>
-    </div>
-  </a>
-        </ul>
 
-    </div>
 </body>
 
 </html>

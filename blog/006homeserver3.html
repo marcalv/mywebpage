@@ -1,35 +1,32 @@
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel='stylesheet' type='text/css' href='/static/css/bootstrap.min.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
-<link rel='stylesheet' type='text/css' href='/static/css/style_blog.css'>
-<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<!DOCTYPE html>
+<html lang="es">
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#212121" />
+
+<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/static/blog/css/style.css'>
 
 <head>
     <title>Servidor en casa - Parte 3: Instalando Nextcloud - Marc Álvarez</title>
 </head>
 
 <body>
-    <div class="container mt-4">
-        
-        <div class="mx-auto text-center my-4">
-            <img src="/static/icons/icon_raspberry.png" class="mr-3 notcentered" alt="..." style=" width: 64px; height: 64px;">
-            <div class="h1">
-                Servidor en casa - Parte 3: Instalando Nextcloud
-            </div>
-        </div>
+    <h1>
+        <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+        Servidor en casa - Parte 3: Instalando Nextcloud
+    </h1>
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Servidor en casa - Parte 3: Instalando Nextcloud</li>
-            </ol>
-        </nav>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li>Servidor en casa - Parte 3: Instalando Nextcloud</li>
+    </ul>
 
-        <div class="container" id='mk'>
-                <!--name:Servidor en casa - Parte 3: Instalando Nextcloud_-->
+    <div class="content">
+        <!--name:Servidor en casa - Parte 3: Instalando Nextcloud_-->
 
 
 <!--pubdate:2020/09/26_-->
@@ -70,7 +67,7 @@
 
 <p>Edita el archivo <code>config.php</code> con el comando</p>
 
-<pre><code>nano /mnt/usb/nextcloud/config/www/nextcloud/config/config.php
+<pre><code>nano /home/pi/compose/data/config/www/nextcloud/config/config.php
 </code></pre>
 
 <p>y añade antes del <code>);</code> lo siguiente:</p>
@@ -94,13 +91,23 @@ sudo docker-compose restart nextcloud &amp;&amp; sudo docker logs -f nextcloud
 </code></pre>
 
 <p>Accede a <a target="_blank" href="https://TU_DOMINIO.duckdns.org/nextcloud/">https://TU_DOMINIO.duckdns.org/nextcloud/</a> para comprobar que funciona, tanto dentro como fuera de la red local.</p>
-        </div>
+
+<h3>Bonus: Desactivar chunks para subir archivos grandes a máxima velocidad</h3>
+
+<p>Con los siguientes comandas iniciarás la consola dentro del contenedor y configuraras php para que deshabilite el corte por chunks al subir y bajar archivos de nextcloud.</p>
+
+<pre><code>docker exec -it nextcloud /bin/bash
+cd /config/www/nextcloud
+sudo -u abc php occ config:app:set files max_chunk_size --value 0
+</code></pre>
         <br>
         <hr/>
-        <div class="text-muted">Published: 2020/09/26</div>
-        <div class="text-muted">Modified: 2020/09/26</div>
-        <br>
+        <div class="dates">
+            <p>Published: 2020/09/26</p>
+            <p>Modified: 2020/09/26</p>
+        </div>
     </div>
+
 </body>
 
 </html>

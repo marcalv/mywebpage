@@ -225,7 +225,7 @@ sudo docker-compose restart jackett &amp;amp;&amp;amp; sudo docker logs -f jacke
 
 &lt;p&gt;Edita el archivo &lt;code&gt;config.php&lt;/code&gt; con el comando&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;nano /mnt/usb/nextcloud/config/www/nextcloud/config/config.php
+&lt;pre&gt;&lt;code&gt;nano /home/pi/compose/data/config/www/nextcloud/config/config.php
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;y añade antes del &lt;code&gt;);&lt;/code&gt; lo siguiente:&lt;/p&gt;
@@ -249,6 +249,15 @@ sudo docker-compose restart nextcloud &amp;amp;&amp;amp; sudo docker logs -f nex
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Accede a &lt;a href=&quot;https://TU_DOMINIO.duckdns.org/nextcloud/&quot;&gt;https://TU_DOMINIO.duckdns.org/nextcloud/&lt;/a&gt; para comprobar que funciona, tanto dentro como fuera de la red local.&lt;/p&gt;
+
+&lt;h3&gt;Bonus: Desactivar chunks para subir archivos grandes a máxima velocidad&lt;/h3&gt;
+
+&lt;p&gt;Con los siguientes comandas iniciarás la consola dentro del contenedor y configuraras php para que deshabilite el corte por chunks al subir y bajar archivos de nextcloud.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker exec -it nextcloud /bin/bash
+cd /config/www/nextcloud
+sudo -u abc php occ config:app:set files max_chunk_size --value 0
+&lt;/code&gt;&lt;/pre&gt;
 </description>
 </item>
 <item>

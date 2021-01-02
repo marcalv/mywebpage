@@ -1,39 +1,43 @@
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel='stylesheet' type='text/css' href="/static/css/bootstrap.min.css">
-<link rel='stylesheet' type='text/css' href="/static/css/style.css">
-<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<!DOCTYPE html>
+<html lang="es">
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#212121" />
+
+<link rel="icon" type="image/png" href="/static/global/icons/icon_user.png" />
+<link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
 
 <head>
     <title>Games - Marc Álvarez</title>
 </head>
 
 <body>
-    <div class="container mt-4">
+    <h1 class="pagetitle">
+        <img class="icon largeicon" src="/static/global/icons/icon_joystick.png">
+        Games
+    </h1>
 
-        <div class="mx-auto text-center my-4">
-            <h1 class="display-4"><img src="/static/icons/icon_joystick.png" class=" mr-3" alt="..."
-                    style=" width: 64px; height: 64px;">Games</h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li>Games</li>
+    </ul>
+
+    <div class="content">
+        <div class="menucontainer">
+            <ul class="menuindex">
+                <li>
+                    <a href="tictacboom">
+                        <img class="" src="/static/global/icons/icon_bomb.png">
+                        <p class="link-yellow">TicTacBoom</p>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Games</li>
-            </ol>
-        </nav>
         
-        <ul class="list-group mb-4 mx-4 h5">
-            <a class="media list-group-item list-group-item-action" href="tictacboom/">
-                <img class="align-self-center listicon mr-3" src="/static/icons/icon_bomb.png" alt="...">
-                <div class="media-body align-self-center">
-                    <div class="my-0">TicTacBoom</div>
-                </div>
-            </a>
-        </ul>
-
+        
     </div>
+
 </body>
 
 </html>
