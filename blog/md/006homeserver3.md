@@ -4,7 +4,7 @@
 <!--icon:raspberry_-->
 
 
-[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=tsbltEpkSiI)
+[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=tsbltEpkSiI)
 
 ## 3.1 Contenedor Nextcloud
 Más información del contenedor: [github.com/linuxserver/docker-nextcloud](https://github.com/linuxserver/docker-nextcloud)

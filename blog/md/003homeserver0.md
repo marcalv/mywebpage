@@ -3,7 +3,7 @@
 <!--moddate:2020/09/26_-->
 <!--icon:raspberry_-->
 
-[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=LUEv2ELG5yg)
+[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=LUEv2ELG5yg)
 
 #### Enlaces de interés
 * [Que es un Docker](https://opensource.com/resources/what-docker)

@@ -3,7 +3,7 @@
 <!--moddate:2020/09/26_-->
 <!--icon:raspberry_-->
 
-[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=OAY0VTnHiMw)
+[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=OAY0VTnHiMw)
 
 ## 1.1 Instalar Raspberry Pi OS Lite (Healess)
 Descargar Raspberry Pi Imager de [aquí](https://www.raspberrypi.org/downloads/) para copiar el SO a la tarjeta SD.

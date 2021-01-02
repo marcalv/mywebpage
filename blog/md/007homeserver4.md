@@ -4,7 +4,7 @@
 <!--icon:raspberry_-->
 
 
-[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=qapw2nI-xyE)
+[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=qapw2nI-xyE)
 
 ## 4.1 Contenedor Qbittorent
 Más información del contenedor: [github.com/linuxserver/docker-qbitorrent](https://github.com/linuxserver/docker-qbitorrent)

@@ -4,7 +4,7 @@
 <!--icon:raspberry_-->
 
 
-<!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.png)](https://www.youtube.com/watch?v=qapw2nI-xyE)-->
+<!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=qapw2nI-xyE)-->
 
 ## 5.1 Acceso SSH mediante llaves de encriptado
 
