@@ -26,55 +26,7 @@
     </ul>
 
     <div class="content">
-        <!--name:Blog automation: write Markdown, get HTML_-->
-
-
-<!--pubdate:2020/07/13_-->
-
-
-<!--moddate:2020/07/13_-->
-
-
-<!--icon:book_-->
-
-
-<h2>Writing in HTML isn&rsquo;t that cool</h2>
-
-<p>I have written my whole web in HTML line by line, or in other words, I have not used any framework. Writing a blog in this language is not very convenient. That is why I have created a little <a target="_blank" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell">bash</a> script that converts Markdown files (one per blog entry) to HTML and automagically integrates them on the web.</p>
-
-<p>For those who don&rsquo;t know what markdown is, it&rsquo;s a language for writing documents with format (different level headers, bold, italic, tables, graphs&hellip;) in a very simple way. Any simple plain text processor is enough to begin create a Markdown file.</p>
-
-<h4>Markdown demonstration</h4>
-
-<p><strong>Below</strong> you can see how this paragraph is written in Markdown format. <a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Here</a> you have more information on what you can do with it.</p>
-
-<pre><code>#### Markdown demonstration
-**Below** you can see how this paragraph is written in Markdown format. [Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) you have more information on what you can do with it.
-</code></pre>
-
-<h2>How the automation works</h2>
-
-<p>The script must be executed every time an HTML template has been modified, or a new Markdown file (new entry) is created. Currently the script is placed at <code>blog/convert.sh</code>, HTML templates in <code>blog/templates</code> and <code>.md</code> (Markdown) files in <code>blog/md</code>. When the script is executed, the following files are generated:</p>
-
-<ul>
-<li><code>blog/index.html</code>:  blog index page, containing a link to every entry.</li>
-<li><code>blog/entry_id.html</code>: entry page containing an HTML version of the file <code>blog/md/entry_id.html</code>. This occurs for every <code>.md</code> file inside <code>blog/md</code> folder.</li>
-</ul>
-
-
-<p>As you may have noticed, every blog entry has associated an icon that is shown at the index and in the entry itself. This information as well as date of publication and modification and title of the entry are declared at the beginning of the <code>.md</code> file following this structure:</p>
-
-<pre><code>&lt;!--name:About this website--&gt;
-&lt;!--pubdate:2020/07/09--&gt;
-&lt;!--moddate:2020/07/10--&gt;
-&lt;!--icon:web--&gt;
-</code></pre>
-
-<p>With this functionality, I do not have to deal with HTML code at all in order to post a new entry. Everything is done in the <code>.md</code> file.</p>
-
-<h2>Source code</h2>
-
-<p>Just like my whole website, you can find the source code of this <a target="_blank" href="https://github.com/marcalv/mywebpage/blob/master/blog/convert.sh">script</a> and the folder containing all my <a href="https://github.com/marcalv/mywebpage/tree/master/blog/md">blog entries</a> in <code>.md</code> format in my  <a href="Github%20repository">Github repository</a>.</p>
+        
         <br>
         <hr/>
         <div class="dates">
