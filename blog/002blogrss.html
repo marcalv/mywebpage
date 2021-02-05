@@ -26,7 +26,45 @@
     </ul>
 
     <div class="content">
-        
+        <!--name:Adding an RSS feed to this blog_-->
+
+
+<!--pubdate:2020/08/05_-->
+
+
+<!--moddate:2020/08/05_-->
+
+
+<!--icon:rss_-->
+
+
+<h2>What is RSS and why I use it</h2>
+
+<p>Since I decided to leave Instagram and other social media sites, I started searching for other ways to keep me informed. This is how I have discovered <a target="_blank" href="https://en.wikipedia.org/wiki/RSS">RSS</a>.</p>
+
+<p>An RSS is basically a web feed that allows users to get updates from a specific website (in case it offers one). For example, one can find this RSS feeds in newspaper websites like <a target="_blank" href="https://servicios.elpais.com/rss/">El País</a>. This RSS feed are added to an RSS aggregator, which basically aggregates multiple feeds in one location for easy viewing.</p>
+
+<p>In my home server, as I explain <a target="_blank" href="https://marcalv.com/blog/000thiswebsite">here</a>, I have a FreshRSS instance running. It&rsquo;s a self-hostable feed aggregator that syncs with my phone and laptop. Among others, I have the following feeds added that may result you interesting or inspiring:</p>
+
+<ul>
+<li>Linux distributions news: As a linux user, I like to keep updated with the latest news of the distribution that I use (currently <a target="_blank" href="https://endeavouros.com/feed/">EndeavourOS</a>).</li>
+<li>Technology related blogs:  <a target="_blank" href="https://www.muylinux.com/feed/">MuyLinux</a>, <a href="https://codingfactsblog.wordpress.com/feed/">CodingFacts</a>&hellip;</li>
+<li>Local news: <a target="_blank" href="https://api.ccma.cat/noticies?_format=rss&amp;origen=frontal&amp;frontal=n324-portada-noticia&amp;version=2.0">324.cat</a>, <a href="https://www.abc.es/rss/feeds/abcPortada.xml">ABC</a>, <a href="https://www.ara.cat/rss/latest/">Ara.cat</a>, <a href="https://www.thespainreport.es/es/rss">The Spain Report</a>&hellip;</li>
+<li>YouTube: I&rsquo;m subscribed to divulgation channels like <a target="_blank" href="https://invidio.us/feed/channel/UC6nSFpj9HTCZ5t-N3Rm3-HA">Vsauce</a>, <a href="https://invidio.us/feed/channel/UCJ0-OtVpF0wOKEqT2Z1HEtA">ElectroBOOM</a> or <a href="https://invidio.us/feed/channel/UCnkp4xDOwqqJD7sSM3xdUiQ">Adam Neely</a> through <a href="https://invidio.us">Invidio.us</a>.</li>
+<li>Twitter: I&rsquo;m a huge fan of Extremoduro and I like to keep updated with their latest news. Sadly, their website does not offer an rss feed so I&rsquo;m using <a target="_blank" href="https://nitter.net">Nitter</a> to get an <a href="https://nitter.net/Oficina_Extremo/rss">rss feed</a> from their twitter timeline.</li>
+<li>Instagram: my local gym posts all news on Instagram, so I&rsquo;m using <a target="_blank" href="https://github.com/RSS-Bridge/rss-bridge">BridgeRSS</a>. This service generates an RSS feed for a given user. I have my own instance hosted on Heroku. It is as easy as creating an Heroku account and using a <a href="https://github.com/RSS-Bridge/rss-bridge#deploy">single button click</a> to deploy your own instance.</li>
+</ul>
+
+
+<p>Overall, I believe this is a much efficient and less distracting way of keeping up to date than rather visiting all this services one by one. This is what I want and this is what I get. No more, no less.</p>
+
+<h2>Adding RSS to this blog</h2>
+
+<p>Add this functionality has been really easy since it is just and extension of the <a target="_blank" href="https://marcalv.com/blog/001blogautomation">blog automation script</a>.</p>
+
+<p>An RSS feed is an XML file that contains different fields, in this case: the blog entry itself, title and date mainly. Just like I generate an HTML index with the markdown files, now I create an <code>.xml</code> file containing all the previous information. When a new entry is created, the script regenerates the XML file that now will contain one new item. Your feed aggregator will detect it and notify you.</p>
+
+<p>This XML file can be found <a target="_blank" href="https://marcalv.com/blog/rss.xml">here</a>. That link is also the url that you can add to your feed aggregator. If you want to take a look at the script that generates the feed and all the HTML files, it&rsquo;s <a href="https://github.com/marcalv/mywebpage/blob/master/blog/convert.sh">here</a>.</p>
         <br>
         <hr/>
         <div class="dates">

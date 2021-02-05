@@ -26,7 +26,291 @@
     </ul>
 
     <div class="content">
-        
+        <!--name:Servidor en casa - Parte 2: Conexión a la red_-->
+
+
+<!--pubdate:2020/09/26_-->
+
+
+<!--moddate:2020/09/26_-->
+
+
+<!--icon:raspberry_-->
+
+
+<p><a target="_blank" href="https://www.youtube.com/watch?v=c4J7Ya6reUY"><img src="/static/files/images/guiaraspi_thumbnail.jpg" alt="Enlace al video de esta parte." /></a></p>
+
+<h2>2.1 Abrir puertos</h2>
+
+<p>Configura en <a target="_blank" href="http://192.168.1.1">tu router</a> las siguientes redirecciónes de puertos públicos:</p>
+
+<ul>
+<li>Puerto público 443 a la IP de tu raspberry, puerto 443.</li>
+<li>Puerto público 80 a la IP de tu raspberry, puerto 80.</li>
+</ul>
+
+
+<h2>2.2 Instalar dependecias</h2>
+
+<p>Volvemos a la raspberry. Ahora instalaremos docker-compose y lo activaremos con los siguientes comandos:</p>
+
+<pre><code>sudo apt install docker-compose
+sudo systemctl enable docker
+sudo reboot
+</code></pre>
+
+<h2>2.3 Crear docker-compose.yml</h2>
+
+<p>Creamos el archivo docker-compose.yml.</p>
+
+<pre><code>mkdir compose
+cd compose
+nano docker-compose.yml
+</code></pre>
+
+<p>Contenido del archivo:</p>
+
+<pre><code>
+version: '2.1'
+services:
+  duckdns:
+    image: linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=1000 #optional
+      - PGID=1000 #optional
+      - TZ=Europe/Madrid
+      - SUBDOMAINS=TU_SUBDOMINIO,
+      - TOKEN=TU_TOKEN
+      - LOG_FILE=false #optional
+    volumes:
+      - /home/pi/compose/data/duckdns/config:/config #optional
+    restart: unless-stopped
+
+  swag:
+    image: linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - URL=TU_SUBDOMINIO.duckdns.org
+      - SUBDOMAINS=www,
+      - VALIDATION=duckdns
+      - DNSPLUGIN=cloudflare #optional
+      - PROPAGATION= #optional
+      - DUCKDNSTOKEN=TU_TOKEN
+      - EMAIL= #optional
+      - ONLY_SUBDOMAINS=false #optional
+      - EXTRA_DOMAINS= #optional
+      - STAGING=false #optional
+    volumes:
+      - /home/pi/compose/data/swag/config:/config
+    ports:
+      - 443:443
+      - 80:80 #optional
+    restart: unless-stopped
+
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp
+      - 1080:80/tcp
+      - 1443:443/tcp
+    environment:
+      TZ: Europe/Madrid
+    volumes:
+       - /home/pi/compose/data/pihole/etc-pihole/:/etc/pihole/
+       - /home/pi/compose/data/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+
+  nextcloud:
+    image: linuxserver/nextcloud
+    container_name: nextcloud
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - /home/pi/compose/data/nextcloud/config:/config
+      - /home/pi/compose/data/nextcloud/data:/data
+    ports:
+      - 2443:443
+    restart: unless-stopped
+
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - UMASK_SET=022
+      - WEBUI_PORT=8080
+    volumes:
+      - /home/pi/compose/data/qbittorrent/config:/config
+      - /home/pi/compose/data/qbittorrent/downloads:/downloads
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 3080:8080
+    restart: unless-stopped
+
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - AUTO_UPDATE=true #optional
+      - RUN_OPTS=&lt;run options here&gt; #optional
+    volumes:
+      - /home/pi/compose/data/jackett/config:/config
+      - /home/pi/compose/data/jackett/downloads:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - SERVERURL=TU_SUBDOMINIO.duckdns.org
+      - SERVERPORT=51820 #optional
+      - PEERS=2 #optional
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=10.13.13.0 #optional
+    volumes:
+      - /home/pi/compose/data/wireguard/config:/config
+      - /lib/modules:/lib/modules   # no modificar
+    ports:
+      - 51820:51820/udp     # Redireccionar puerto en router
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
+</code></pre>
+
+<p><strong>Importante:</strong> Las tabulaciones son importantes. Confirma que delante de cada nombre de servicio (swag, pihole, nextcloud) hay dos espacios.</p>
+
+<h2>2.4 Contenedor duckdns</h2>
+
+<p>Más información del contenedor: <a target="_blank" href="https://github.com/linuxserver/docker-duckdns">github.com/linuxserver/docker-duckdns</a></p>
+
+<h3>Crear cuenta en duckdns.org</h3>
+
+<p>Crear cuenta en <a target="_blank" href="duckdns.org">duckdns.org</a>, crear subdominio con IP aleatoria, para posteriormente comprobar que se actualiza con la IP pública de nuestro router real.</p>
+
+<h3>Personalizar duckdns en docker-compose.yml</h3>
+
+<p>Dentro del servicio duckdns, reemplaza los campos <code>SUBDOMAINS</code> y <code>TOKEN</code>.</p>
+
+<h3>Levantar duckdns</h3>
+
+<p>Levanta el contenedor con <code>sudo docker-compose up -d duckdns</code>, estando en dentro de la carpeta <code>compose</code> que contiene el archivo <code>docker-compose.yml</code>.</p>
+
+<p>Para confirmar que el contenedor se ha levantado correctamente, usa el comando <code>sudo docker logs -f duckdns</code> para visualizar los registros. Usa <code>Ctrl+C</code> para cerrar el visualizador.</p>
+
+<p>Confirma que en el panel de control de duckdns.org la IP de tu subdominio se ha actualizado con tu IP real.</p>
+
+<h2>2.5 Contenedor SWAG</h2>
+
+<p>Más información del contenedor: <a target="_blank" href="https://github.com/linuxserver/docker-swag">github.com/linuxserver/docker-swag</a></p>
+
+<h3>Personalizar swag en docker-compose.yml</h3>
+
+<p>Personaliza en el bloque del servicio <code>swag</code> el campo <code>URL</code> y el <code>DUCKDNSTOKEN</code>.</p>
+
+<h3>Levantar SWAG</h3>
+
+<p>Levanta el contenedor con <code>sudo docker-compose up -d swag &amp;&amp; sudo docker logs -f swag</code></p>
+
+<p>Si has configurado bien el router y el docker-compose.yml, deberá aparecerte una linea con &ldquo;Congratulations&rdquo;. Si obtienes errores, tendras que revisar la configuración. Estos comandos de docker-compose te pueden ser útiles:</p>
+
+<pre><code>docker-compose up -d swag # Crear y arrancar contenedor
+docker-compose stop swag # Parar contenedor 
+docker-compose start swag # Arrancar contenedor
+docker-compose down swag #Parar y eliminar contenedor
+</code></pre>
+
+<h3>Comprobación</h3>
+
+<p>Entra en  <code>https://IP_RASPBERRY_LOCAL</code>, te aparecerá una advertencia, acepta los riesgos. Veras una web simple si todo está  correcto.</p>
+
+<p>En función de si tu router soporta NAT loopback, los siguientes resultados pueden variar.</p>
+
+<p>Si entras en https://marcloud.duckdns.org sin problemas, tu router soporta NAT loopback. Si no te funciona, entra desde un móvil con datos, no WiFi. Si ahora funciona todo esta bien, pero tu router no soporta NAT loopback.</p>
+
+<p>Para solucionar este problema, se instala Pi-hole que actúa como intermediario entre el router y tu dispositivo, realizando la función de NAT loopback, pudiendo acceder con el dominio de duckdns desde dentro de la red local.</p>
+
+<h2>2.6 Contenedor Pi-hole</h2>
+
+<p>Más información del contenedor: https://github.com/pi-hole/docker-pi-hole</p>
+
+<h3>Levantar Pi-hole</h3>
+
+<p>Levanta Pi-hole:</p>
+
+<pre><code>sudo docker-compose up -d pihole &amp;&amp; sudo docker logs -f pihole
+</code></pre>
+
+<p>Configura la contraseña de acceso: <code>sudo docker exec -it pihole pihole -a -p</code></p>
+
+<p>Accede a <code>http://IP_RASPBERRY_LOCAL:1080/admin/</code> para comprobar que funciona.</p>
+
+<p>Ahora añadiremos la regla que nos permita acceder localmente a nuestro dominio. Para ello entramos a Pihole desde <code>http://IP_RASPBERRY_LOCAL:1080/admin/</code> por última vez, y en <code>DNS Records</code> añadimos una regla que redirija el dominio <code>TU_DOMINIO.duckdns.org</code> a la IP de tu Raspberry, en mi caso <code>192.168.1.11</code></p>
+
+<p>Para evitar problemas, edita la siguiente configuración. Dirígete a Settings, DNS, desmcarca todas las casillas de la parte izquierda y añade, a la derecha, un custom DNS server marcando su casilla y escribiendo en la caja de texto <code>192.168.1.1</code>. Usa el boton al final de la página para guardar. Con esto hacemos que la Raspberry use como servidor DNS el router.</p>
+
+<h3>Configurar el DNS en tus dispositivos</h3>
+
+<p>En el video muestro como configurar el DNS de forma manual en un dispositivo Android (26:40) y en el sistema operativo Linux con KDE (29:05). Para otros sistemas operativos te facilito otras guias que pueden servirte de ayuda:</p>
+
+<ul>
+<li><p><a target="_blank" href="https://www.windowscentral.com/how-change-your-pcs-dns-settings-windows-10">Para Windows</a> Recomiendo la segunda opción (vía Settings y no el panel de control), para que la configuración quede modificada en una conexión en específico y no en todas. En una red diferente a la de tu casa no te interesa tener el DNS apuntando a la IP de tu raspberry, porque básicmente no estará ahí.</p></li>
+<li><p><a target="_blank" href="https://www.support.com/how-to/how-to-change-dns-settings-on-a-mac-10189">Para MAC</a></p></li>
+</ul>
+
+
+<h3>Crear reverse-proxy</h3>
+
+<p>El objetivo es poder acceder al panel de control desde fuera de la red local (acceso público) a traves del subdirectorio /pihole, es decir, en <code>TU_SUBDOMINIO.duckdns.org/pihole/admin</code>.</p>
+
+<p>Habilitaremos el archivo que contiene esta configuración con el siguiente comando:</p>
+
+<pre><code>cp /home/pi/compose/data/swag/config/nginx/proxy-confs/pihole.subfolder.conf.sample /home/pi/compose/data/swag/config/nginx/proxy-confs/pihole.subfolder.conf
+</code></pre>
+
+<p>Con este comando copiamos el archivo <code>pihole.subfolder.conf.sample</code> sin la extensión <code>.sample</code> para que nginx lo lea (contenedor SWAG). Al inicio de este archivo se encuentran las instrucciones en caso de que sea necesario modificar alguna configuración más. En este caso no es necesario.</p>
+
+<p>Reiniciamos SWAG con</p>
+
+<pre><code>sudo docker-compose restart swag &amp;&amp; sudo docker logs -f  swag
+</code></pre>
+
+<p>Desde la red local con un dispositico con el DNS condifigurado correctamente comprueba que puedes entrar a https://marcloud.duckdns.org/pihole/admin/. Desde fuera de la red local, cualquier dispositivo deberia poder acceder también.</p>
+
+<h2>2.7 Notas adicionales</h2>
+
+<p>Con respecto al problema del NAT loopback, existe otra solución que consiste en que Pihole actue como servidor DHCP de la red local pero la estabilidad de toda la red recae sobre nuestro proyecto. Ésta seria una opción a considerar una vez se comprueba que el sistema es estable. Con ello nos ahorrariamos tener que configurar en cada dispositivo que el servidor DNS es la Raspberry.</p>
+
+<p>Para ello bastaria desactivar el serviodor DHCP en el router y activarlo en Pi-hole. Habría que configurar, eso sí, las reglas de IP locales estáticas otra vez, esta vez, en Pi-hole ya que es ahora la encargada de establecerlas.</p>
         <br>
         <hr/>
         <div class="dates">
