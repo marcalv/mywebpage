@@ -22,29 +22,8 @@ var playlist = WaveformPlaylist.init({
   
   playlist.load([
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Bass.ogg.mp3",
-      "name": "Bass",
-      "gain": 1,
-      "muted": false,
-      "soloed": false
-    },
-    {
       "src": "/static/files/audio/stems/blinding_lights/session_STEM_Drums.ogg.mp3",
       "name": "Drums",
-      "gain": 1,
-      "muted": false,
-      "soloed": false
-    },
-    {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_JordiVocals.ogg.mp3",
-      "name": "Vocals Jordi",
-      "gain": 1,
-      "muted": false,
-      "soloed": false
-    },
-    {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_MarcVocals.ogg.mp3",
-      "name": "Vocals Marc",
       "gain": 1,
       "muted": false,
       "soloed": false
@@ -78,8 +57,29 @@ var playlist = WaveformPlaylist.init({
       "soloed": false
     },
     {
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_JordiVocals.ogg.mp3",
+      "name": "Vocals Jordi",
+      "gain": 1,
+      "muted": false,
+      "soloed": false
+    },
+    {
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_MarcVocals.ogg.mp3",
+      "name": "Vocals Marc",
+      "gain": 1,
+      "muted": false,
+      "soloed": false
+    },
+    {
       "src": "/static/files/audio/stems/blinding_lights/session_STEM_VocalFX.ogg.mp3",
       "name": "Vocal Effects",
+      "gain": 1,
+      "muted": false,
+      "soloed": false
+    },
+    {
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Crowd.ogg.mp3",
+      "name": "Crowd",
       "gain": 1,
       "muted": false,
       "soloed": false
