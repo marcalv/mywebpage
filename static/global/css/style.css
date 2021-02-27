@@ -541,3 +541,10 @@ body.stem{
 .loadingdatamsg{
     color: var(--red)
 }
+
+.loadingdatamsg:after {
+    content: '...';
+    opacity: 0;
+    display: inline-block;
+    animation: underscore_blink 0.7s linear infinite alternate;
+}
