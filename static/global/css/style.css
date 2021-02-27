@@ -258,14 +258,15 @@ h1.hometitle:before {
 
 /* GENERAL PAGES */
 
-h2{
+h2,h3{
     text-align: center;
 }
+
 
 .pagetitle{
     margin-bottom: 0;
     font-size: 2em;
-    text-align: center;
+    text-align: center top;
     color: var(--text);
 }
 
@@ -509,4 +510,29 @@ body.stem{
 
 .content.stem{
     margin:0;
+}
+
+
+/* BLOG */
+
+.youtube{
+
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mixbtn{
+    margin: 15px;
+    border: solid 2px var(--blue);
+    padding: 2px;
+    size: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    
 }
