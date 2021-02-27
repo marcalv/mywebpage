@@ -22,63 +22,63 @@ var playlist = WaveformPlaylist.init({
   
   playlist.load([
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Bass.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Bass.ogg.mp3",
       "name": "Bass",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Drums.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Drums.ogg.mp3",
       "name": "Drums",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_JordiVocals.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_JordiVocals.ogg.mp3",
       "name": "Vocals Jordi",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_MarcVocals.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_MarcVocals.ogg.mp3",
       "name": "Vocals Marc",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Bass.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Bass.ogg.mp3",
       "name": "Bass",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_RtmGuitars.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_RtmGuitars.ogg.mp3",
       "name": "Rhythm Guitars",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_SoloGuitars.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_SoloGuitars.ogg.mp3",
       "name": "Solo Guitars",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Synth.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_Synth.ogg.mp3",
       "name": "Synth",
       "gain": 1,
       "muted": false,
       "soloed": false
     },
     {
-      "src": "/static/files/audio/stems/blinding_lights/session_STEM_VocalFX.ogg",
+      "src": "/static/files/audio/stems/blinding_lights/session_STEM_VocalFX.ogg.mp3",
       "name": "Vocal Effects",
       "gain": 1,
       "muted": false,
