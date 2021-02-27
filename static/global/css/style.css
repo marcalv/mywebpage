@@ -536,3 +536,8 @@ body.stem{
     text-align: center;
     
 }
+
+
+.loadingdatamsg{
+    color: var(--red)
+}

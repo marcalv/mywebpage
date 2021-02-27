@@ -30,7 +30,7 @@
   <div class="content stem">
     <div class="">
       <div id="top-bar" class="playlist-top-bar">
-        <div class="playlist-toolbar">
+        <div class="playlist-toolbar hide">
           <div class="btn-group controlbar">
             <div class="playpausebar">
               <button class="btn-pause btn btn-yellow">PAUSE</button>
@@ -53,14 +53,16 @@
           </div>
         </div>
       </div>
+      
+      <h2 class="loadingdatamsg unhide">Loading data, please wait!</h2>
 
       <div id="playlist"></div>
 
-      <div class="mastervolume">
+      <div class="mastervolume hide">
         <label for="master-gain">Master Volume</label>
         <input type="range" min="0" max="100" value="100" class="master-gain" id="master-gain">
       </div>
-      <div class="automaticscroll">
+      <div class="automaticscroll hide">
         <label for="automatic-scroll">Automatic Scroll</label>
         <input type="checkbox" checked class="automatic-scroll">
       </div>
@@ -82,6 +84,18 @@
           e.preventDefault();
         });
 
+
+
+
+        ee.on("audiosourcesloaded", function () {
+          $('.loadingdatamsg').toggleClass("unhide hide");
+          $('.mastervolume').toggleClass("unhide hide");
+          $('.automaticscroll').toggleClass("unhide hide");
+          $('.playlist-toolbar').toggleClass("unhide hide");
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+          
+        });
       </script>
 
     </div>
