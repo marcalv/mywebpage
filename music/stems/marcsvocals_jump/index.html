@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#212121" />
+
+<link rel="icon" type="image/png" href="/static/global/icons/icon_user.png" />
+
+<link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/static/stems/css/stem.css'>
+
+<head>
+  <title>Jump - Van Halen - Mix Session</title>
+</head>
+
+<body class="stem">
+  <h1 class="pagetitle">
+    <img class="icon" src="/static/global/icons/icons_wave.png">
+    Jump - Van Halen - Mix Session
+  </h1>
+
+  <ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/music">Music</a></li>
+    <li><a href="/music/marcsvocals.html">MarcsVocals</a></li>
+    <li>Jump - Van Halen - Mix Session</li>
+  </ul>
+
+  <div class="content stem">
+    <div class="">
+      <div id="top-bar" class="playlist-top-bar">
+        <div class="playlist-toolbar hide">
+          <div class="btn-group controlbar">
+            <div class="playpausebar">
+              <button class="btn-pause btn btn-yellow">PAUSE</button>
+              <button class="btn-play btn btn-green">PLAY</button>
+              <button class="btn-stop btn btn-red">STOP</button>
+              <!--
+              <div class="btn-rewind btn btn-blue">START</div>
+              <div class="btn-fast-forward btn btn-blue">END</div>-->
+            </div>
+            <div class="zoombar">
+              <button class="btn-zoom-out btn btn-blue">zoom -</button>
+              <button class="btn-zoom-in btn btn-blue">zoom +</button>
+            </div>
+            <div class="seekbar">
+              <button class="btn-minus30 btn btn-purple">-30s</button>
+              <button class="btn-minus5 btn btn-purple">-5s</button>
+              <button class="btn-plus5 btn btn-purple">+5s</button>
+              <button class="btn-plus30 btn btn-purple">+30s</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h2 class="loadingdatamsg unhide">Loading data, please wait</h2>
+
+      <div id="playlist" class="hide"></div>
+
+      <div class="mastervolume hide">
+        <label for="master-gain">Master Volume</label>
+        <input type="range" min="0" max="100" value="100" class="master-gain" id="master-gain">
+      </div>
+      <div class="automaticscroll hide">
+        <label for="automatic-scroll">Automatic Scroll</label>
+        <input type="checkbox" checked class="automatic-scroll">
+      </div>
+
+      <button id="logtoggle" class="btn btn-yellow">Ver registro</button>
+
+      <div class="sound-status hide"></div>
+      <div class="loading-data hide"></div>
+
+      <script type="text/javascript" src="/static/global/js/jquery-3.5.1.js"></script>
+      <script type="text/javascript" src="/static/stems/js/waveform-playlist.var.js"></script>
+      <script type="text/javascript" src="playlist.js"></script>
+      <script type="text/javascript" src="/static/stems/js/emitter.js"></script>
+
+      <script>
+        $('#logtoggle').on('click', function (e) {
+          $('.sound-status').toggleClass("unhide hide");
+          $('.loading-data').toggleClass("unhide hide");
+          e.preventDefault();
+        });
+
+
+
+
+        ee.on("audiosourcesloaded", function () {
+          $('.loadingdatamsg').toggleClass("unhide hide");
+          $('.mastervolume').toggleClass("unhide hide");
+          $('.automaticscroll').toggleClass("unhide hide");
+          $('.playlist-toolbar').toggleClass("unhide hide");
+          $('#playlist').toggleClass("unhide hide");
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+          
+        });
+      </script>
+
+    </div>
+
+</body>
+
+</html>
