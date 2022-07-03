@@ -54,6 +54,8 @@
         </div>
       </div>
       
+      <h3 id="iphonealert" class="iphonealert">On iPhone switch off silent mode</h3>
+
       <h2 class="loadingdatamsg unhide">Loading data, please wait</h2>
 
       <div id="playlist" class="hide"></div>
@@ -101,6 +103,30 @@
 
     </div>
 
+    <script>
+      function iOS() {
+        return [
+          'iPad Simulator',
+          'iPhone Simulator',
+          'iPod Simulator',
+          'iPad',
+          'iPhone',
+          'iPod'
+        ].includes(navigator.platform)
+        // iPad on iOS 13 detection
+        || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+      }
+    
+      if (iOS()){
+        console.log('On iPhone')
+      }
+        else
+      {
+        console.log('Not on iPhone')
+        $('#iphonealert').remove()
+      }
+    </script>
+    
 </body>
 
 </html>

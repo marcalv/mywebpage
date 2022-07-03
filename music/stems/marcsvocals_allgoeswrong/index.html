@@ -10,6 +10,9 @@
 <link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
 <link rel='stylesheet' type='text/css' href='/static/stems/css/stem.css'>
 
+
+
+
 <head>
   <title>All Goes Wrong - Chase & Status - Mix Session</title>
 </head>
@@ -54,6 +57,8 @@
         </div>
       </div>
       
+      <h3 id="iphonealert" class="iphonealert">On iPhone switch off silent mode</h3>
+
       <h2 class="loadingdatamsg unhide">Loading data, please wait</h2>
 
       <div id="playlist" class="hide"></div>
@@ -71,7 +76,7 @@
 
       <div class="sound-status hide"></div>
       <div class="loading-data hide"></div>
-
+      
       <script type="text/javascript" src="/static/global/js/jquery-3.5.1.js"></script>
       <script type="text/javascript" src="/static/stems/js/waveform-playlist.var.js"></script>
       <script type="text/javascript" src="playlist.js"></script>
@@ -101,6 +106,29 @@
 
     </div>
 
+<script>
+  function iOS() {
+    return [
+      'iPad Simulator',
+      'iPhone Simulator',
+      'iPod Simulator',
+      'iPad',
+      'iPhone',
+      'iPod'
+    ].includes(navigator.platform)
+    // iPad on iOS 13 detection
+    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  }
+
+  if (iOS()){
+    console.log('On iPhone')
+  }
+    else
+  {
+    console.log('Not on iPhone')
+    $('#iphonealert').remove()
+  }
+</script>
 
 </body>
 

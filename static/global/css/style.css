@@ -548,3 +548,7 @@ body.stem{
     display: inline-block;
     animation: underscore_blink 0.7s linear infinite alternate;
 }
+
+.iphonealert{
+    color: var(--red)
+}
