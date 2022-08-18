@@ -581,33 +581,9 @@ docker-compose down swag #Parar y eliminar contenedor
 
 &lt;p&gt;Descargar Raspberry Pi Imager de &lt;a href=&quot;https://www.raspberrypi.org/downloads/&quot;&gt;aquí&lt;/a&gt; para copiar el SO a la tarjeta SD.&lt;/p&gt;
 
-&lt;p&gt;Abrir Pi Imager, seleccionar Raspberry PI OS Lite (32-BIT), seleccionar la tarjeta SD y Write. Cerrar el programa una vez finalizado.&lt;/p&gt;
+&lt;p&gt;Abrir Pi Imager, seleccionar Raspberry PI OS Lite (32-BIT). En este punto, en la parte inferior de la pantalla aparecera un icono de ajustes. Pulsalo y configura la conexión por WiFi (por cable no es necesario), activar la comunicación por SSH y configurar la contraseña por defecto del usuario pi. Luego, selecciona la tarjeta SD y Write. Cerrar el programa una vez finalizado.&lt;/p&gt;
 
-&lt;h2&gt;1.2 Preparación de la conexión por SSH&lt;/h2&gt;
-
-&lt;p&gt;No expulses la tarjeta SD del PC aún.
-Accederemos a la Raspberry por SSH una vez haya arrancado, no necesitaremos conectarla a ninguna pantalla ni teclado. Por motivos de seguridad el acceso por ssh esta deshabilitado por defecto. En el siguiente paso lo habilitamos.&lt;/p&gt;
-
-&lt;h3&gt;Habilitar acceso por SSH&lt;/h3&gt;
-
-&lt;p&gt;Para habilitarlo se crea el archivo en blanco de nombre &lt;code&gt;ssh&lt;/code&gt; (sin extensión) en la partición &lt;code&gt;/boot&lt;/code&gt; de la SD.&lt;/p&gt;
-
-&lt;h3&gt;(Opcional) Configurar conexión WiFi&lt;/h3&gt;
-
-&lt;p&gt;Si vas a conectar la Raspberry por Ethernet este paso no es necesario. Si solo dispones de conexión WiFi, puedes configurarla creando un archivo archivo &lt;code&gt;wpa_supplicant.conf&lt;/code&gt; en &lt;code&gt;/boot&lt;/code&gt;. El contenido debe ser el siguiente:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;country=ES
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-network={
-    ssid=&quot;NETWORK-NAME&quot;
-    psk=&quot;NETWORK-PASSWORD&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;La lista con los códigos para cada país se puede consultar &lt;a href=&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2&quot;&gt;aquí&lt;/a&gt;. Reemplaza &lt;code&gt;NETWORK-NAME&lt;/code&gt; y &lt;code&gt;NETWORK-PASSWORD&lt;/code&gt; con los credenciales de tu WiFi.&lt;/p&gt;
-
-&lt;h2&gt;1.3 Primer arranque&lt;/h2&gt;
+&lt;h2&gt;1.2 Primer arranque&lt;/h2&gt;
 
 &lt;p&gt;Ahora  sí, podemos desmontar la SD del PC. A continuación la introducimos en la Raspberry, conectamos el cable de Ethernet si tenemos, y por último la alimentación. Arrancará automáticamente.&lt;/p&gt;
 
@@ -619,7 +595,7 @@ network={
 
 &lt;p&gt;Tanto si estas en Windows, como Mac o Linux todos los comandos utilizados son los mismos. Para conectarnos por SSH, conociendo ya la IP de la Raspberry, abrimos una terminal o consola y ejecutamos el comando &lt;code&gt;ssh pi@IP_RASPBERRY_LOCAL&lt;/code&gt;. En mi caso el comando queda como &lt;code&gt;ssh pi@192.168.1.11&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Si todo va bien, en la primera conexión nos aparecerá una pregunta a la que responderemos &lt;code&gt;yes&lt;/code&gt;. A continuación se nos pedirá la contraseña, que por defecto es &lt;code&gt;raspberry&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Si todo va bien, en la primera conexión nos aparecerá una pregunta a la que responderemos &lt;code&gt;yes&lt;/code&gt;. A continuación se nos pedirá la contraseña, que será la que hemos configurado en el paso 1.1.&lt;/p&gt;
 
 &lt;p&gt;A continuación realizaremos unos ajustes básicos ejecutando el comando &lt;code&gt;sudo raspi-config&lt;/code&gt;. En este menú seleccionamos cambiar la contraseña del usuario e introducimos una nueva. Después, en &amp;lsquo;Advanced&amp;rsquo;, entramos en la opción &amp;lsquo;Expand filesystem&amp;rsquo;. Una vez finalizado, nos pedirá reiniciar, a lo que responderemos que si.&lt;/p&gt;
 
