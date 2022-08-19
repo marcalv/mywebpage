@@ -109,7 +109,7 @@ exit 0
 
 <p>Para instalar las dependencias en la raspberry, iniciamos una sesión ssh como root (usando las llaves que generamos en el capítulo anterior) y ejecutamos el comando <code>apt install rsync</code>.</p>
 
-<p>En el PC desde el que ejecutaremos el script de backup, instalamos las dependencias con el comando <code>sudo apt install rsync pv</code> si estas en una distribución basada en Debian. En Archlinux, por ejemplo, el comando sería <code>sudo pacman -S rsync pv</code>.</p>
+<p>En el PC desde el que ejecutaremos el script de backup, instalamos las dependencias con el comando <code>sudo apt install rsync pv figlet</code> si estas en una distribución basada en Debian. En Archlinux, por ejemplo, el comando sería <code>sudo pacman -S rsync pv figlet</code>.</p>
 
 <p>A continuación, navegamos hasta la carpeta donde queramos ejecutar el script, creamos un fichero vacio de nombre <code>backup.sh</code> y pegamos el script del punto 5.1. Importante marcar el archivo como ejecutable mediante el comando <code>sudo chmod +x backup.sh</code>.</p>
 
