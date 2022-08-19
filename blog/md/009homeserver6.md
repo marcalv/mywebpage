@@ -4,7 +4,7 @@
 <!--icon:raspberry_-->
 
 
-<!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=9BBMH44h1rc)-->
+[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=bS9QL7dxBTc)
 
 ## 6.1 Script bash para la copia de seguridad 
 

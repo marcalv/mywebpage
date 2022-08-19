@@ -32,10 +32,7 @@
 &lt;!--icon:raspberry_--&gt;
 
 
-
-
-&lt;!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=9BBMH44h1rc)--&gt;
-
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=bS9QL7dxBTc&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.jpg&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;6.1 Script bash para la copia de seguridad&lt;/h2&gt;
 
