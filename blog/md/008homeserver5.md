@@ -1,10 +1,10 @@
 <!--name:Servidor en casa - Parte 5: Acceso remoto mediante llaves de encriptado_-->
 <!--pubdate:2020/10/04_-->
-<!--moddate:2020/10/04_-->
+<!--moddate:2022/08/19_-->
 <!--icon:raspberry_-->
 
 
-<!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=qapw2nI-xyE)-->
+[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=9BBMH44h1rc)
 
 ## 5.1 Acceso SSH mediante llaves de encriptado
 

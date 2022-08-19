@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#212121" />
+
+<link rel="icon" type="image/png" href="/static/icons/icon_user.png" />
+<link rel='stylesheet' type='text/css' href='/static/global/css/style.css'>
+<link rel='stylesheet' type='text/css' href='/static/blog/css/style.css'>
+
+<head>
+    <title>Servidor en casa - Parte 6: Copia de seguridad - Marc Álvarez</title>
+</head>
+
+<body>
+    <h1>
+        <img class="icon notcentered" src="/static/global/icons/icon_raspberry.png">
+        Servidor en casa - Parte 6: Copia de seguridad
+    </h1>
+
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li>Servidor en casa - Parte 6: Copia de seguridad</li>
+    </ul>
+
+    <div class="content">
+        <!--name:Servidor en casa - Parte 6: Copia de seguridad _-->
+
+
+<!--pubdate:2022/08/19_-->
+
+
+<!--moddate:2022/08/19_-->
+
+
+<!--icon:raspberry_-->
+
+
+
+
+<!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=9BBMH44h1rc)-->
+
+
+<h2>5.1 Script bash para la copia de seguridad</h2>
+
+<p>A continuación, facilito el script completo para realizar una copia de seguridad de los datos persistentes de los contedores (carpetas dentro de <code>/home/pi/compose/data</code> si has ido seguiendo las rutas del tutorial) y el archivo de configuración docker-compose.yml.</p>
+
+<p>El script creará una copia de seguridad del fichero docker-compose.yml y las carpetas dentro de <code>/home/pi/compose/data</code> de cada servicio como un tar.gz (archivos comprimidos de los datos de cada uno de los servicios).</p>
+
+<pre><code>#!/bin/bash
+
+# ========================
+# Backup Docker Raspberry
+# ========================
+
+# Dependencias:
+#    - rsync en ambas máquinas (Raspberry y PC). Instalar con 'sudo apt install rsync'.
+#    - pv en PC. Instalar con 'sudo apt install pv'. 
+
+# Para restablecer los backups:
+# cat SERVICIO.tar.gz | ssh root@RASPBERRY_IP "cd DATAPATH; tar xvf -"
+
+
+# Personaliza estas variables según tu necesidad:
+BACKUPPATH="/RUTA/ALMACEN/BACKUP/EN/TU/PC"
+DATAPATH="/home/pi/compose/data"
+COMPOSEPATH="/home/pi/compose"
+RASPBERRY_IP="RASPBERRY_IP"
+
+services=( swag pihole)
+exclude=( )
+
+# Inicio del script
+
+now=$(date "+%F-%T")
+
+if [ -d "$BACKUPPATH" ]; then
+  figlet "Container's data"
+
+  cd ${BACKUPPATH}
+  mkdir ${now}
+  cd ${now}
+
+  for service in "${services[@]}"
+  do
+    if [[ ! " ${exclude[@]} " =~ " ${service} " ]]; then
+      echo "${service}========================================="
+      ssh root@${RASPBERRY_IP} "cd ${COMPOSEPATH} &amp;&amp; docker-compose stop ${service}"
+      ssh root@${RASPBERRY_IP} "cd ${DATAPATH} &amp;&amp; tar --exclude='*qbittorrent/downloads' -cvf - ${service}" | pv &gt;   ${service}.tar.gz
+      ssh root@${RASPBERRY_IP} "cd ${COMPOSEPATH} &amp;&amp; docker-compose start ${service}"
+    fi
+  done
+
+  figlet 'docker-compose.yml'
+  rsync -av --delete -h -i --stats root@${RASPBERRY_IP}:${COMPOSEPATH}/docker-compose.yml ${BACKUPPATH}/${now} | grep -E '^[^.]|^$'
+
+
+else
+  echo "Error: Destination path not found! (${BACKUPPATH})"
+  exit 1
+fi
+
+exit 0
+</code></pre>
+
+<h2>5.2 Instalar dependencias y el script</h2>
+
+<p>Para instalar las dependencias en la raspberry, iniciamos una sesión ssh como root (usando las llaves que generamos en el capítulo anterior) y ejecutamos el comando <code>apt install rsync</code>.</p>
+
+<p>En el PC desde el que ejecutaremos el script de backup, instalamos las dependencias con el comando <code>sudo apt install rsync pv</code> si estas en una distribución basada en Debian. En Archlinux, por ejemplo, el comando sería <code>sudo pacman -S rsync pv</code>.</p>
+
+<p>A continuación, navegamos hasta la carpeta donde queramos ejecutar el script, creamos un fichero vacio de nombre <code>backup.sh</code> y pegamos el script del punto 5.1. Importante marcar el archivo como ejecutable mediante el comando <code>sudo chmod +x backup.sh</code>.</p>
+
+<h2>5.3 Personalizar el script</h2>
+
+<p>Del script deberemos modificar a nuestra conveniencia las siguientes variables:</p>
+
+<ul>
+<li><code>BACKUPPATH</code>: Ruta de tu pc en la que se almacenarán los backups. Puede ser un disco duro extraible conectado a tu pc en el momento de la ejecución.</li>
+<li><code>DATAPATH</code>: Carpeta donde se encuentran montados los volumenes de los contenedores, que almacenan los datos que queremos que persistan. Si has seguido las rutas del tutorial, esta es <code>/home/pi/compose/data</code>.</li>
+<li><code>COMPOSEPATH</code>: Carpeta donde se encuentra el fichero <code>docker-compose.yml</code>. Si has seguido las rutas del tutorial, esta es <code>/home/pi/compose</code>.</li>
+<li><code>RASPBERRY_IP</code>: La ip local de tu raspberry.</li>
+<li><code>services</code>: Lista de los nombres de las carpeta que se encuentran dentro de <code>DATAPATH</code> que queremos haer backup, separadas con espacio. Si has seguido con la metodología del tutorial, coinciden con los nombres de los servicios.</li>
+<li><code>exclude</code>: Lista de los nombres de las carpetas que no queremos hacer backup. Si en la variable <code>services</code> colocamos <code>swag pihole</code> y a <code>exclude</code> le damos el valor de <code>swag</code>, solo se hará el backup de <code>pihole</code>.</li>
+</ul>
+
+
+<h2>5.4 Hacer backup y restablecer backup</h2>
+
+<p>Para hacer el backup, simplemente ejecuta el script navengado a la carpeta en la que se encuentre y ejeuta el comando <code>./backup</code>.</p>
+
+<p>Para restablecer el backup de un servicio, sigue los pasos:</p>
+
+<ol>
+<li>En la raspberry: Para el servicio con el comando <code>docker stop SERVICIO</code></li>
+<li>En la raspberry: Elimina los datos (si existen) de ese servicio, navengado a <code>/home/pi/compose/data</code> y ejecutando el comando <code>rm -rfd SERVICIO</code>.</li>
+<li>En tu PC: Navega hasta el fichero tar.gz del servicio a restablecer y ejecuta el siguiente comando: <code>cat SERVICIO.tar.gz | ssh root@RASPBERRY_IP "cd DATAPATH; tar xvf -"</code> reemplazando <code>SERVICIO</code>, <code>RASPBERRY_IP</code> Y <code>DATAPATH</code> por los valores adecuados. Un ejemplo de este comando correctamente cumplimentado sería: <code>cat pihole.tar.gz | ssh root@192.168.1.109 "cd /home/pi/compose/data; tar xvf -"</code></li>
+</ol>
+        <br>
+        <hr/>
+        <div class="dates">
+            <p>Published: 2022/08/19</p>
+            <p>Modified: 2022/08/19</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

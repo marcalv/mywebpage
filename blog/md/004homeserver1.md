@@ -1,6 +1,6 @@
 <!--name:Servidor en casa - Parte 1: Puesta en marcha de la Raspberry Pi_-->
 <!--pubdate:2020/09/26_-->
-<!--moddate:2020/09/26_-->
+<!--moddate:2022/08/19_-->
 <!--icon:raspberry_-->
 
 [![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=OAY0VTnHiMw)

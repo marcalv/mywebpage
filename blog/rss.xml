@@ -13,6 +13,128 @@
         </image>
         <!--item-->
 <item>
+<title>Servidor en casa - Parte 6: Copia de seguridad</title>
+<link>https://marcalv.com/blog/009homeserver6</link>
+<guid>009homeserver6</guid>
+<author>Marc Álvarez</author>
+<pubDate>Fri, 19 Aug 2022 00:00:00 +0200</pubDate>
+<source>https://marcalv.com/blog/rss.xml</source>
+<description>
+&lt;!--name:Servidor en casa - Parte 6: Copia de seguridad _--&gt;
+
+
+&lt;!--pubdate:2022/08/19_--&gt;
+
+
+&lt;!--moddate:2022/08/19_--&gt;
+
+
+&lt;!--icon:raspberry_--&gt;
+
+
+
+
+&lt;!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=9BBMH44h1rc)--&gt;
+
+
+&lt;h2&gt;5.1 Script bash para la copia de seguridad&lt;/h2&gt;
+
+&lt;p&gt;A continuación, facilito el script completo para realizar una copia de seguridad de los datos persistentes de los contedores (carpetas dentro de &lt;code&gt;/home/pi/compose/data&lt;/code&gt; si has ido seguiendo las rutas del tutorial) y el archivo de configuración docker-compose.yml.&lt;/p&gt;
+
+&lt;p&gt;El script creará una copia de seguridad del fichero docker-compose.yml y las carpetas dentro de &lt;code&gt;/home/pi/compose/data&lt;/code&gt; de cada servicio como un tar.gz (archivos comprimidos de los datos de cada uno de los servicios).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+
+# ========================
+# Backup Docker Raspberry
+# ========================
+
+# Dependencias:
+#    - rsync en ambas máquinas (Raspberry y PC). Instalar con &apos;sudo apt install rsync&apos;.
+#    - pv en PC. Instalar con &apos;sudo apt install pv&apos;. 
+
+# Para restablecer los backups:
+# cat SERVICIO.tar.gz | ssh root@RASPBERRY_IP &quot;cd DATAPATH; tar xvf -&quot;
+
+
+# Personaliza estas variables según tu necesidad:
+BACKUPPATH=&quot;/RUTA/ALMACEN/BACKUP/EN/TU/PC&quot;
+DATAPATH=&quot;/home/pi/compose/data&quot;
+COMPOSEPATH=&quot;/home/pi/compose&quot;
+RASPBERRY_IP=&quot;RASPBERRY_IP&quot;
+
+services=( swag pihole)
+exclude=( )
+
+# Inicio del script
+
+now=$(date &quot;+%F-%T&quot;)
+
+if [ -d &quot;$BACKUPPATH&quot; ]; then
+  figlet &quot;Container&apos;s data&quot;
+
+  cd ${BACKUPPATH}
+  mkdir ${now}
+  cd ${now}
+
+  for service in &quot;${services[@]}&quot;
+  do
+    if [[ ! &quot; ${exclude[@]} &quot; =~ &quot; ${service} &quot; ]]; then
+      echo &quot;${service}=========================================&quot;
+      ssh root@${RASPBERRY_IP} &quot;cd ${COMPOSEPATH} &amp;amp;&amp;amp; docker-compose stop ${service}&quot;
+      ssh root@${RASPBERRY_IP} &quot;cd ${DATAPATH} &amp;amp;&amp;amp; tar --exclude=&apos;*qbittorrent/downloads&apos; -cvf - ${service}&quot; | pv &amp;gt;   ${service}.tar.gz
+      ssh root@${RASPBERRY_IP} &quot;cd ${COMPOSEPATH} &amp;amp;&amp;amp; docker-compose start ${service}&quot;
+    fi
+  done
+
+  figlet &apos;docker-compose.yml&apos;
+  rsync -av --delete -h -i --stats root@${RASPBERRY_IP}:${COMPOSEPATH}/docker-compose.yml ${BACKUPPATH}/${now} | grep -E &apos;^[^.]|^$&apos;
+
+
+else
+  echo &quot;Error: Destination path not found! (${BACKUPPATH})&quot;
+  exit 1
+fi
+
+exit 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;5.2 Instalar dependencias y el script&lt;/h2&gt;
+
+&lt;p&gt;Para instalar las dependencias en la raspberry, iniciamos una sesión ssh como root (usando las llaves que generamos en el capítulo anterior) y ejecutamos el comando &lt;code&gt;apt install rsync&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;En el PC desde el que ejecutaremos el script de backup, instalamos las dependencias con el comando &lt;code&gt;sudo apt install rsync pv&lt;/code&gt; si estas en una distribución basada en Debian. En Archlinux, por ejemplo, el comando sería &lt;code&gt;sudo pacman -S rsync pv&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;A continuación, navegamos hasta la carpeta donde queramos ejecutar el script, creamos un fichero vacio de nombre &lt;code&gt;backup.sh&lt;/code&gt; y pegamos el script del punto 5.1. Importante marcar el archivo como ejecutable mediante el comando &lt;code&gt;sudo chmod +x backup.sh&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2&gt;5.3 Personalizar el script&lt;/h2&gt;
+
+&lt;p&gt;Del script deberemos modificar a nuestra conveniencia las siguientes variables:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BACKUPPATH&lt;/code&gt;: Ruta de tu pc en la que se almacenarán los backups. Puede ser un disco duro extraible conectado a tu pc en el momento de la ejecución.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DATAPATH&lt;/code&gt;: Carpeta donde se encuentran montados los volumenes de los contenedores, que almacenan los datos que queremos que persistan. Si has seguido las rutas del tutorial, esta es &lt;code&gt;/home/pi/compose/data&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;COMPOSEPATH&lt;/code&gt;: Carpeta donde se encuentra el fichero &lt;code&gt;docker-compose.yml&lt;/code&gt;. Si has seguido las rutas del tutorial, esta es &lt;code&gt;/home/pi/compose&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RASPBERRY_IP&lt;/code&gt;: La ip local de tu raspberry.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;services&lt;/code&gt;: Lista de los nombres de las carpeta que se encuentran dentro de &lt;code&gt;DATAPATH&lt;/code&gt; que queremos haer backup, separadas con espacio. Si has seguido con la metodología del tutorial, coinciden con los nombres de los servicios.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;exclude&lt;/code&gt;: Lista de los nombres de las carpetas que no queremos hacer backup. Si en la variable &lt;code&gt;services&lt;/code&gt; colocamos &lt;code&gt;swag pihole&lt;/code&gt; y a &lt;code&gt;exclude&lt;/code&gt; le damos el valor de &lt;code&gt;swag&lt;/code&gt;, solo se hará el backup de &lt;code&gt;pihole&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;5.4 Hacer backup y restablecer backup&lt;/h2&gt;
+
+&lt;p&gt;Para hacer el backup, simplemente ejecuta el script navengado a la carpeta en la que se encuentre y ejeuta el comando &lt;code&gt;./backup&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para restablecer el backup de un servicio, sigue los pasos:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;En la raspberry: Para el servicio con el comando &lt;code&gt;docker stop SERVICIO&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;En la raspberry: Elimina los datos (si existen) de ese servicio, navengado a &lt;code&gt;/home/pi/compose/data&lt;/code&gt; y ejecutando el comando &lt;code&gt;rm -rfd SERVICIO&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;En tu PC: Navega hasta el fichero tar.gz del servicio a restablecer y ejecuta el siguiente comando: &lt;code&gt;cat SERVICIO.tar.gz | ssh root@RASPBERRY_IP &quot;cd DATAPATH; tar xvf -&quot;&lt;/code&gt; reemplazando &lt;code&gt;SERVICIO&lt;/code&gt;, &lt;code&gt;RASPBERRY_IP&lt;/code&gt; Y &lt;code&gt;DATAPATH&lt;/code&gt; por los valores adecuados. Un ejemplo de este comando correctamente cumplimentado sería: &lt;code&gt;cat pihole.tar.gz | ssh root@192.168.1.109 &quot;cd /home/pi/compose/data; tar xvf -&quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+</item>
+<item>
 <title>Servidor en casa - Parte 5: Acceso remoto mediante llaves de encriptado</title>
 <link>https://marcalv.com/blog/008homeserver5</link>
 <guid>008homeserver5</guid>
@@ -26,16 +148,13 @@
 &lt;!--pubdate:2020/10/04_--&gt;
 
 
-&lt;!--moddate:2020/10/04_--&gt;
+&lt;!--moddate:2022/08/19_--&gt;
 
 
 &lt;!--icon:raspberry_--&gt;
 
 
-
-
-&lt;!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=qapw2nI-xyE)--&gt;
-
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=9BBMH44h1rc&quot;&gt;&lt;img src=&quot;/static/files/images/guiaraspi_thumbnail.jpg&quot; alt=&quot;Enlace al video de esta parte.&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;5.1 Acceso SSH mediante llaves de encriptado&lt;/h2&gt;
 
@@ -569,7 +688,7 @@ docker-compose down swag #Parar y eliminar contenedor
 &lt;!--pubdate:2020/09/26_--&gt;
 
 
-&lt;!--moddate:2020/09/26_--&gt;
+&lt;!--moddate:2022/08/19_--&gt;
 
 
 &lt;!--icon:raspberry_--&gt;
