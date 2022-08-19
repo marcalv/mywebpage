@@ -6,7 +6,7 @@
 
 <!--[![Enlace al video de esta parte.](/static/files/images/guiaraspi_thumbnail.jpg)](https://www.youtube.com/watch?v=9BBMH44h1rc)-->
 
-## 5.1 Script bash para la copia de seguridad 
+## 6.1 Script bash para la copia de seguridad 
 
 A continuación, facilito el script completo para realizar una copia de seguridad de los datos persistentes de los contedores (carpetas dentro de `/home/pi/compose/data` si has ido seguiendo las rutas del tutorial) y el archivo de configuración docker-compose.yml. 
 
@@ -71,16 +71,16 @@ exit 0
 
 
 
-## 5.2 Instalar dependencias y el script
+## 6.2 Instalar dependencias y el script
 
 Para instalar las dependencias en la raspberry, iniciamos una sesión ssh como root (usando las llaves que generamos en el capítulo anterior) y ejecutamos el comando `apt install rsync`. 
 
 En el PC desde el que ejecutaremos el script de backup, instalamos las dependencias con el comando `sudo apt install rsync pv figlet` si estas en una distribución basada en Debian. En Archlinux, por ejemplo, el comando sería `sudo pacman -S rsync pv figlet`.
 
-A continuación, navegamos hasta la carpeta donde queramos ejecutar el script, creamos un fichero vacio de nombre `backup.sh` y pegamos el script del punto 5.1. Importante marcar el archivo como ejecutable mediante el comando `sudo chmod +x backup.sh`.
+A continuación, navegamos hasta la carpeta donde queramos ejecutar el script, creamos un fichero vacio de nombre `backup.sh` y pegamos el script del punto 6.1. Importante marcar el archivo como ejecutable mediante el comando `sudo chmod +x backup.sh`.
 
 
-## 5.3 Personalizar el script
+## 6.3 Personalizar el script
 
 Del script deberemos modificar a nuestra conveniencia las siguientes variables:
 
@@ -91,7 +91,7 @@ Del script deberemos modificar a nuestra conveniencia las siguientes variables:
 * `services`: Lista de los nombres de las carpeta que se encuentran dentro de `DATAPATH` que queremos haer backup, separadas con espacio. Si has seguido con la metodología del tutorial, coinciden con los nombres de los servicios. 
 * `exclude`: Lista de los nombres de las carpetas que no queremos hacer backup. Si en la variable `services` colocamos `swag pihole` y a `exclude` le damos el valor de `swag`, solo se hará el backup de `pihole`.
 
-## 5.4 Hacer backup y restablecer backup
+## 6.4 Hacer backup y restablecer backup
 
 Para hacer el backup, simplemente ejecuta el script navengado a la carpeta en la que se encuentre y ejeuta el comando `./backup`. 
 
@@ -99,4 +99,4 @@ Para restablecer el backup de un servicio, sigue los pasos:
 
 1. En la raspberry: Para el servicio con el comando `docker stop SERVICIO`
 2. En la raspberry: Elimina los datos (si existen) de ese servicio, navengado a `/home/pi/compose/data` y ejecutando el comando `rm -rfd SERVICIO`.
-3. En tu PC: Navega hasta el fichero tar.gz del servicio a restablecer y ejecuta el siguiente comando: `cat SERVICIO.tar.gz | ssh root@RASPBERRY_IP "cd DATAPATH; tar xvf -"` reemplazando `SERVICIO`, `RASPBERRY_IP` Y `DATAPATH` por los valores adecuados. Un ejemplo de este comando correctamente cumplimentado sería: `cat pihole.tar.gz | ssh root@192.168.1.109 "cd /home/pi/compose/data; tar xvf -"`
+3. En tu PC: Navega hasta el fichero tar.gz del servicio a restablecer y ejecuta el siguiente comando: `cat SERVICIO.tar.gz | ssh root@RASPBERRY_IP "cd DATAPATH; tar xvf -"` reemplazando `SERVICIO`, `RASPBERRY_IP` y `DATAPATH` por los valores adecuados. Un ejemplo de este comando correctamente cumplimentado sería: `cat pihole.tar.gz | ssh root@192.168.1.109 "cd /home/pi/compose/data; tar xvf -"`
